@@ -1,0 +1,146 @@
+%%STYLE%%
+<style>
+.req{display:flex;flex-direction:column;gap:10px;background:var(--sunk);border-radius:10px;padding:12px}
+.req pre{margin:0;white-space:pre-wrap;font:inherit;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;overflow-wrap:anywhere}
+.wa{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14px}
+.wa .num{font-weight:700;font-variant-numeric:tabular-nums;user-select:all}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.pbox .each{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;background:var(--accent-soft);color:var(--accent);padding:9px 11px}
+.pbox .each span{font-size:12px;font-weight:700}
+.pbox .each b{font-size:17px;font-variant-numeric:tabular-nums}
+.pbox .each small{font-size:12px;color:var(--fg)}
+.foot{font-size:12px;color:var(--muted);text-align:center}
+a.btnlink{display:inline-block;font-weight:600;font-size:14px;border-radius:10px;padding:8px 12px;background:var(--accent);color:var(--accent-fg);text-decoration:none}
+</style>
+
+<div class="wrap" data-view="client">
+  <section class="brandband" aria-label="Lodgewell">
+    <div class="lockup">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="lwk"><rect width="64" height="64" fill="#fff"></rect><circle cx="32" cy="43" r="3.2" fill="#000"></circle><path d="M30.4 45 L29.4 51.5 H34.6 L33.6 45 Z" fill="#000"></path></mask></defs><path d="M8 31 L32 10 L56 31" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linejoin="miter" stroke-linecap="square"></path><path d="M22 57 V41 A10 10 0 0 1 42 41 V57 Z" fill="currentColor" mask="url(#lwk)"></path><rect x="10" y="56" width="44" height="3" fill="currentColor"></rect></svg>
+      <p class="wordmark">Lodgewell</p>
+    </div>
+    <p class="tagline">Find your lodge. Live well.</p>
+    <span class="bandmeta">Homes &amp; lodges · Ile-Ife</span>
+  </section>
+
+  <header>
+    <h1>Available apartments</h1>
+    <p class="sub">Search by type, budget and area. When you find one you like, tap <b>Request this apartment</b> and send us the message on WhatsApp.</p>
+    <div class="stats"><span class="stat"><b id="n-all">%%COUNT%%</b> apartments available</span><span class="stat" id="n-areas"></span><span class="stat">Updated %%UPDATED%%</span></div>
+  </header>
+
+  <section class="panel match" aria-labelledby="mh">
+    <h2 id="mh">Search apartments</h2>
+    <div class="grid">
+      <label for="f-type">Apartment type<select id="f-type"><option value="">Any type</option></select></label>
+      <label for="f-budget">Budget from (₦ per year)<input id="f-budget" inputmode="numeric" placeholder="e.g. 250000 or 250k"></label>
+      <label for="f-max">Budget up to (₦ per year)<input id="f-max" inputmode="numeric" placeholder="e.g. 400k"></label>
+      <label for="f-gender">Male or female<select id="f-gender"><option value="">Anyone</option><option value="male">Male</option><option value="female">Female</option></select></label>
+      <label for="f-split">Sharing with a roommate?<select id="f-split"><option value="">No, just me</option><option value="2">Yes, 2 people</option><option value="3">Yes, 3 people</option></select></label>
+      <label for="f-must">Must have<input id="f-must" placeholder="e.g. tiled, water, own toilet"></label>
+      <label for="f-ref">Ref number<input id="f-ref" inputmode="numeric" placeholder="e.g. 47 or LW-047"></label>
+    </div>
+    <fieldset class="areas">
+      <legend>Areas <span class="hint">— tick one or more</span> <button type="button" class="linkbtn" id="f-areas-all" hidden>Show all areas</button></legend>
+      <div class="achips" id="f-areas"></div>
+    </fieldset>
+    <div class="row"><button class="ghost" id="f-clear" type="button">Clear</button></div>
+  </section>
+
+  <section aria-labelledby="rh">
+    <div class="resulthead"><h2 id="rh">Matches</h2><span class="count" id="count"></span></div>
+    <div class="list" id="list" style="margin-top:10px"></div>
+  </section>
+
+  <section class="contact" aria-labelledby="ch">
+    <h2 id="ch">Can't find what you need?</h2>
+    <p class="note" style="margin:0">Send us your budget, the apartment type and the area you want. We don't post every vacancy online.</p>
+    <div class="wa"><span>WhatsApp:</span><span class="num">+234 913 641 6448</span><button type="button" data-copy="+2349136416448">Copy number</button></div>
+  </section>
+  <p class="foot">Prices can change and vacancies go fast. We confirm availability before any payment. Inspect before you pay.</p>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const ITEMS=%%DATA%%;
+const WA='2349136416448';
+const STD_TYPES=["Single room","Room & parlour","Self-contain","Mini flat","1-bedroom flat","2-bedroom flat","3-bedroom flat","Bed space"];
+const selAreas=new Set(); let openRef=null;
+const $=id=>document.getElementById(id);
+function parseMoney(s){ if(s==null) return null; s=String(s).toLowerCase().replace(/[₦,\s]/g,''); if(!s) return null; const m=s.match(/^([\d.]+)(k|m)?$/); if(!m) return null; let n=parseFloat(m[1]); if(m[2]==='k') n*=1e3; if(m[2]==='m') n*=1e6; return Math.round(n); }
+function naira(n){ return n==null?null:'₦'+Number(n).toLocaleString('en-NG'); }
+function short(n){ if(n==null) return null; if(n>=1e6) return '₦'+(n/1e6).toFixed(2).replace(/\.?0+$/,'')+'m'; if(n>=1e3) return '₦'+(Math.round(n/100)/10).toString().replace(/\.0$/,'')+'k'; return '₦'+n; }
+function norm(s){ return String(s||'').toLowerCase().trim(); }
+function esc(s){ return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function toast(m){ const t=$('toast'); t.textContent=m; t.hidden=false; clearTimeout(toast.t); toast.t=setTimeout(()=>t.hidden=true,2200); }
+async function copyText(t,msg){ try{ await navigator.clipboard.writeText(t); toast(msg); }catch{ const ta=document.createElement('textarea'); ta.value=t; document.body.append(ta); ta.select(); try{document.execCommand('copy');toast(msg)}catch{toast('Select and copy the text.')} ta.remove(); } }
+const AREA_ALIASES=[[/\bon[- ]campus\b|school'?s private hostel/,'On campus'],[/\boff[- ]campus\b|campus gate/,'Campus Gate'],[/\ba\.?p\b/,'AP'],[/mayfair/,'Mayfair'],[/parakin/,'Parakin'],[/oduduwa/,'Oduduwa Estate'],[/omole/,'Omole Estate'],[/asherifa/,'Asherifa'],[/damico/,'Damico'],[/ede road|maintenance/,'Ede Road'],[/ibadan road|\bib road/,'Ibadan Road'],[/ooni ?layout|oni layout/,'Ooni Layout'],[/ooni ?crownland/,'Ooni Crownland'],[/lagere/,'Lagere'],[/akarabata/,'Akarabata'],[/awosun/,'Awosun'],[/moremi/,'Moremi Estate'],[/nasfat/,'Nasfat'],[/fashina|fascinating/,'Fashina'],[/modomo/,'Modomo'],[/\boui\b/,'OUI area'],[/ajebamidele/,'Ajebamidele']];
+function areaTags(r){ const a=norm(r.area), t=[]; AREA_ALIASES.forEach(([re,n])=>{ if(re.test(a)&&!t.includes(n)) t.push(n); }); if(!t.length&&r.area) t.push(r.area.trim()); return t; }
+function exText(r){ return norm([r.extra.map(e=>e[1]).join(' '),(r.features||[]).join(' ')].join(' ')); }
+function genderOf(r){ const t=exText(r); if(/male and female|male & female|male\/female/.test(t)) return 'any'; if(/female/.test(t)) return 'female'; if(/\bmales?\b/.test(t)) return 'male'; return 'any'; }
+function isShare(r){ return r.type==='Bed space' || /roommate|bed ?space/.test(exText(r)); }
+function soloOnly(r){ return /1 person|one person|roommate not allowed/.test(exText(r)); }
+function splitN(){ return +$('f-split').value||1; }
+function perPerson(p,r){ const n=splitN(); return (p==null||n<2||isShare(r))?p:Math.round(p/n); }
+function splitRow(r,t,y){ const n=splitN(); if(n<2||isShare(r)||(t==null&&y==null)) return '';
+  return `<div class="each"><span>Shared by ${n} · each pays</span><b>${t!=null?naira(Math.round(t/n))+' 1st year':'Ask us'}</b>${y!=null?`<small>then ${naira(Math.round(y/n))} each per year</small>`:''}</div>`; }
+function price(r){ return r.guide ?? r.total ?? r.rent ?? null; }
+function hay(r){ return norm([r.type,r.area,r.address,(r.features||[]).join(' '),r.extra.map(e=>e.join(' ')).join(' ')].join(' ')); }
+function priceBox(r){
+  if(r.guide!=null) return `<dl class="pbox"><div><dt>Guide price</dt><dd>${naira(r.guide)}</dd></div><div class="pnote">We'll confirm the full breakdown before you pay.</div>${splitRow(r,r.guide,null)}</dl>`;
+  const ask='<span class="ask">Ask us</span>';
+  return `<dl class="pbox"><div><dt>Total package <small>1st year · one-time, all fees</small></dt><dd>${r.total!=null?naira(r.total):ask}</dd></div><div><dt>Yearly rent <small>what you pay each year after</small></dt><dd>${r.rent!=null?naira(r.rent):ask}</dd></div>${splitRow(r,r.total,r.rent)}</dl>`;
+}
+function reqText(r){ return `Hello Lodgewell, I'm interested in this apartment:\n\nRef ${r.ref} — ${r.type}, ${r.area}${splitN()>1&&!isShare(r)?`\nWe are ${splitN()} people sharing.`:''}\n\nIs it still available? I'd like to book an inspection.`; }
+function card(r){
+  const p=price(r);
+  return `<article class="card" data-ref="${esc(r.ref)}">
+    <div class="top"><div class="row" style="gap:6px"><span class="pill">${esc(r.type)}</span><span class="refchip static">Ref ${esc(r.ref)}</span></div>
+      <div class="price"><div class="big">${p!=null?short(perPerson(p,r)):'Ask us'}</div><div class="small">${(splitN()>1&&!isShare(r)&&p!=null)?'each · ':''}${p==null?'price on request':r.guide!=null?'guide price':r.total!=null?'total package':'yearly rent'}</div></div></div>
+    <div><div class="where">${esc(r.area)}</div>${r.address?`<div class="addr">${esc(r.address)}</div>`:''}</div>
+    ${priceBox(r)}
+    ${r.features.length?`<div class="chips">${r.features.map(f=>`<span class="chip">${esc(f)}</span>`).join('')}</div>`:''}
+    ${r.extra.map(([k,v])=>`<div class="kv"><b>${esc(k)}:</b> ${esc(v)}</div>`).join('')}
+    ${openRef===r.ref?`<div class="req"><b>Send this to us on WhatsApp:</b><pre>${esc(reqText(r))}</pre>
+      <div class="wa"><button class="primary" data-act="copymsg">Copy message</button><a class="btnlink" href="https://wa.me/${WA}?text=${encodeURIComponent(reqText(r))}" target="_blank" rel="noopener">Open WhatsApp</a></div>
+      <div class="wa"><span>Our number:</span><span class="num">+234 913 641 6448</span><button data-copy="+2349136416448">Copy number</button></div>
+      <span class="note">If WhatsApp doesn't open, copy the message and send it to the number above.</span></div>`
+      :`<div class="actions"><button class="primary" data-act="req">Request this apartment</button></div>`}
+  </article>`;
+}
+function render(){
+  const ac={}; ITEMS.forEach(r=>areaTags(r).forEach(t=>ac[t]=(ac[t]||0)+1));
+  const areas=Object.keys(ac).sort((a,b)=>a.localeCompare(b));
+  $('n-areas').textContent=areas.length+' areas';
+  const ts=$('f-type'), cur=ts.value, types=[...new Set([...STD_TYPES,...ITEMS.map(r=>r.type)])].filter(t=>ITEMS.some(r=>r.type===t));
+  ts.innerHTML='<option value="">Any type</option>'+types.map(t=>`<option${t===cur?' selected':''}>${esc(t)}</option>`).join('');
+  $('f-areas').innerHTML=areas.map(t=>`<label class="achip"><input type="checkbox" value="${esc(t)}"${selAreas.has(t)?' checked':''}><span>${esc(t)}</span><span class="n">${ac[t]}</span></label>`).join('');
+  $('f-areas-all').hidden=!selAreas.size;
+  const type=ts.value, budget=parseMoney($('f-budget').value), maxb=parseMoney($('f-max').value), g=$('f-gender').value, must=norm($('f-must').value).split(',').map(s=>s.trim()).filter(Boolean),
+        rq=norm($('f-ref').value).replace(/^lw-?/,'').replace(/^0+/,'');
+  const list=ITEMS.filter(r=>{
+    if(rq) return r.ref.toLowerCase().replace(/^lw-0*/,'')===rq || r.ref.toLowerCase().includes(rq);
+    if(type&&r.type!==type) return false;
+    if(selAreas.size&&!areaTags(r).some(t=>selAreas.has(t))) return false;
+    if(g && genderOf(r)!=='any' && genderOf(r)!==g) return false;
+    if(splitN()>1 && soloOnly(r)) return false;
+    { const p=perPerson(price(r),r); if(budget&&p!=null&&p<budget) return false; if(maxb&&p!=null&&p>maxb) return false; }
+    if(must.length){ const h=hay(r); if(!must.every(m=>h.includes(m))) return false; }
+    return true;
+  }).sort((a,b)=>(perPerson(price(a),a)??Infinity)-(perPerson(price(b),b)??Infinity));
+  $('count').textContent=`${list.length} found`;
+  $('list').innerHTML=list.length?list.map(card).join(''):'<div class="empty">Nothing fits that yet. Try a lower budget, another area, or fewer must-haves. Or message us your needs below.</div>';
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  if(b.dataset.copy){ copyText(b.dataset.copy,'Number copied'); return; }
+  const c=b.closest('.card'); if(!c) return; const r=ITEMS.find(x=>x.ref===c.dataset.ref);
+  if(b.dataset.act==='req'){ openRef=r.ref; render(); }
+  if(b.dataset.act==='copymsg') copyText(reqText(r),'Message copied. Paste it in WhatsApp.');
+});
+$('f-areas').addEventListener('change',e=>{ const c=e.target; if(c.type!=='checkbox') return; c.checked?selAreas.add(c.value):selAreas.delete(c.value); render(); });
+$('f-areas-all').addEventListener('click',()=>{ selAreas.clear(); render(); });
+['f-type','f-budget','f-max','f-gender','f-split','f-must','f-ref'].forEach(id=>$(id).addEventListener('input',render));
+$('f-clear').addEventListener('click',()=>{ ['f-budget','f-max','f-must','f-ref','f-type','f-gender','f-split'].forEach(id=>$(id).value=''); selAreas.clear(); openRef=null; render(); });
+render();
+</script>
