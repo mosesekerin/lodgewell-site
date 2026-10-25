@@ -9,6 +9,11 @@
 .pbox .each span{font-size:12px;font-weight:700}
 .pbox .each b{font-size:17px;font-variant-numeric:tabular-nums}
 .pbox .each small{font-size:12px;color:var(--fg)}
+.fresh{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px}
+.fresh.new{background:var(--brass-soft);color:var(--brass)}
+.fresh.recent{background:var(--accent-soft);color:var(--accent)}
+.fresh.old{background:var(--sunk);color:var(--muted);font-weight:600}
+.availnote{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:10px;padding:10px 12px;margin:10px 0 0}
 .foot{font-size:12px;color:var(--muted);text-align:center}
 a.btnlink{display:inline-block;font-weight:600;font-size:14px;border-radius:10px;padding:8px 12px;background:var(--accent);color:var(--accent-fg);text-decoration:none}
 </style>
@@ -37,6 +42,7 @@ a.btnlink{display:inline-block;font-weight:600;font-size:14px;border-radius:10px
       <label for="f-max">Budget up to (₦ per year)<input id="f-max" inputmode="numeric" placeholder="e.g. 400k"></label>
       <label for="f-gender">Male or female<select id="f-gender"><option value="">Anyone</option><option value="male">Male</option><option value="female">Female</option></select></label>
       <label for="f-split">Sharing with a roommate?<select id="f-split"><option value="">No, just me</option><option value="2">Yes, 2 people</option><option value="3">Yes, 3 people</option></select></label>
+      <label for="f-sort">Show<select id="f-sort"><option value="new">Newest first</option><option value="price">Lowest price first</option></select></label>
       <label for="f-must">Must have<input id="f-must" placeholder="e.g. tiled, water, own toilet"></label>
       <label for="f-ref">Ref number<input id="f-ref" inputmode="numeric" placeholder="e.g. 47 or LW-047"></label>
     </div>
@@ -49,6 +55,7 @@ a.btnlink{display:inline-block;font-weight:600;font-size:14px;border-radius:10px
 
   <section aria-labelledby="rh">
     <div class="resulthead"><h2 id="rh">Matches</h2><span class="count" id="count"></span></div>
+    <p class="availnote">Listed newest first. These are vacancies advertised recently. Newer posts are more likely to still be free, but nothing here is guaranteed available. We confirm availability with you before any inspection or payment.</p>
     <div class="list" id="list" style="margin-top:10px"></div>
   </section>
 
@@ -84,6 +91,11 @@ function splitN(){ return +$('f-split').value||1; }
 function perPerson(p,r){ const n=splitN(); return (p==null||n<2||isShare(r))?p:Math.round(p/n); }
 function splitRow(r,t,y){ const n=splitN(); if(n<2||isShare(r)||(t==null&&y==null)) return '';
   return `<div class="each"><span>Shared by ${n} · each pays</span><b>${t!=null?naira(Math.round(t/n))+' 1st year':'Ask us'}</b>${y!=null?`<small>then ${naira(Math.round(y/n))} each per year</small>`:''}</div>`; }
+function ageDays(iso){ const t=new Date(iso||''); if(isNaN(t)) return null; const n=new Date(); return Math.max(0,Math.round((new Date(n.getFullYear(),n.getMonth(),n.getDate())-new Date(t.getFullYear(),t.getMonth(),t.getDate()))/864e5)); }
+function freshTag(iso,rep){ const d=ageDays(iso); if(d==null) return '';
+  const when=d===0?'today':d===1?'yesterday':d+' days ago';
+  const cls=d<=2?'new':d<=7?'recent':'old', lead=d<=2?'Just in · ':'';
+  return `<span class="fresh ${cls}">${lead}${rep?'Reposted':'Posted'} ${when}${d>7?' · may be taken':''}</span>`; }
 function price(r){ return r.guide ?? r.total ?? r.rent ?? null; }
 function hay(r){ return norm([r.type,r.area,r.address,(r.features||[]).join(' '),r.extra.map(e=>e.join(' ')).join(' ')].join(' ')); }
 function priceBox(r){
@@ -95,7 +107,7 @@ function reqText(r){ return `Hello Lodgewell, I'm interested in this apartment:\
 function card(r){
   const p=price(r);
   return `<article class="card" data-ref="${esc(r.ref)}">
-    <div class="top"><div class="row" style="gap:6px"><span class="pill">${esc(r.type)}</span><span class="refchip static">Ref ${esc(r.ref)}</span></div>
+    <div class="top"><div class="row" style="gap:6px"><span class="pill">${esc(r.type)}</span><span class="refchip static">Ref ${esc(r.ref)}</span>${freshTag(r.seen,r.rep)}</div>
       <div class="price"><div class="big">${p!=null?short(perPerson(p,r)):'Ask us'}</div><div class="small">${(splitN()>1&&!isShare(r)&&p!=null)?'each · ':''}${p==null?'price on request':r.guide!=null?'guide price':r.total!=null?'total package':'yearly rent'}</div></div></div>
     <div><div class="where">${esc(r.area)}</div>${r.address?`<div class="addr">${esc(r.address)}</div>`:''}</div>
     ${priceBox(r)}
@@ -127,7 +139,7 @@ function render(){
     { const p=perPerson(price(r),r); if(budget&&p!=null&&p<budget) return false; if(maxb&&p!=null&&p>maxb) return false; }
     if(must.length){ const h=hay(r); if(!must.every(m=>h.includes(m))) return false; }
     return true;
-  }).sort((a,b)=>(perPerson(price(a),a)??Infinity)-(perPerson(price(b),b)??Infinity));
+  }).sort((a,b)=>{ if($('f-sort').value!=='price'){ const ta=Date.parse(a.seen||0)||0, tb=Date.parse(b.seen||0)||0; if(tb!==ta) return tb-ta; } return (perPerson(price(a),a)??Infinity)-(perPerson(price(b),b)??Infinity); });
   $('count').textContent=`${list.length} found`;
   $('list').innerHTML=list.length?list.map(card).join(''):'<div class="empty">Nothing fits that yet. Try a lower budget, another area, or fewer must-haves. Or message us your needs below.</div>';
 }
@@ -140,7 +152,7 @@ document.addEventListener('click',e=>{
 });
 $('f-areas').addEventListener('change',e=>{ const c=e.target; if(c.type!=='checkbox') return; c.checked?selAreas.add(c.value):selAreas.delete(c.value); render(); });
 $('f-areas-all').addEventListener('click',()=>{ selAreas.clear(); render(); });
-['f-type','f-budget','f-max','f-gender','f-split','f-must','f-ref'].forEach(id=>$(id).addEventListener('input',render));
-$('f-clear').addEventListener('click',()=>{ ['f-budget','f-max','f-must','f-ref','f-type','f-gender','f-split'].forEach(id=>$(id).value=''); selAreas.clear(); openRef=null; render(); });
+['f-type','f-budget','f-max','f-gender','f-split','f-sort','f-must','f-ref'].forEach(id=>$(id).addEventListener('input',render));
+$('f-clear').addEventListener('click',()=>{ ['f-budget','f-max','f-must','f-ref','f-type','f-gender','f-split'].forEach(id=>$(id).value=''); selAreas.clear(); openRef=null; $('f-sort').value='new'; render(); });
 render();
 </script>

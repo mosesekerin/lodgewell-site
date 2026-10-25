@@ -16,7 +16,8 @@ for f in sorted(glob.glob(os.path.join(src, 'listings', '*.json'))):
     if r.get('status') == 'taken' or r.get('example'): continue
     tp, rent = r.get('totalPackage'), r.get('rent')
     it = dict(ref=ref(i), type=r.get('type') or 'Apartment', area=r.get('area') or '', address=r.get('address'),
-              features=r.get('features') or [], extra=[[k, v] for k, v in (r.get('extra') or {}).items() if KEEP.match(k)])
+              features=r.get('features') or [], extra=[[k, v] for k, v in (r.get('extra') or {}).items() if KEEP.match(k)],
+              seen=r.get('lastSeen') or r.get('added'), rep=r.get('reposts') or 0)
     if UNCLEAR.search(r.get('priceNote') or ''):
         base = tp if tp is not None else rent
         it['guide'] = (base + charge) if (tp is not None and base is not None) else base
