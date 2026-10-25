@@ -237,8 +237,8 @@
      "2 per room"
     ]
    ],
-   "seen": "2026-10-20T12:15:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-20T12:16:00+01:00",
+   "rep": 1,
    "total": 520000,
    "rent": null
   },
@@ -415,7 +415,7 @@
    ],
    "extra": [],
    "seen": "2026-10-21T08:42:00+01:00",
-   "rep": 0,
+   "rep": 1,
    "guide": 240000
   },
   {
@@ -426,7 +426,7 @@
    "features": [],
    "extra": [],
    "seen": "2026-10-21T09:48:00+01:00",
-   "rep": 0,
+   "rep": 1,
    "total": null,
    "rent": 230000
   },
@@ -645,8 +645,8 @@
     "water heater"
    ],
    "extra": [],
-   "seen": "2026-10-21T17:14:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-24T18:38:00+01:00",
+   "rep": 2,
    "total": 360000,
    "rent": 305000
   },
@@ -1256,8 +1256,8 @@
     "kitchen cabinet"
    ],
    "extra": [],
-   "seen": "2026-10-23T11:32:00+01:00",
-   "rep": 2,
+   "seen": "2026-10-24T21:35:00+01:00",
+   "rep": 4,
    "total": null,
    "rent": null
   },
@@ -1858,8 +1858,8 @@
     "one room ensuite"
    ],
    "extra": [],
-   "seen": "2026-10-24T15:25:00+01:00",
-   "rep": 2,
+   "seen": "2026-10-24T22:18:00+01:00",
+   "rep": 3,
    "total": null,
    "rent": null
   },
@@ -2331,18 +2331,23 @@
    "address": null,
    "features": [
     "super spacious",
+    "POP",
     "wardrobe",
     "kitchen cabinet",
     "24/7 light"
    ],
    "extra": [
     [
+     "Gender",
+     "Male only (for guys)"
+    ],
+    [
      "Walk to junction",
      "About 5 mins"
     ]
    ],
-   "seen": "2026-10-24T17:46:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-24T22:43:00+01:00",
+   "rep": 2,
    "total": 620000,
    "rent": 500000
   },
@@ -2381,7 +2386,136 @@
    "rep": 0,
    "total": 670000,
    "rent": null
+  },
+  {
+   "ref": "LW-143",
+   "type": "Self-contain",
+   "area": "Campus Gate",
+   "address": "Close to campus gate",
+   "features": [
+    "wardrobe",
+    "kitchen cabinet"
+   ],
+   "extra": [
+    [
+     "Arrangement",
+     "Female roommate needed, or take the whole room"
+    ]
+   ],
+   "seen": "2026-10-24T21:35:00+01:00",
+   "rep": 1,
+   "guide": 315000
+  },
+  {
+   "ref": "LW-144",
+   "type": "Self-contain",
+   "area": "Parakin",
+   "address": null,
+   "features": [
+    "newly refurbished",
+    "Band A light"
+   ],
+   "extra": [],
+   "seen": "2026-10-25T06:40:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": null
+  },
+  {
+   "ref": "LW-145",
+   "type": "Self-contain",
+   "area": "Parakin",
+   "address": null,
+   "features": [
+    "spacious",
+    "Band A light"
+   ],
+   "extra": [
+    [
+     "Arrangement",
+     "Female roommate needed"
+    ]
+   ],
+   "seen": "2026-10-25T10:48:00+01:00",
+   "rep": 0,
+   "guide": 225000
+  },
+  {
+   "ref": "LW-146",
+   "type": "Self-contain",
+   "area": "Around campus",
+   "address": null,
+   "features": [
+    "wardrobe",
+    "kitchen cabinet"
+   ],
+   "extra": [],
+   "seen": "2026-10-25T08:37:00+01:00",
+   "rep": 0,
+   "total": 470000,
+   "rent": null
+  },
+  {
+   "ref": "LW-147",
+   "type": "Self-contain",
+   "area": "Around campus",
+   "address": null,
+   "features": [
+    "wardrobe",
+    "kitchen cabinet"
+   ],
+   "extra": [],
+   "seen": "2026-10-25T11:43:00+01:00",
+   "rep": 0,
+   "total": 420000,
+   "rent": null
+  },
+  {
+   "ref": "LW-148",
+   "type": "Self-contain",
+   "area": "Campus Gate",
+   "address": "Close to campus gate",
+   "features": [
+    "proper"
+   ],
+   "extra": [],
+   "seen": "2026-10-25T11:43:00+01:00",
+   "rep": 0,
+   "total": 420000,
+   "rent": null
+  },
+  {
+   "ref": "LW-149",
+   "type": "Self-contain",
+   "area": "Campus Gate",
+   "address": null,
+   "features": [
+    "spacious",
+    "wardrobe"
+   ],
+   "extra": [
+    [
+     "Walk to campus gate",
+     "3 mins"
+    ]
+   ],
+   "seen": "2026-10-24T18:19:00+01:00",
+   "rep": 0,
+   "total": 440000,
+   "rent": null
+  },
+  {
+   "ref": "LW-150",
+   "type": "Single room",
+   "area": "AP",
+   "address": "Not far from the junction",
+   "features": [],
+   "extra": [],
+   "seen": "2026-10-25T09:00:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 170000
   }
  ],
- "updated": "2026-10-25T10:20:51.511033+00:00"
+ "updated": "2026-10-25T12:32:51.545Z"
 }
