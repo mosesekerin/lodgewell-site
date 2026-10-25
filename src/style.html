@@ -83,7 +83,8 @@ button:hover{filter:brightness(.97)}
 .pill.warn{background:var(--brass-soft);color:var(--brass)}
 .editp{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:var(--sunk);border-radius:10px;padding:12px}
 .editp .row{grid-column:1/-1}
-@media (max-width:420px){.pbox,.editp{grid-template-columns:1fr}}
+@media (max-width:420px){.editp{grid-template-columns:1fr}}
+@media (max-width:340px){.pbox{grid-template-columns:1fr}}
 .refchip{font:inherit;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:6px;padding:2px 7px;cursor:pointer;font-variant-numeric:tabular-nums}
 .refchip:hover{color:var(--accent);border-color:var(--accent)}
 .refchip.static{cursor:default}
