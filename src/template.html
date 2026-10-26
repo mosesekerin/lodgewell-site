@@ -144,7 +144,7 @@ function kcFacts(it){ const f=[];
 function price(r){ return r.guide ?? r.total ?? r.rent ?? null; }
 function hay(r){ return norm([r.type,r.area,r.address,(r.features||[]).join(' '),r.extra.map(e=>e.join(' ')).join(' ')].join(' ')); }
 function priceBox(r){
-  if(r.guide!=null) return `<dl class="pbox"><div><dt>Guide price</dt><dd>${naira(r.guide)}</dd></div><div class="pnote">We'll confirm the full breakdown before you pay.</div>${splitRow(r,r.guide,null)}</dl>`;
+  if(r.guide!=null) return `<dl class="pbox" style="grid-template-columns:1fr"><div><dt>Guide price</dt><dd>${naira(r.guide)}</dd></div><div class="pnote">We'll confirm the full breakdown before you pay.</div>${splitRow(r,r.guide,null)}</dl>`;
   const ask='<span class="ask">Ask us</span>';
   return `<dl class="pbox"><div><dt>First year <small>all fees · one-time</small></dt><dd>${r.total!=null?naira(r.total):ask}</dd></div><div><dt>Every year after <small>rent only</small></dt><dd>${r.rent!=null?naira(r.rent):ask}</dd></div>${splitRow(r,r.total,r.rent)}</dl>`;
 }

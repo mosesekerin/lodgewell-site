@@ -227,6 +227,7 @@ footer b{color:#fff}
 .pbox dt small{display:block;font-size:12px;font-weight:500;color:var(--muted)}
 .pbox dd{margin:0;font-size:20px;font-weight:800;color:var(--green);font-variant-numeric:tabular-nums}
 .pbox .ask{font-size:15px;color:var(--brass-ink);font-weight:700}
+.pbox.one{grid-template-columns:1fr}
 .pbox .pnote{grid-column:1/-1;font-size:13px;color:var(--muted)}
 .pbox .each{grid-column:1/-1;background:var(--mint);color:var(--green);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
 .pbox .each span{font-size:13px;font-weight:700}
@@ -510,7 +511,7 @@ function facts(r){ const f=[];
 function splitRow(r,t,y){ if(A.share<2||isShare(r)||(t==null&&y==null)) return ''; const n=A.share;
   return `<div class="each"><span>Shared by ${n}, each pays</span><b>${t!=null?naira(Math.round(t/n))+' first year':'Ask us'}</b>${y!=null?`<small>then ${naira(Math.round(y/n))} each per year</small>`:''}</div>`; }
 function pbox(r){ const ask='<span class="ask">Ask us</span>';
-  if(r.guide!=null) return `<dl class="pbox"><div><dt>Guide price</dt><dd>${naira(r.guide)}</dd></div><div class="pnote">We'll confirm the full breakdown before you pay.</div>${splitRow(r,r.guide,null)}</dl>`;
+  if(r.guide!=null) return `<dl class="pbox one"><div><dt>Guide price</dt><dd>${naira(r.guide)}</dd></div><div class="pnote">We'll confirm the full breakdown before you pay.</div>${splitRow(r,r.guide,null)}</dl>`;
   return `<dl class="pbox"><div><dt>First year <small>all fees, one-time</small></dt><dd>${r.total!=null?naira(r.total):ask}</dd></div><div><dt>Every year after <small>rent only</small></dt><dd>${r.rent!=null?naira(r.rent):ask}</dd></div>${splitRow(r,r.total,r.rent)}</dl>`; }
 let openRef=null;
 const reqText=r=>`Hello Lodgewell, I'm interested in this room:\n\nRef ${r.ref}: ${r.type}, ${r.area}${A.share>1&&!isShare(r)?`\nWe are ${A.share} people sharing.`:''}\n\nIs it still available? I'd like to book an inspection.`;
