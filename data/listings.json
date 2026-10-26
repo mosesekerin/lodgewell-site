@@ -645,8 +645,8 @@
     "water heater"
    ],
    "extra": [],
-   "seen": "2026-10-24T18:38:00+01:00",
-   "rep": 2,
+   "seen": "2026-10-26T08:21:00+01:00",
+   "rep": 3,
    "total": 360000,
    "rent": 305000
   },
@@ -1258,8 +1258,8 @@
    "extra": [],
    "seen": "2026-10-24T21:35:00+01:00",
    "rep": 4,
-   "total": null,
-   "rent": null
+   "total": 650000,
+   "rent": 500000
   },
   {
    "ref": "LW-074",
@@ -1461,8 +1461,8 @@
    "address": null,
    "features": [],
    "extra": [],
-   "seen": "2026-10-21T11:09:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-25T22:20:00+01:00",
+   "rep": 1,
    "total": null,
    "rent": null
   },
@@ -1531,8 +1531,8 @@
    "address": null,
    "features": [],
    "extra": [],
-   "seen": "2026-10-22T01:28:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-25T22:21:00+01:00",
+   "rep": 1,
    "total": null,
    "rent": 450000
   },
@@ -2237,8 +2237,8 @@
    "address": null,
    "features": [],
    "extra": [],
-   "seen": "2026-10-23T23:04:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-25T22:22:00+01:00",
+   "rep": 1,
    "total": 510000,
    "rent": 310000
   },
@@ -2297,7 +2297,7 @@
   },
   {
    "ref": "LW-138",
-   "type": "Type not stated",
+   "type": "Self-contain",
    "area": "Campus Gate",
    "address": null,
    "features": [],
@@ -2307,8 +2307,8 @@
      "3 mins"
     ]
    ],
-   "seen": "2026-10-24T14:02:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-26T01:32:00+01:00",
+   "rep": 1,
    "total": 540000,
    "rent": null
   },
@@ -2515,7 +2515,289 @@
    "rep": 0,
    "total": null,
    "rent": 170000
+  },
+  {
+   "ref": "LW-151",
+   "type": "Self-contain",
+   "area": "Ibadan Road",
+   "address": "Opposite Ojaja More",
+   "features": [],
+   "extra": [],
+   "seen": "2026-10-25T14:09:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 255000
+  },
+  {
+   "ref": "LW-152",
+   "type": "Self-contain",
+   "area": "Oke Ola",
+   "address": null,
+   "features": [],
+   "extra": [],
+   "seen": "2026-10-25T14:09:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 250000
+  },
+  {
+   "ref": "LW-153",
+   "type": "Self-contain",
+   "area": "Akarabata",
+   "address": null,
+   "features": [],
+   "extra": [],
+   "seen": "2026-10-25T14:09:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 330000
+  },
+  {
+   "ref": "LW-154",
+   "type": "Single room",
+   "area": "Oke Ola",
+   "address": null,
+   "features": [
+    "running water",
+    "tiled bathroom",
+    "WC toilet"
+   ],
+   "extra": [],
+   "seen": "2026-10-25T14:09:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 135000
+  },
+  {
+   "ref": "LW-155",
+   "type": "Single room",
+   "area": "AP",
+   "address": "Facing the road",
+   "features": [],
+   "extra": [],
+   "seen": "2026-10-25T14:09:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 50000
+  },
+  {
+   "ref": "LW-156",
+   "type": "Single room",
+   "area": "AP",
+   "address": "Not far from the road",
+   "features": [],
+   "extra": [],
+   "seen": "2026-10-25T14:09:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 80000
+  },
+  {
+   "ref": "LW-157",
+   "type": "Single room",
+   "area": "Oke Ola",
+   "address": null,
+   "features": [
+    "well water",
+    "modern latrine"
+   ],
+   "extra": [],
+   "seen": "2026-10-25T14:09:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 60000
+  },
+  {
+   "ref": "LW-158",
+   "type": "Single room",
+   "area": "Asherifa",
+   "address": null,
+   "features": [
+    "tiled"
+   ],
+   "extra": [
+    [
+     "Move-in",
+     "November"
+    ]
+   ],
+   "seen": "2026-10-26T00:24:00+01:00",
+   "rep": 0,
+   "total": 220000,
+   "rent": null
+  },
+  {
+   "ref": "LW-159",
+   "type": "Bed space",
+   "area": "Off-campus private hostel",
+   "address": "Directly opposite campus gate",
+   "features": [
+    "wardrobe",
+    "24/7 light",
+    "running water",
+    "bedframe",
+    "ceiling fan",
+    "security camera"
+   ],
+   "extra": [
+    [
+     "Gender",
+     "Female only"
+    ]
+   ],
+   "seen": "2026-10-26T00:37:00+01:00",
+   "rep": 0,
+   "total": 350000,
+   "rent": 300000
+  },
+  {
+   "ref": "LW-160",
+   "type": "Self-contain",
+   "area": "Damico",
+   "address": null,
+   "features": [
+    "POP"
+   ],
+   "extra": [],
+   "seen": "2026-10-26T00:56:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": null
+  },
+  {
+   "ref": "LW-161",
+   "type": "Self-contain",
+   "area": "Campus Gate",
+   "address": "Around campus gate",
+   "features": [],
+   "extra": [
+    [
+     "Units",
+     "3 units"
+    ]
+   ],
+   "seen": "2026-10-26T00:02:00+01:00",
+   "rep": 0,
+   "guide": 420000
+  },
+  {
+   "ref": "LW-162",
+   "type": "Self-contain",
+   "area": "Awoyeku Road",
+   "address": null,
+   "features": [],
+   "extra": [
+    [
+     "Units",
+     "2 units left"
+    ]
+   ],
+   "seen": "2026-10-26T08:16:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 300000
+  },
+  {
+   "ref": "LW-163",
+   "type": "Single room",
+   "area": "AP/Akarabata",
+   "address": "Akarabata side of AP",
+   "features": [],
+   "extra": [
+    [
+     "Walk to junction",
+     "10–15 mins"
+    ]
+   ],
+   "seen": "2026-10-26T08:20:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 50000
+  },
+  {
+   "ref": "LW-164",
+   "type": "Bed space",
+   "area": "Maintenance, Ede Road",
+   "address": null,
+   "features": [],
+   "extra": [
+    [
+     "Sharing",
+     "2 per room"
+    ]
+   ],
+   "seen": "2026-10-26T08:25:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 280000
+  },
+  {
+   "ref": "LW-165",
+   "type": "Room & parlour",
+   "area": "Fashina",
+   "address": null,
+   "features": [],
+   "extra": [],
+   "seen": "2026-10-25T22:21:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 1000000
+  },
+  {
+   "ref": "LW-166",
+   "type": "2-bedroom flat",
+   "area": "Nasfat",
+   "address": null,
+   "features": [],
+   "extra": [],
+   "seen": "2026-10-25T22:21:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 600000
+  },
+  {
+   "ref": "LW-167",
+   "type": "2-bedroom flat",
+   "area": "Fashina",
+   "address": null,
+   "features": [],
+   "extra": [],
+   "seen": "2026-10-25T22:21:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 1000000
+  },
+  {
+   "ref": "LW-168",
+   "type": "Self-contain",
+   "area": "Nasfat, Ibadan Road",
+   "address": null,
+   "features": [
+    "24/7 light"
+   ],
+   "extra": [],
+   "seen": "2026-10-25T22:21:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 350000
+  },
+  {
+   "ref": "LW-169",
+   "type": "Type not stated",
+   "area": "Ooni Layout",
+   "address": null,
+   "features": [],
+   "extra": [
+    [
+     "Duration",
+     "9 months"
+    ]
+   ],
+   "seen": "2026-10-26T00:16:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 280000
   }
  ],
- "updated": "2026-10-25T12:32:51.545Z"
+ "updated": "2026-10-26T08:00:48.392111+00:00"
 }
