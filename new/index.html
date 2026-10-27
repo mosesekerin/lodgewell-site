@@ -307,14 +307,14 @@ footer b{color:#fff}
 <div class="view" id="v-home">
   <header class="bar"><div class="in gut max">
     <a class="brand" href="#/" aria-label="Lodgewell home"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="m0"><rect width="64" height="64" fill="#fff"/><circle cx="32" cy="43" r="3.2" fill="#000"/><path d="M30.4 45 L29.4 51.5 H34.6 L33.6 45 Z" fill="#000"/></mask></defs><path d="M8 31 L32 10 L56 31" fill="none" stroke="#C8963E" stroke-width="5.5" stroke-linecap="square"/><path d="M22 57 V41 A10 10 0 0 1 42 41 V57 Z" fill="#F7F3EC" mask="url(#m0)"/><rect x="10" y="56" width="44" height="3" fill="#F7F3EC"/></svg><span>Lodgewell</span></a>
-    <nav><a class="btn sm ghost-l hide-s" href="#/rooms">Browse all rooms</a><a class="btn sm brass" href="#/find/1">Find my place</a></nav>
+    <nav><a class="btn sm ghost-l hide-s" href="#/rooms?p=all">Browse all rooms</a><a class="btn sm brass" href="#/find/1?new">Find my place</a></nav>
   </div></header>
 
   <section class="hero"><div class="in gut max">
     <div>
       <h1>Find your place in Ife. <em>Minus the wahala.</em></h1>
       <p class="lede">Real prices. Newest first. Inspect before you pay.</p>
-      <div class="ctas"><a class="btn brass" href="#/find/1">Find my place in 60 seconds</a><a class="btn ghost-l" href="#/rooms">Browse all rooms</a></div>
+      <div class="ctas"><a class="btn brass" href="#/find/1?new">Find my place in 60 seconds</a><a class="btn ghost-l" href="#/rooms?p=all">Browse all rooms</a></div>
       <div class="proof"><span><b id="h-areas"></b> areas in Ife</span><span><b>Inspect</b> before you pay</span><span>Updated <b id="h-upd"></b></span></div>
     </div>
     <div class="door" aria-label="Rooms listed now">
@@ -386,7 +386,7 @@ footer b{color:#fff}
 
   <section class="final gut"><div class="max">
     <h2>Your next place is out there. Let's find it.</h2>
-    <div class="ctas"><a class="btn green" href="#/find/1">Find my place</a><a class="btn line" href="#/rooms">Browse all rooms</a></div>
+    <div class="ctas"><a class="btn green" href="#/find/1?new">Find my place</a><a class="btn line" href="#/rooms?p=all">Browse all rooms</a></div>
   </div></section>
   <footer class="gut"><div class="in max">
     <div><b>Lodgewell</b><br>Homes and lodges in Ile-Ife</div>
@@ -449,7 +449,7 @@ const ZONES=[
   {name:'Further out',areas:[]}
 ];
 const exText=r=>norm([r.extra.map(e=>e[1]).join(' '),(r.features||[]).join(' ')].join(' '));
-function genderOf(r){ const t=exText(r); if(/male and female|male & female/.test(t)) return 'any'; if(/female/.test(t)) return 'female'; if(/\bmales?\b/.test(t)) return 'male'; return 'any'; }
+function genderOf(r){ const t=exText(r); if(/\bmale\s*(and|&|\/|or)\s*female|female\s*(and|&|\/|or)\s*male|either gender|any gender/.test(t)) return 'any'; if(/female/.test(t)) return 'female'; if(/\bmales?\b/.test(t)) return 'male'; return 'any'; }
 const isShare=r=>r.type==='Bed space'||/roommate needed|bed ?space/.test(exText(r));
 const soloOnly=r=>/1 person|one person|roommate not allowed/.test(exText(r));
 const price=r=>r.guide??r.total??r.rent??null;
@@ -466,7 +466,8 @@ const PRESETS={
   light:{label:'Steady light',title:n=>`${n} rooms with steady light`,musts:['light']},
   new:{label:'Posted in the last 2 days',title:n=>`${n} rooms posted in the last 2 days`,test:r=>{ const d=ageDays(r.seen); return d!=null&&d<=2; }}
 };
-function applyPreset(k){ const P=PRESETS[k]; if(!P) return; Object.assign(A,{gender:'',share:1,types:[],areas:P.areas||[],min:null,max:P.max||null,musts:P.musts||[],preset:P.test?k:''}); save(); }
+function resetAnswers(){ Object.assign(A,{gender:'',share:1,types:[],areas:[],min:null,max:null,musts:[],preset:'',fromPreset:false}); save(); }
+function applyPreset(k){ const P=PRESETS[k]; if(!P) return; Object.assign(A,{gender:'',share:1,types:[],areas:P.areas||[],min:null,max:P.max||null,musts:P.musts||[],preset:P.test?k:'',fromPreset:true}); save(); }
 try{ Object.assign(A,JSON.parse(sessionStorage.getItem('lw-answers')||'{}')); }catch{}
 const save=()=>{ try{ sessionStorage.setItem('lw-answers',JSON.stringify(A)); }catch{} };
 const perPerson=(p,r)=>(p==null||A.share<2||isShare(r))?p:Math.round(p/A.share);
@@ -488,8 +489,8 @@ const count=(opts)=>ITEMS.filter(r=>matches(r,opts)).length;
 /* ---------- questions ---------- */
 const BUDGETS=[[null,150000,'Under ₦150k'],[150000,250000,'₦150k to ₦250k'],[250000,400000,'₦250k to ₦400k'],[400000,600000,'₦400k to ₦600k'],[600000,null,'Above ₦600k'],[null,null,'Not sure yet']];
 const Q=[
-  {key:'gender',title:'Who is this for?',help:'Some rooms are for females or males only. We\'ll hide the ones that don\'t fit.',
-   opts:()=>[['female','🚺','Female',''],['male','🚹','Male',''],['','👥','Doesn\'t matter','Show me everything']],
+  {key:'gender',title:'Who is this for?',help:'Some places are for females only. We\'ll show you the ones open to you.',
+   opts:()=>[['female','🚺','Female',''],['male','🚹','Male','']],
    val:()=>A.gender,set:v=>{A.gender=v}},
   {key:'share',title:'Living alone or sharing?',help:'Sharing cuts the cost. We\'ll show what each person pays.',
    opts:()=>[[1,'🙋','Just me',''],[2,'👥','With one roommate','Split the cost in two'],[3,'👨‍👩‍👦','With two roommates','Split the cost in three']],
@@ -674,6 +675,8 @@ $('x-go').addEventListener('click',e=>{ e.preventDefault(); Object.assign(A,{min
 /* ---------- router ---------- */
 function route(){
   const h=location.hash||'#/'; const m=h.match(/^#\/find\/(\d)/);
+  if(/[?&](new|p=all)\b/.test(h)){ resetAnswers(); history.replaceState(null,'',h.replace(/\?(new|p=all)$/,'')); }
+  else if(/^#\/find/.test(h) && (A.fromPreset||A.preset||A.musts.length)) resetAnswers();
   const pm=h.match(/^#\/rooms\?p=(\w+)/); if(pm&&PRESETS[pm[1]]){ applyPreset(pm[1]); _presetTitle=pm[1]; }
   const inPage=h.startsWith('#budget')||h.startsWith('#how');
   $('v-home').hidden = !(h==='#/'||h==='#'||h===''||inPage);
