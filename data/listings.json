@@ -523,11 +523,12 @@
    "address": "Not far from main road",
    "features": [
     "running water",
-    "fenced and gated"
+    "fenced and gated",
+    "tiled"
    ],
    "extra": [],
-   "seen": "2026-10-21T15:03:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-27T21:34:00+01:00",
+   "rep": 1,
    "total": 180000,
    "rent": 130000
   },
@@ -737,11 +738,19 @@
    "type": "Single room",
    "area": "Campus Gate",
    "address": "Close to Oduduwa Estate",
-   "features": [],
-   "extra": [],
-   "seen": "2026-10-22T07:24:00+01:00",
-   "rep": 0,
-   "guide": 290000
+   "features": [
+    "spacious"
+   ],
+   "extra": [
+    [
+     "Sharing",
+     "Spacious enough for two people"
+    ]
+   ],
+   "seen": "2026-10-26T16:26:00+01:00",
+   "rep": 1,
+   "total": 310000,
+   "rent": 200000
   },
   {
    "ref": "LW-041",
@@ -1253,11 +1262,17 @@
    "address": "Close to campus gate",
    "features": [
     "wardrobe",
-    "kitchen cabinet"
+    "kitchen cabinet",
+    "full POP"
    ],
-   "extra": [],
-   "seen": "2026-10-24T21:35:00+01:00",
-   "rep": 4,
+   "extra": [
+    [
+     "Arrangement",
+     "Roommate needed (26 Oct: male or female; 27 Oct: female), or take the full room"
+    ]
+   ],
+   "seen": "2026-10-27T20:49:00+01:00",
+   "rep": 6,
    "total": 650000,
    "rent": 500000
   },
@@ -2352,20 +2367,6 @@
    "rent": 500000
   },
   {
-   "ref": "LW-141",
-   "type": "Single room",
-   "area": "Campus Gate axis",
-   "address": null,
-   "features": [
-    "own toilet"
-   ],
-   "extra": [],
-   "seen": "2026-10-24T19:23:00+01:00",
-   "rep": 0,
-   "total": 430000,
-   "rent": 350000
-  },
-  {
    "ref": "LW-142",
    "type": "Self-contain",
    "area": "Oduduwa Estate",
@@ -2797,7 +2798,245 @@
    "rep": 0,
    "total": null,
    "rent": 280000
+  },
+  {
+   "ref": "LW-170",
+   "type": "Self-contain",
+   "area": "Oduduwa Estate, Campus Gate",
+   "address": "Very close to campus",
+   "features": [
+    "proper selfcon"
+   ],
+   "extra": [],
+   "seen": "2026-10-26T12:02:00+01:00",
+   "rep": 0,
+   "guide": 300000
+  },
+  {
+   "ref": "LW-171",
+   "type": "Self-contain",
+   "area": "Oduduwa Estate, Campus Gate",
+   "address": "Very close to campus",
+   "features": [
+    "proper selfcon"
+   ],
+   "extra": [],
+   "seen": "2026-10-26T13:48:00+01:00",
+   "rep": 1,
+   "total": null,
+   "rent": 350000
+  },
+  {
+   "ref": "LW-172",
+   "type": "Self-contain",
+   "area": "Oduduwa Estate, Campus Gate",
+   "address": "Very close to campus",
+   "features": [
+    "proper selfcon"
+   ],
+   "extra": [],
+   "seen": "2026-10-26T16:41:00+01:00",
+   "rep": 0,
+   "total": 450000,
+   "rent": null
+  },
+  {
+   "ref": "LW-173",
+   "type": "Self-contain",
+   "area": "Oduduwa Estate, Campus Gate",
+   "address": null,
+   "features": [
+    "big",
+    "fenced and gated"
+   ],
+   "extra": [],
+   "seen": "2026-10-27T16:56:00+01:00",
+   "rep": 1,
+   "total": null,
+   "rent": 350000
+  },
+  {
+   "ref": "LW-174",
+   "type": "Single room",
+   "area": "AP",
+   "address": null,
+   "features": [
+    "running water"
+   ],
+   "extra": [
+    [
+     "Walk to junction",
+     "10 mins"
+    ],
+    [
+     "Water",
+     "Running water"
+    ]
+   ],
+   "seen": "2026-10-26T16:55:00+01:00",
+   "rep": 0,
+   "total": 180000,
+   "rent": 120000
+  },
+  {
+   "ref": "LW-175",
+   "type": "Single room",
+   "area": "AP",
+   "address": null,
+   "features": [
+    "fenced",
+    "running water",
+    "prepaid meter",
+    "neat",
+    "spacious"
+   ],
+   "extra": [
+    [
+     "Walk to junction",
+     "2–3 mins"
+    ],
+    [
+     "Water",
+     "Running water"
+    ]
+   ],
+   "seen": "2026-10-27T09:00:00+01:00",
+   "rep": 0,
+   "total": 180000,
+   "rent": null
+  },
+  {
+   "ref": "LW-176",
+   "type": "Single room",
+   "area": "AP",
+   "address": null,
+   "features": [
+    "well water"
+   ],
+   "extra": [
+    [
+     "Move-in",
+     "Pay now, move in next weekend"
+    ],
+    [
+     "Walk to junction",
+     "2–3 mins"
+    ],
+    [
+     "Water",
+     "Well water"
+    ]
+   ],
+   "seen": "2026-10-27T17:57:00+01:00",
+   "rep": 1,
+   "total": 110000,
+   "rent": null
+  },
+  {
+   "ref": "LW-177",
+   "type": "Type not stated",
+   "area": "Oduduwa Estate",
+   "address": null,
+   "features": [
+    "24/7 light",
+    "fenced and gated"
+   ],
+   "extra": [
+    [
+     "Arrangement",
+     "Female roommate needed"
+    ],
+    [
+     "Gender",
+     "Female only"
+    ]
+   ],
+   "seen": "2026-10-27T18:09:00+01:00",
+   "rep": 0,
+   "total": 370000,
+   "rent": null
+  },
+  {
+   "ref": "LW-178",
+   "type": "Self-contain",
+   "area": "Damico",
+   "address": null,
+   "features": [
+    "proper selfcon",
+    "24/7 light"
+   ],
+   "extra": [],
+   "seen": "2026-10-27T18:56:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 580000
+  },
+  {
+   "ref": "LW-179",
+   "type": "2-bedroom flat",
+   "area": "Asherifa",
+   "address": null,
+   "features": [
+    "en-suite",
+    "super standard"
+   ],
+   "extra": [
+    [
+     "Arrangement",
+     "Female roommate needed (2 per room)"
+    ],
+    [
+     "Gender",
+     "Female (roommate slot)"
+    ],
+    [
+     "Sharing",
+     "2 per room; whole flat for 4 people (male or female) at ₦1.5m"
+    ]
+   ],
+   "seen": "2026-10-27T19:07:00+01:00",
+   "rep": 1,
+   "guide": 375000
+  },
+  {
+   "ref": "LW-180",
+   "type": "Single room",
+   "area": "Damico",
+   "address": "Close to campus gate",
+   "features": [
+    "POP",
+    "own toilet"
+   ],
+   "extra": [
+    [
+     "Toilet",
+     "Own toilet"
+    ]
+   ],
+   "seen": "2026-10-27T20:26:00+01:00",
+   "rep": 0,
+   "total": 350000,
+   "rent": null
+  },
+  {
+   "ref": "LW-181",
+   "type": "Single room",
+   "area": "Campus Gate",
+   "address": "Less than 30 seconds walk to OAU campus gate",
+   "features": [
+    "very spacious",
+    "neat"
+   ],
+   "extra": [
+    [
+     "Walk to campus gate",
+     "Under 1 min"
+    ]
+   ],
+   "seen": "2026-10-27T20:48:00+01:00",
+   "rep": 0,
+   "guide": 190000
   }
  ],
- "updated": "2026-10-26T08:00:48.392111+00:00"
+ "updated": "2026-10-27T21:53:05.548655+00:00"
 }
