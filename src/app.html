@@ -483,10 +483,7 @@ const Q=[
    val:()=>A.areas,set:v=>{A.areas=v}},
   {key:'budget',title:'What\'s your budget for the first year?',help:'Include everything you can pay to move in: rent plus fees.',
    opts:()=>BUDGETS.map(([mn,mx,l],i)=>[i,'',l,'']),
-   val:()=>{ const i=BUDGETS.findIndex(([mn,mx])=>mn===A.min&&mx===A.max); return i<0?5:i; },set:v=>{ A.min=BUDGETS[v][0]; A.max=BUDGETS[v][1]; }},
-  {key:'musts',multi:true,title:'Anything you can\'t live without?',help:'Optional. Each one you pick narrows the list.',
-   opts:()=>MUSTS.map(([k,i,l])=>[k,i,l,'']),
-   val:()=>A.musts,set:v=>{A.musts=v}}
+   val:()=>{ const i=BUDGETS.findIndex(([mn,mx])=>mn===A.min&&mx===A.max); return i<0?5:i; },set:v=>{ A.min=BUDGETS[v][0]; A.max=BUDGETS[v][1]; }}
 ];
 function tempCount(q,v){ const keep=JSON.stringify(A); q.set(v); const n=count(); Object.assign(A,JSON.parse(keep)); return n; }
 function optHTML(q,[v,icon,label,desc],sel){
@@ -573,9 +570,9 @@ function saidChips(){ const c=[];
   c.push([3,A.types.length?A.types.map(t=>tn[t]).join(', '):'Any type']);
   c.push([4,A.areas.length?(A.areas.length>2?A.areas.slice(0,2).join(', ')+` +${A.areas.length-2}`:A.areas.join(', ')):'Anywhere in Ife']);
   c.push([5,BUDGETS[Q[4].val()][2]+(A.share>1&&(A.min||A.max)?' each':'')]);
-  if(A.musts.length) c.push([6,A.musts.map(k=>MUSTS.find(m=>m[0]===k)[2]).join(', ')]);
   const pre=A.preset&&PRESETS[A.preset]?`<button type="button" data-unpreset="1">${esc(PRESETS[A.preset].label)} <span aria-hidden="true">✕</span></button>`:'';
-  return pre+c.map(([s,l])=>`<button type="button" data-step="${s}">${esc(l)} <span aria-hidden="true">✎</span></button>`).join('')+`<button type="button" data-clear="1">Clear answers</button>`; }
+  const mu=A.musts.length?`<button type="button" data-unmusts="1">${esc(A.musts.map(k=>MUSTS.find(m=>m[0]===k)[2]).join(', '))} <span aria-hidden="true">✕</span></button>`:'';
+  return pre+mu+c.map(([s,l])=>`<button type="button" data-step="${s}">${esc(l)} <span aria-hidden="true">✎</span></button>`).join('')+`<button type="button" data-clear="1">Clear answers</button>`; }
 function renderRooms(){
   const rq=norm($('r-ref').value).replace(/^lw-?/,'').replace(/^0+/,'');
   let list= rq? ITEMS.filter(r=>r.ref.toLowerCase().replace(/^lw-0*/,'')===rq||r.ref.toLowerCase().includes(rq)) : ITEMS.filter(r=>matches(r));
@@ -588,7 +585,7 @@ function renderRooms(){
   if(!list.length){ $('r-list').innerHTML=`<div class="empty"><h3>Nothing fits all of that right now.</h3><p>Try a wider budget or more areas. Or message us what you need, because we don't post every vacancy online: <span class="num">+234 913 641 6448</span></p><div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn green" href="#/find/5">Change my budget</a><a class="btn line" href="#/find/4">Add more areas</a></div></div>`; return; }
   $('r-list').innerHTML=list.map(card).join('');
 }
-$('r-said').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; if(b.dataset.unpreset){ A.preset=''; save(); renderRooms(); return; } if(b.dataset.clear){ Object.assign(A,{gender:'',share:1,types:[],areas:[],min:null,max:null,musts:[],preset:''}); save(); renderRooms(); return; } location.hash='#/find/'+b.dataset.step; });
+$('r-said').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; if(b.dataset.unpreset){ A.preset=''; save(); renderRooms(); return; } if(b.dataset.unmusts){ A.musts=[]; save(); renderRooms(); return; } if(b.dataset.clear){ Object.assign(A,{gender:'',share:1,types:[],areas:[],min:null,max:null,musts:[],preset:''}); save(); renderRooms(); return; } location.hash='#/find/'+b.dataset.step; });
 ['r-sort','r-ref'].forEach(id=>$(id).addEventListener('input',renderRooms));
 $('r-list').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; const c=b.closest('.card'); const r=ITEMS.find(x=>x.ref===c.dataset.ref);
   if(b.dataset.act==='req'){ openRef=r.ref; renderRooms(); const el=document.querySelector(`.card[data-ref="${CSS.escape(r.ref)}"]`); if(el) el.scrollIntoView({block:'nearest'}); }
