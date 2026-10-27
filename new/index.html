@@ -112,6 +112,12 @@ p{margin:0}
 .pdots i.on{background:var(--green);height:20px}
 @media (prefers-reduced-motion:reduce){.track{scroll-behavior:auto}.pq{transition:none}}
 
+/* ---------- scroll reveal ---------- */
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+.js .rv.vis{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}}
+.eyebrow{font-size:14px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--brass-ink);margin-bottom:10px}
+
 /* ---------- budget explorer ---------- */
 .explore{background:var(--paper);border-block:1px solid var(--line);padding-block:80px}
 .explore .in{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
@@ -120,34 +126,70 @@ p{margin:0}
 .amount{font-family:var(--serif);font-size:clamp(46px,7vw,72px);font-weight:600;color:var(--green);line-height:1;margin-top:28px;font-variant-numeric:tabular-nums}
 .amount small{font-family:var(--sans);font-size:15px;color:var(--muted);font-weight:600;margin-left:6px}
 input[type=range]{width:100%;margin-top:22px;accent-color:var(--green);height:32px}
+.rng{-webkit-appearance:none;appearance:none;height:34px;background:transparent;--p:22%}
+.rng::-webkit-slider-runnable-track{height:10px;border-radius:999px;background:linear-gradient(90deg,var(--green) var(--p),var(--sand) var(--p))}
+.rng::-moz-range-track{height:10px;border-radius:999px;background:var(--sand)}
+.rng::-moz-range-progress{height:10px;border-radius:999px;background:var(--green)}
+.rng::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;margin-top:-10px;border-radius:50%;background:var(--brass);border:4px solid var(--paper);box-shadow:0 2px 8px rgba(31,61,54,.35);transition:transform .15s ease}
+.rng::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--brass);border:4px solid var(--paper);box-shadow:0 2px 8px rgba(31,61,54,.35)}
+.rng:active::-webkit-slider-thumb{transform:scale(1.15)}
 .ticks{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
-.gets{background:var(--cream);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;gap:18px}
-.gets h3{font-size:24px}
-.gets p.desc{color:var(--ink)}
+.gets{background:var(--green);color:var(--on-green);border-radius:160px 160px var(--r-lg) var(--r-lg);padding:44px 28px 28px;display:flex;flex-direction:column;gap:20px;box-shadow:0 24px 40px -28px rgba(31,61,54,.7)}
+.gets h3{font-size:24px;color:var(--cream)}
+.gets p.desc{color:var(--on-green-2);margin-top:6px}
+.arches{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:end;height:200px;padding-inline:6px}
+.ar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:8px;min-width:0}
+.ar b{font-family:var(--serif);font-size:34px;line-height:1;color:var(--cream);font-variant-numeric:tabular-nums}
+.ar .bar{width:100%;max-width:92px;border-radius:999px 999px 4px 4px;min-height:14px;transition:height .55s cubic-bezier(.2,.8,.2,1);position:relative;overflow:hidden}
+.ar .bar::after{content:"";position:absolute;left:50%;top:14px;width:8px;height:16px;transform:translateX(-50%);border-radius:4px 4px 1px 1px;background:rgba(26,31,29,.35)}
+.ar:nth-child(1) .bar{background:#BFD8CC}.ar:nth-child(2) .bar{background:var(--brass)}.ar:nth-child(3) .bar{background:#E9A68C}
+.ar span{font-size:13px;color:var(--on-green-2);text-align:center;line-height:1.25}
 .counts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .count{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:14px}
 .count b{display:block;font-family:var(--serif);font-size:34px;line-height:1;color:var(--green);font-variant-numeric:tabular-nums}
 .count span{font-size:13px;color:var(--muted)}
 @media (max-width:820px){.explore .in{grid-template-columns:1fr;gap:28px}}
-@media (max-width:420px){.counts{grid-template-columns:1fr 1fr 1fr}.count{padding:10px}.count b{font-size:26px}}
+@media (max-width:420px){.arches{height:170px;gap:10px}.ar b{font-size:28px}.gets{border-radius:120px 120px var(--r-lg) var(--r-lg)}}
 
 /* ---------- how it works ---------- */
 .how{padding-block:84px}
 .how h2{font-size:clamp(30px,4.2vw,44px)}
-.steps{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;counter-reset:s}
-.steps li{counter-increment:s;display:flex;flex-direction:column;gap:10px}
-.steps li::before{content:counter(s);font-family:var(--serif);font-size:20px;font-weight:700;width:46px;height:56px;border-radius:999px 999px 0 0;background:var(--green);color:var(--cream);display:grid;place-items:center;padding-top:6px}
+.how h2 em,.hero h1 em{font-style:italic;font-weight:500}
+.how h2 em{color:var(--brass-ink)}
+.steps{list-style:none;padding:0;margin:44px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;position:relative}
+.steps::before{content:"";position:absolute;top:40px;left:16%;right:16%;height:3px;border-radius:3px;background:repeating-linear-gradient(90deg,var(--brass) 0 10px,transparent 10px 18px);transform-origin:left;transform:scaleX(0);transition:transform 1.4s cubic-bezier(.6,.1,.2,1) .2s}
+.steps.vis::before{transform:scaleX(1)}
+.steps li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;position:relative}
+.steps .ic{width:72px;height:84px;border-radius:999px 999px 6px 6px;background:var(--green);display:grid;place-items:center;font-size:30px;padding-top:6px;box-shadow:0 0 0 6px var(--cream);transform:scale(.4);opacity:0;transition:transform .5s cubic-bezier(.3,1.6,.5,1),opacity .3s ease,background .35s ease,box-shadow .35s ease}
+.steps.vis .ic{transform:none;opacity:1}
+.steps.vis li:nth-child(2) .ic{transition-delay:.45s,.45s,0s,0s}.steps.vis li:nth-child(3) .ic{transition-delay:.9s,.9s,0s,0s}
+.steps li.act .ic{background:var(--brass);transform:translateY(-8px);box-shadow:0 0 0 6px var(--cream),0 14px 22px -12px rgba(138,100,32,.8)}
 .steps h3{font-size:24px}
-.steps p{color:var(--muted)}
-@media (max-width:760px){.steps{grid-template-columns:1fr}}
+.steps p{color:var(--muted);margin-top:4px}
+.steps li>div{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.steps.vis li>div{opacity:1;transform:none}
+.steps.vis li:nth-child(2)>div{transition-delay:.55s}.steps.vis li:nth-child(3)>div{transition-delay:1s}
+.no-js-steps .ic,.no-js-steps li>div{opacity:1;transform:none}
+@media (max-width:760px){
+  .steps{grid-template-columns:1fr;gap:22px}
+  .steps::before{top:20px;bottom:20px;left:35px;right:auto;width:3px;height:auto;background:repeating-linear-gradient(180deg,var(--brass) 0 10px,transparent 10px 18px);transform-origin:top;transform:scaleY(0)}
+  .steps.vis::before{transform:scaleY(1)}
+  .steps li{flex-direction:row;text-align:left;gap:18px}
+  .steps li.act .ic{transform:translateX(4px)}
+}
+@media (prefers-reduced-motion:reduce){.steps::before,.steps .ic,.steps li>div{transition:none}}
 
 /* ---------- promise ---------- */
 .promise{background:var(--green);color:var(--on-green);padding-block:72px}
-.promise .in{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px}
+.promise .in{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.promise .ph{grid-column:1/-1;font-size:clamp(30px,4.2vw,44px);color:var(--cream);margin-bottom:14px}
+.pr{background:var(--green-2);border-radius:120px 120px var(--r-lg) var(--r-lg);padding:40px 26px 28px;box-shadow:inset 0 0 0 1.5px var(--green-3);display:flex;flex-direction:column;align-items:flex-start;gap:10px;transition:transform .3s ease,box-shadow .3s ease}
+.pr:hover{transform:translateY(-4px);box-shadow:inset 0 0 0 1.5px var(--brass)}
+.pi{width:58px;height:58px;border-radius:50%;background:var(--brass);display:grid;place-items:center;font-size:26px;margin-bottom:8px}
 .promise h3{font-size:26px;color:var(--cream)}
-.promise p{color:var(--on-green-2);margin-top:8px}
-.promise .mark{width:34px;height:4px;background:var(--brass);margin-bottom:16px}
-@media (max-width:760px){.promise .in{grid-template-columns:1fr;gap:28px}}
+.promise p{color:var(--on-green-2)}
+.js .promise .pr.rv:nth-of-type(2){transition-delay:.12s}.js .promise .pr.rv:nth-of-type(3){transition-delay:.24s}
+@media (max-width:760px){.promise .in{grid-template-columns:1fr;gap:14px}.pr{border-radius:90px 90px var(--r-lg) var(--r-lg)}}
 
 /* ---------- faq ---------- */
 .faq{padding-block:84px}
@@ -265,20 +307,20 @@ footer b{color:#fff}
 <div class="view" id="v-home">
   <header class="bar"><div class="in gut max">
     <a class="brand" href="#/" aria-label="Lodgewell home"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="m0"><rect width="64" height="64" fill="#fff"/><circle cx="32" cy="43" r="3.2" fill="#000"/><path d="M30.4 45 L29.4 51.5 H34.6 L33.6 45 Z" fill="#000"/></mask></defs><path d="M8 31 L32 10 L56 31" fill="none" stroke="#C8963E" stroke-width="5.5" stroke-linecap="square"/><path d="M22 57 V41 A10 10 0 0 1 42 41 V57 Z" fill="#F7F3EC" mask="url(#m0)"/><rect x="10" y="56" width="44" height="3" fill="#F7F3EC"/></svg><span>Lodgewell</span></a>
-    <nav><a class="btn sm ghost-l hide-s" href="#/rooms">Browse all rooms</a><a class="btn sm brass" href="#/find/1">Find my room</a></nav>
+    <nav><a class="btn sm ghost-l hide-s" href="#/rooms">Browse all rooms</a><a class="btn sm brass" href="#/find/1">Find my place</a></nav>
   </div></header>
 
   <section class="hero"><div class="in gut max">
     <div>
-      <h1>Resumption is close. <em>Where will you stay?</em></h1>
-      <p class="lede">Answer six quick questions and see the rooms in Ile-Ife that fit your budget, with one clear price and no "DM for price".</p>
-      <div class="ctas"><a class="btn brass" href="#/find/1">Find my room in 60 seconds</a><a class="btn ghost-l" href="#/rooms">Browse all rooms</a></div>
-      <div class="proof"><span><b id="h-areas"></b> areas around OAU</span><span><b>Inspect</b> before you pay</span><span>Updated <b id="h-upd"></b></span></div>
+      <h1>Find your place in Ife. <em>Minus the wahala.</em></h1>
+      <p class="lede">Real prices. Newest first. Inspect before you pay.</p>
+      <div class="ctas"><a class="btn brass" href="#/find/1">Find my place in 60 seconds</a><a class="btn ghost-l" href="#/rooms">Browse all rooms</a></div>
+      <div class="proof"><span><b id="h-areas"></b> areas in Ife</span><span><b>Inspect</b> before you pay</span><span>Updated <b id="h-upd"></b></span></div>
     </div>
     <div class="door" aria-label="Rooms listed now">
       <svg class="key" viewBox="0 0 26 56" aria-hidden="true"><circle cx="13" cy="13" r="11" fill="#1F3D36"/><path d="M8 20 L5 56 H21 L18 20 Z" fill="#1F3D36"/></svg>
       <div class="live" id="h-count">0</div>
-      <p class="live-l">rooms open right now, from single rooms to flats</p>
+      <p class="live-l">places open right now, from single rooms to flats</p>
       <span class="new" id="h-new"></span>
     </div>
   </div><div class="sill"></div></section>
@@ -289,7 +331,7 @@ footer b{color:#fff}
     <div class="track" id="p-track" tabindex="0" aria-label="Common problems. Tap one to see matching rooms.">
       <a class="pq c-clay" href="#/rooms?p=roommate"><span class="e" aria-hidden="true">👥</span><b>Need a roommate?</b><span>See rooms where someone's looking for one.</span><i>Show me</i></a>
       <a class="pq c-brass" href="#/rooms?p=priced"><span class="e" aria-hidden="true">💬</span><b>Tired of "DM for price"?</b><span>Only rooms with the full price shown.</span><i>Show me</i></a>
-      <a class="pq c-green" href="#/rooms?p=campus"><span class="e" aria-hidden="true">🎓</span><b>Want to trek to campus?</b><span>Campus Gate, Oduduwa, Asherifa, Moremi.</span><i>Show me</i></a>
+      <a class="pq c-green" href="#/rooms?p=campus"><span class="e" aria-hidden="true">🚶🏽</span><b>Looking for somewhere trekkable?</b><span>Walking distance to campus: Campus Gate, Oduduwa, Asherifa, Moremi.</span><i>Show me</i></a>
       <a class="pq c-mint" href="#/rooms?p=budget"><span class="e" aria-hidden="true">💰</span><b>Tight budget?</b><span>Rooms under ₦200k for the first year.</span><i>Show me</i></a>
       <a class="pq c-ink" href="#/rooms?p=light"><span class="e" aria-hidden="true">💡</span><b>Can't do without light?</b><span>24/7, Band A or steady power.</span><i>Show me</i></a>
       <a class="pq c-sand" href="#/rooms?p=new"><span class="e" aria-hidden="true">🔥</span><b>Need a place fast?</b><span>Posted in the last 2 days.</span><i>Show me</i></a>
@@ -300,41 +342,42 @@ footer b{color:#fff}
 
   <section class="explore gut" id="budget"><div class="in max">
     <div>
+      <p class="eyebrow">💰 Budget check</p>
       <h2>What does your budget get you in Ife?</h2>
-      <p class="sub">Drag to your first-year budget. Counts come from the rooms listed right now.</p>
+      <p class="sub">Slide to your first-year budget.</p>
       <div class="amount" id="x-amt">₦250,000<small>first year</small></div>
-      <input type="range" id="x-range" min="50000" max="1000000" step="10000" value="250000" aria-label="First-year budget">
+      <input type="range" class="rng" id="x-range" min="50000" max="1000000" step="10000" value="250000" aria-label="First-year budget">
       <div class="ticks"><span>₦50k</span><span>₦500k</span><span>₦1m</span></div>
     </div>
     <div class="gets">
-      <h3 id="x-head"></h3>
-      <p class="desc" id="x-desc"></p>
-      <div class="counts" id="x-counts"></div>
-      <div><a class="btn green" id="x-go" href="#/rooms">See these rooms</a></div>
+      <div class="arches" id="x-counts" aria-live="polite"></div>
+      <div><h3 id="x-head"></h3><p class="desc" id="x-desc"></p></div>
+      <div><a class="btn brass" id="x-go" href="#/rooms">See these places</a></div>
     </div>
   </div></section>
 
   <section class="how gut" id="how"><div class="max">
-    <h2>From search to keys in three steps</h2>
-    <ol class="steps">
-      <li><h3>Find</h3><p>Answer a few questions or browse the full list. Every room has a reference number, like LW-047.</p></li>
-      <li><h3>Request</h3><p>Tap "Request this room". It opens WhatsApp with the reference filled in, so we know exactly which one you mean.</p></li>
-      <li><h3>Inspect, then pay</h3><p>We confirm it's still free, take you to see it, and you only pay once you're happy with it.</p></li>
+    <h2>Find. Request. <em>Move in.</em></h2>
+    <ol class="steps" id="steps">
+      <li><span class="ic" aria-hidden="true">🔎</span><div><h3>Find</h3><p>Tell us what you need, or just browse.</p></div></li>
+      <li><span class="ic" aria-hidden="true">💬</span><div><h3>Request</h3><p>One tap sends it to us on WhatsApp.</p></div></li>
+      <li><span class="ic" aria-hidden="true">🔑</span><div><h3>Inspect, then pay</h3><p>See it first. Pay only when you're happy.</p></div></li>
     </ol>
   </div></section>
 
   <section class="promise gut"><div class="in max">
-    <div><div class="mark"></div><h3>One clear price</h3><p>First year and every year after, shown separately. If we don't know a figure yet, we say "Ask us" instead of guessing.</p></div>
-    <div><div class="mark"></div><h3>No payment before inspection</h3><p>See the room with your own eyes, or by live video call if you're far away, before any money moves.</p></div>
-    <div><div class="mark"></div><h3>Fast, honest answers</h3><p>It's rush hour and rooms go quickly. We tell you straight away if one is gone and show you the closest alternatives.</p></div>
+    <h2 class="ph">Our promise to you</h2>
+    <div class="pr"><span class="pi" aria-hidden="true">🏷️</span><h3>One clear price</h3><p>Everything for your first year in one number, plus what you'll pay each year after.</p></div>
+    <div class="pr"><span class="pi" aria-hidden="true">👀</span><h3>See it before you pay</h3><p>Inspect in person or on a live video call. No money moves until you're happy.</p></div>
+    <div class="pr"><span class="pi" aria-hidden="true">⚡</span><h3>Quick, straight answers</h3><p>Message us and get a real reply fast. If a place is gone, we show you the closest match.</p></div>
   </div></section>
 
   <section class="faq gut"><div class="max">
-    <h2>Questions students ask us</h2>
+    <h2>Questions people ask us</h2>
     <div class="list">
       <details><summary>What is a "total package"?</summary><p>It's everything you pay to move in for the first year: rent plus agreement, caution and agency fees. We show it as "First year". After that, you only pay the yearly rent, shown as "Every year after".</p></details>
       <details><summary>Why do some rooms say "Ask us"?</summary><p>Some landlords only share the rent at first. We'd rather tell you we're confirming the full figure than show you a number that changes later. Request the room and we'll get it for you.</p></details>
-      <details><summary>Is every room on this list still available?</summary><p>Not always. It's rush hour and rooms are taken daily. The newest posts are shown first and are the most likely to still be free. We confirm availability before any inspection or payment.</p></details>
+      <details><summary>Is every room on this list still available?</summary><p>Not always. Good places are taken daily. The newest posts are shown first and are the most likely to still be free. We confirm availability before any inspection or payment.</p></details>
       <details><summary>Do I pay before I see the room?</summary><p>No. You inspect first. If you can't come to Ife yet, we can arrange a live video inspection, or a trusted friend can inspect for you.</p></details>
       <details><summary>Can I share a room with a friend?</summary><p>Yes, where the landlord allows it. Choose "Sharing" in the finder and we'll show each person's price and only rooms that can be shared.</p></details>
       <details><summary>Can my parents speak to you?</summary><p>Of course. They can message or call us on WhatsApp at +234 913 641 6448.</p></details>
@@ -342,8 +385,8 @@ footer b{color:#fff}
   </div></section>
 
   <section class="final gut"><div class="max">
-    <h2>Your room for this session is out there. Let's find it.</h2>
-    <div class="ctas"><a class="btn green" href="#/find/1">Find my room</a><a class="btn line" href="#/rooms">Browse all rooms</a></div>
+    <h2>Your next place is out there. Let's find it.</h2>
+    <div class="ctas"><a class="btn green" href="#/find/1">Find my place</a><a class="btn line" href="#/rooms">Browse all rooms</a></div>
   </div></section>
   <footer class="gut"><div class="in max">
     <div><b>Lodgewell</b><br>Homes and lodges in Ile-Ife</div>
@@ -375,7 +418,7 @@ footer b{color:#fff}
     </div>
   </div></section>
   <section class="gut"><div class="max">
-    <p class="notice">🔥 <b>It's rush hour.</b> Resumption is close and rooms are going fast. ⚠️ <b>Availability isn't guaranteed.</b> Newest posts come first and are the most likely to still be free. We confirm with you <b>before you inspect or pay</b>.</p>
+    <p class="notice">🔥 <b>It's rush hour.</b> Good places go fast. ⚠️ <b>Availability isn't guaranteed.</b> Newest posts come first and are the most likely to still be free. We confirm with you <b>before you inspect or pay</b>.</p>
     <div class="rlist" id="r-list"></div>
   </div></section>
   <footer class="gut"><div class="in max">
@@ -418,7 +461,7 @@ const A={gender:'',share:1,types:[],areas:[],min:null,max:null,musts:[],preset:'
 const PRESETS={
   roommate:{label:'Roommate wanted or sharing allowed',title:n=>`${n} ${n===1?'room':'rooms'} for sharing`,test:r=>r.type==='Bed space'||/roommate needed|pairing allowed|can be shared|up to [23]|[24] per room/.test(exText(r))},
   priced:{label:'Full price shown',title:n=>`${n} rooms with the full price shown`,test:r=>r.total!=null},
-  campus:{label:'Close to campus',title:n=>`${n} rooms you can trek to campus from`,areas:['Campus Gate','Oduduwa Estate','Asherifa','Moremi Estate','On campus']},
+  campus:{label:'Close to campus',title:n=>`${n} places within trekking distance of campus`,areas:['Campus Gate','Oduduwa Estate','Asherifa','Moremi Estate','On campus']},
   budget:{label:'Under ₦200k',title:n=>`${n} rooms under ₦200k`,max:200000},
   light:{label:'Steady light',title:n=>`${n} rooms with steady light`,musts:['light']},
   new:{label:'Posted in the last 2 days',title:n=>`${n} rooms posted in the last 2 days`,test:r=>{ const d=ageDays(r.seen); return d!=null&&d<=2; }}
@@ -445,8 +488,8 @@ const count=(opts)=>ITEMS.filter(r=>matches(r,opts)).length;
 /* ---------- questions ---------- */
 const BUDGETS=[[null,150000,'Under ₦150k'],[150000,250000,'₦150k to ₦250k'],[250000,400000,'₦250k to ₦400k'],[400000,600000,'₦400k to ₦600k'],[600000,null,'Above ₦600k'],[null,null,'Not sure yet']];
 const Q=[
-  {key:'gender',title:'Who is this room for?',help:'Some rooms are for females or males only. We\'ll hide the ones that don\'t fit.',
-   opts:()=>[['female','🚺','A female student',''],['male','🚹','A male student',''],['','👥','Doesn\'t matter','Show me everything']],
+  {key:'gender',title:'Who is this for?',help:'Some rooms are for females or males only. We\'ll hide the ones that don\'t fit.',
+   opts:()=>[['female','🚺','Female',''],['male','🚹','Male',''],['','👥','Doesn\'t matter','Show me everything']],
    val:()=>A.gender,set:v=>{A.gender=v}},
   {key:'share',title:'Living alone or sharing?',help:'Sharing cuts the cost. We\'ll show what each person pays.',
    opts:()=>[[1,'🙋','Just me',''],[2,'👥','With one roommate','Split the cost in two'],[3,'👨‍👩‍👦','With two roommates','Split the cost in three']],
@@ -584,14 +627,36 @@ const TIERS=[[150000,'Single rooms, mostly around AP and Mayfair','At this price
  [600000,'Spacious and POP self-cons near campus','Bigger, better-finished self-cons around campus gate, Oduduwa and Asherifa, some with 24/7 light.'],
  [Infinity,'Room and parlour, and flats','Room and parlour self-cons and 2-bedroom flats, or a top-end self-con with everything included.']];
 function explore(){
-  const v=+$('x-range').value; $('x-amt').innerHTML=naira(v)+'<small>first year</small>';
+  const el=$('x-range'), v=+el.value; $('x-amt').innerHTML=naira(v)+'<small>first year</small>';
+  el.style.setProperty('--p',((v-el.min)/(el.max-el.min)*100)+'%');
   const tier=TIERS.find(t=>v<=t[0]); $('x-head').textContent=tier[1]; $('x-desc').textContent=tier[2];
   const fit=ITEMS.filter(r=>{ const p=price(r); return p!=null&&p<=v; });
   const c=g=>fit.filter(r=>TYPE_GROUP(r.type)===g).length;
-  $('x-counts').innerHTML=[['single','single rooms'],['selfcon','self-cons'],['rp','room and parlour']].map(([g,l])=>`<div class="count"><b>${c(g)}</b><span>${l}</span></div>`).join('');
-  $('x-go').textContent=`See the ${fit.length} rooms up to ${short(v)}`;
+  const G=[['single','Single rooms'],['selfcon','Self-cons'],['rp','Room & parlour']];
+  const box=$('x-counts');
+  if(!box.children.length) box.innerHTML=G.map(([g,l])=>`<div class="ar"><b>0</b><div class="bar" style="height:14px"></div><span>${l}</span></div>`).join('');
+  const all=G.map(([g])=>ITEMS.filter(r=>TYPE_GROUP(r.type)===g&&price(r)!=null).length), top=Math.max(1,...all);
+  G.forEach(([g],k)=>{ const n=c(g), ar=box.children[k], b=ar.querySelector('b'), from=+b.textContent||0;
+    ar.querySelector('.bar').style.height=`calc(14px + ${Math.sqrt(n/top).toFixed(3)} * (100% - 104px))`;
+    tween(b,from,n); });
+  $('x-go').textContent=`See ${fit.length} places up to ${short(v)}`;
 }
+function tween(el,a,b){ if(el._r) cancelAnimationFrame(el._r); if(a===b){el.textContent=b;return;} const t0=performance.now(),D=350;
+  const f=t=>{ const k=Math.min(1,(t-t0)/D); el.textContent=Math.round(a+(b-a)*(1-Math.pow(1-k,3))); if(k<1) el._r=requestAnimationFrame(f); }; el._r=requestAnimationFrame(f); }
 $('x-range').addEventListener('input',explore);
+
+/* ---------- reveal on scroll + looping steps ---------- */
+(function(){
+  const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.explore .in>div,.pr,.faq .list,.final .max').forEach(e=>e.classList.add('rv'));
+  const steps=$('steps'), lis=[...steps.children];
+  if(!('IntersectionObserver' in window)){ steps.classList.add('vis'); return; }
+  document.documentElement.classList.add('js');
+  const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('vis'); io.unobserve(en.target); } }),{threshold:.2});
+  document.querySelectorAll('.rv').forEach(e=>io.observe(e)); io.observe(steps);
+  if(reduce) return;
+  let k=-1; setInterval(()=>{ if(!steps.classList.contains('vis')||$('v-home').hidden) return; k=(k+1)%lis.length; lis.forEach((l,j)=>l.classList.toggle('act',j===k)); },1700);
+})();
 $('x-go').addEventListener('click',e=>{ e.preventDefault(); Object.assign(A,{min:null,max:+$('x-range').value}); save(); location.hash='#/rooms'; });
 
 /* ---------- sliding question cards ---------- */
