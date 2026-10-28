@@ -1,4 +1,4 @@
-"""Build index.html from src/ + data/listings.json.  Usage: python3 build.py"""
+"""Build the old catalog page (backup) into old/index.html from src/ + data/listings.json.  Usage: python3 build.py"""
 import json, datetime, html, os
 ROOT = os.path.dirname(os.path.abspath(__file__))
 rd = lambda p: open(os.path.join(ROOT, p), encoding='utf-8').read()
@@ -17,9 +17,10 @@ head = f'''<!doctype html>
 <title>{e(site['title'])}</title>
 <meta name="description" content="{e(site['description'])}">
 <meta name="theme-color" content="#1F3D36">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 {f'<link rel="canonical" href="{e(base)}/">' if base else ''}
+<meta name="robots" content="noindex">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lodgewell">
 <meta property="og:title" content="{e(site['title'])}">
@@ -40,5 +41,6 @@ body = (body.replace('%%STYLE%%', rd('src/style.html'))
             .replace('%%COUNT%%', str(len(items))))
 first_style_end = body.index('</style>', body.index('</style>') + 1) + 8  # brand css + page css
 out = head + body[:first_style_end] + '\n</head>\n<body>\n' + body[first_style_end:] + '\n</body>\n</html>\n'
-open(os.path.join(ROOT, 'index.html'), 'w', encoding='utf-8').write(out)
-print(f'index.html built: {len(items)} apartments, updated {upd:%d %b %Y %H:%M}')
+os.makedirs(os.path.join(ROOT, 'old'), exist_ok=True)
+open(os.path.join(ROOT, 'old', 'index.html'), 'w', encoding='utf-8').write(out)
+print(f'old/index.html built: {len(items)} apartments, updated {upd:%d %b %Y %H:%M}')

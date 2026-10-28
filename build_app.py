@@ -1,6 +1,6 @@
-"""Build the interactive site (src/app.html) into <out>/index.html.  Usage: python3 build_app.py [outdir]  (default: new)"""
+"""Build the interactive site (src/app.html) into <out>/index.html.  Usage: python3 build_app.py [outdir]  (default: . = the main site)"""
 import json, datetime, html, os, sys
-ROOT = os.path.dirname(os.path.abspath(__file__)); out_dir = sys.argv[1] if len(sys.argv) > 1 else 'new'
+ROOT = os.path.dirname(os.path.abspath(__file__)); out_dir = sys.argv[1] if len(sys.argv) > 1 else '.'
 rd = lambda p: open(os.path.join(ROOT, p), encoding='utf-8').read()
 site = json.loads(rd('site.json')); snap = json.loads(rd('data/listings.json')); items = snap['items']
 base = site['url'].rstrip('/'); depth = '' if out_dir in ('', '.') else '../'
@@ -36,4 +36,4 @@ head = f'''<!doctype html>
 out = head + body[:split] + '\n</head>\n<body>\n' + body[split:] + '\n</body>\n</html>\n'
 d = os.path.join(ROOT, out_dir); os.makedirs(d, exist_ok=True)
 open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(out)
-print(f'{out_dir}/index.html built: {len(items)} rooms')
+print(f'{"" if out_dir in (".","") else out_dir+"/"}index.html built: {len(items)} rooms')

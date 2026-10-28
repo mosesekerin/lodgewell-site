@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Lodgewell Apartments · Ile-Ife</title>
+<meta name="description" content="Available apartments in Ile-Ife: single rooms, self-cons and flats near OAU. Search by budget, area and type, then book an inspection on WhatsApp.">
+<meta name="theme-color" content="#1F3D36">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="canonical" href="https://lodgewell.com.ng/">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lodgewell">
+<meta property="og:title" content="Lodgewell Apartments · Ile-Ife">
+<meta property="og:description" content="Available apartments in Ile-Ife: single rooms, self-cons and flats near OAU. Search by budget, area and type, then book an inspection on WhatsApp.">
+<meta property="og:image" content="https://lodgewell.com.ng/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://lodgewell.com.ng/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lodgewell.com.ng/assets/og-image.png">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Figtree:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap">
+<style>
+/* Layout: one mobile column — client match on top, results below, catalog + manual add underneath */
+:root{
+  --bg:#F3F5F2; --surface:#FFFFFF; --sunk:#E8ECE7; --line:#D5DCD4;
+  --fg:#17221C; --muted:#5D6B62;
+  --accent:#1F5A44; --accent-fg:#FFFFFF; --accent-soft:#DCEBE2;
+  --brass:#9A6B22; --brass-soft:#F4E7CF;
+  --taken:#9B3B2E; --taken-soft:#F6E0DC;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F1612; --surface:#17211B; --sunk:#1E2A23; --line:#2C3A31;
+  --fg:#E6EDE8; --muted:#97A69C;
+  --accent:#5FB58E; --accent-fg:#0B1410; --accent-soft:#1F3A2D;
+  --brass:#D9A85A; --brass-soft:#3A2E1A;
+  --taken:#E58A7B; --taken-soft:#3D221D; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1612; --surface:#17211B; --sunk:#1E2A23; --line:#2C3A31;
+  --fg:#E6EDE8; --muted:#97A69C;
+  --accent:#5FB58E; --accent-fg:#0B1410; --accent-soft:#1F3A2D;
+  --brass:#D9A85A; --brass-soft:#3A2E1A;
+  --taken:#E58A7B; --taken-soft:#3D221D; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.45;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+header{display:flex;flex-direction:column;gap:4px}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);font-weight:700}
+h1{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.1;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:600;font-size:20px;margin:0}
+.sub{color:var(--muted);margin:0}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px;font-variant-numeric:tabular-nums}
+.stat b{color:var(--accent)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:14px}
+.match{border-color:var(--accent);box-shadow:0 1px 0 var(--accent)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){.grid{grid-template-columns:1fr}}
+label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.03em;text-transform:uppercase;min-width:0}
+input,select,textarea{font:inherit;font-size:16px;text-transform:none;letter-spacing:0;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+textarea{min-height:70px;resize:vertical}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.check{flex-direction:row;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:14px;font-weight:500;color:var(--fg)}
+.check input{width:18px;height:18px}
+button{font:inherit;font-weight:600;font-size:14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:8px 12px;cursor:pointer}
+button.primary{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+button.ghost{background:transparent}
+button.danger{color:var(--taken);border-color:var(--taken)}
+button:hover{filter:brightness(.97)}
+.resulthead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.count{color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+.list{display:flex;flex-direction:column;gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card.taken{opacity:.62}
+.top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.pill.ex{background:var(--brass-soft);color:var(--brass)}
+.pill.tk{background:var(--taken-soft);color:var(--taken)}
+.price{text-align:right;font-variant-numeric:tabular-nums}
+.price .big{font-family:var(--display);font-size:22px;font-weight:700;line-height:1}
+.price .small{font-size:12px;color:var(--muted)}
+.where{font-weight:600}
+.addr{color:var(--muted);font-size:14px;overflow-wrap:anywhere}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:12px;padding:3px 8px;border-radius:6px;background:var(--sunk)}
+.kv{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.kv b{color:var(--fg);font-weight:600}
+.meta{font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
+.meta .old{color:var(--taken);font-weight:600}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.actions button{padding:6px 10px;font-size:13px}
+.pbox{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.pbox>div{background:var(--bg);padding:9px 11px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.pbox dt{font-size:12px;font-weight:700;color:var(--fg)}
+.pbox dt small{display:block;font-size:11px;font-weight:500;color:var(--muted)}
+.pbox dd{margin:0;font-size:17px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent)}
+.pbox .pnote{grid-column:1/-1;font-size:12px;color:var(--muted)}
+.ask{font-size:14px;font-weight:600;color:var(--brass)}
+.pill.warn{background:var(--brass-soft);color:var(--brass)}
+.editp{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:var(--sunk);border-radius:10px;padding:12px}
+.editp .row{grid-column:1/-1}
+@media (max-width:420px){.editp{grid-template-columns:1fr}}
+@media (max-width:340px){.pbox{grid-template-columns:1fr}}
+.refchip{font:inherit;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:6px;padding:2px 7px;cursor:pointer;font-variant-numeric:tabular-nums}
+.refchip:hover{color:var(--accent);border-color:var(--accent)}
+.refchip.static{cursor:default}
+.focusbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--accent-soft);color:var(--accent);border-radius:10px;padding:10px 12px;margin-top:10px;font-size:14px}
+.pbox .each{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;background:var(--accent-soft);color:var(--accent);padding:9px 11px}
+.pbox .each span{font-size:12px;font-weight:700}
+.pbox .each b{font-size:17px;font-variant-numeric:tabular-nums}
+.pbox .each small{font-size:12px;color:var(--fg)}
+.find{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;font-size:13px;background:var(--sunk);border-radius:8px;padding:7px 10px;min-width:0}
+.findlabel{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brass)}
+.phrase{font-style:italic;overflow-wrap:anywhere;min-width:0}
+.when{color:var(--muted);font-size:12px}
+.empty{color:var(--muted);text-align:center;padding:22px 8px;border:1px dashed var(--line);border-radius:12px}
+details summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:18px;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:" +";color:var(--muted)}
+details[open] summary::after{content:" −"}
+.note{font-size:13px;color:var(--muted)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;font-weight:600;z-index:20}
+.offline{background:var(--brass-soft);color:var(--brass);padding:10px 12px;border-radius:10px;font-size:14px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.viewbar{display:flex;gap:4px;background:var(--sunk);border-radius:999px;padding:4px;width:max-content;max-width:100%}
+.viewbar button{border:0;background:transparent;border-radius:999px;padding:7px 14px;font-size:14px}
+.viewbar button[aria-pressed="true"]{background:var(--surface);color:var(--accent);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.wrap[data-view="client"] .ao{display:none!important}
+.wrap[data-view="agent"] .co{display:none!important}
+.brandband{--band:#1F3D36;--on-band:#F7F3EC;--band-brass:#C8963E;background:var(--band);color:var(--on-band);border-radius:16px;padding:22px 20px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+.brandband::after{content:"";position:absolute;right:-6px;bottom:0;width:110px;height:5px;background:var(--band-brass)}
+.lockup{display:flex;align-items:center;gap:14px}
+.lockup svg{width:58px;height:58px;flex:none;color:var(--on-band)}
+.wordmark{font-family:"Newsreader",Georgia,"Times New Roman",serif;font-weight:700;font-size:clamp(40px,11vw,58px);line-height:1;letter-spacing:-.02em;margin:0}
+.tagline{font-family:"Newsreader",Georgia,serif;font-size:18px;font-style:italic;opacity:.9;margin:0}
+.bandmeta{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--band-brass)}
+.areas{border:0;margin:0;padding:0;min-width:0;display:flex;flex-direction:column;gap:8px}
+.areas legend{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.03em;text-transform:uppercase;padding:0;margin-bottom:8px}
+.areas .hint{text-transform:none;letter-spacing:0;font-weight:500}
+.linkbtn{border:0;background:none;padding:0 0 0 6px;color:var(--accent);font-size:13px;font-weight:600;text-transform:none;letter-spacing:0;text-decoration:underline;cursor:pointer}
+.achips{display:flex;flex-wrap:wrap;gap:8px}
+.achip{flex-direction:row;align-items:center;gap:7px;text-transform:none;letter-spacing:0;font-size:14px;font-weight:500;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px 6px 10px;cursor:pointer;user-select:none}
+.achip input{width:16px;height:16px;margin:0;accent-color:var(--accent)}
+.achip .n{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.achip:has(input:checked){background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:700}
+.achip:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+</style>
+<style>
+.req{display:flex;flex-direction:column;gap:10px;background:var(--sunk);border-radius:10px;padding:12px}
+.req pre{margin:0;white-space:pre-wrap;font:inherit;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;overflow-wrap:anywhere}
+.wa{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14px}
+.wa .num{font-weight:700;font-variant-numeric:tabular-nums;user-select:all}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.pbox .each{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;background:var(--accent-soft);color:var(--accent);padding:9px 11px}
+.pbox .each span{font-size:12px;font-weight:700}
+.pbox .each b{font-size:17px;font-variant-numeric:tabular-nums}
+.pbox .each small{font-size:12px;color:var(--fg)}
+.fresh{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px}
+.fresh.new{background:var(--brass-soft);color:var(--brass)}
+.fresh.recent{background:var(--accent-soft);color:var(--accent)}
+.fresh.old{background:var(--sunk);color:var(--muted);font-weight:600}
+.availnote{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:10px;padding:10px 12px;margin:10px 0 0}
+.ttl{min-width:0;display:flex;flex-direction:column;gap:3px}
+.where.big2{font-size:18px;font-weight:800;line-height:1.2}
+.kind{font-size:13px;color:var(--muted);display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.kind b{color:var(--fg);font-weight:700}
+.badges{display:flex;flex-wrap:wrap;gap:6px}
+.bdg{font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--sunk);color:var(--fg);line-height:1.3}
+.bdg.hot{background:var(--taken-soft);color:var(--taken)}
+.bdg.ok{background:var(--accent-soft);color:var(--accent)}
+.bdg.old{background:var(--brass-soft);color:var(--brass)}
+.bdg.warn{background:transparent;box-shadow:inset 0 0 0 1.5px var(--taken);color:var(--taken)}
+.facts{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.facts li{font-size:13px;display:flex;gap:5px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 9px}
+.facts li b{font-weight:700}
+.pbox dd{font-size:19px;font-weight:800}
+.price .big{font-size:26px}
+.availnote{font-size:14px;color:var(--fg)}
+.availnote b{color:var(--taken)}
+.foot{font-size:12px;color:var(--muted);text-align:center}
+a.btnlink{display:inline-block;font-weight:600;font-size:14px;border-radius:10px;padding:8px 12px;background:var(--accent);color:var(--accent-fg);text-decoration:none}
+</style>
+</head>
+<body>
+
+
+<div class="wrap" data-view="client">
+  <section class="brandband" aria-label="Lodgewell">
+    <div class="lockup">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="lwk"><rect width="64" height="64" fill="#fff"></rect><circle cx="32" cy="43" r="3.2" fill="#000"></circle><path d="M30.4 45 L29.4 51.5 H34.6 L33.6 45 Z" fill="#000"></path></mask></defs><path d="M8 31 L32 10 L56 31" fill="none" stroke="#C8963E" stroke-width="5.5" stroke-linejoin="miter" stroke-linecap="square"></path><path d="M22 57 V41 A10 10 0 0 1 42 41 V57 Z" fill="currentColor" mask="url(#lwk)"></path><rect x="10" y="56" width="44" height="3" fill="currentColor"></rect></svg>
+      <p class="wordmark">Lodgewell</p>
+    </div>
+    <p class="tagline">Find your lodge. Live well.</p>
+    <span class="bandmeta">Homes &amp; lodges · Ile-Ife</span>
+  </section>
+
+  <header>
+    <h1>Available apartments</h1>
+    <p class="sub">Set your <b>budget</b> and <b>area</b>, then tap <b>Request this apartment</b> to message us on WhatsApp.</p>
+    <div class="stats"><span class="stat"><b id="n-all">181</b> apartments available</span><span class="stat" id="n-areas"></span><span class="stat">Updated 27 Oct 2026</span></div>
+  </header>
+
+  <section class="panel match" aria-labelledby="mh">
+    <h2 id="mh">Search apartments</h2>
+    <div class="grid">
+      <label for="f-type">Apartment type<select id="f-type"><option value="">Any type</option></select></label>
+      <label for="f-budget">Budget from (₦ per year)<input id="f-budget" inputmode="numeric" placeholder="e.g. 250000 or 250k"></label>
+      <label for="f-max">Budget up to (₦ per year)<input id="f-max" inputmode="numeric" placeholder="e.g. 400k"></label>
+      <label for="f-gender">Male or female<select id="f-gender"><option value="">Anyone</option><option value="male">Male</option><option value="female">Female</option></select></label>
+      <label for="f-split">Sharing with a roommate?<select id="f-split"><option value="">No, just me</option><option value="2">Yes, 2 people</option><option value="3">Yes, 3 people</option></select></label>
+      <label for="f-sort">Show<select id="f-sort"><option value="new">Newest first</option><option value="price">Lowest price first</option></select></label>
+      <label for="f-must">Must have<input id="f-must" placeholder="e.g. tiled, water, own toilet"></label>
+      <label for="f-ref">Ref number<input id="f-ref" inputmode="numeric" placeholder="e.g. 47 or LW-047"></label>
+    </div>
+    <fieldset class="areas">
+      <legend>Areas <span class="hint">— tick one or more</span> <button type="button" class="linkbtn" id="f-areas-all" hidden>Show all areas</button></legend>
+      <div class="achips" id="f-areas"></div>
+    </fieldset>
+    <div class="row"><button class="ghost" id="f-clear" type="button">Clear</button></div>
+  </section>
+
+  <section aria-labelledby="rh">
+    <div class="resulthead"><h2 id="rh">Matches</h2><span class="count" id="count"></span></div>
+    <p class="availnote">🔥 <b>It's rush hour.</b> Resumption is close and rooms are going fast.<br>⚠️ <b>Availability is not guaranteed.</b> Newest posts are shown first and are the most likely to still be free. We confirm with you <b>before you inspect or pay</b>.</p>
+    <div class="list" id="list" style="margin-top:10px"></div>
+  </section>
+
+  <section class="contact" aria-labelledby="ch">
+    <h2 id="ch">Can't find what you need?</h2>
+    <p class="note" style="margin:0">Send us your budget, the apartment type and the area you want. We don't post every vacancy online.</p>
+    <div class="wa"><span>WhatsApp:</span><span class="num">+234 913 641 6448</span><button type="button" data-copy="+2349136416448">Copy number</button></div>
+  </section>
+  <p class="foot">Prices can change and vacancies go fast. We confirm availability before any payment. Inspect before you pay.</p>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const ITEMS=[{"ref":"LW-6FHH","type":"Self-contain","area":"Ibadan Road","address":"Close to Diganga","features":[],"extra":[],"seen":"2026-10-22T11:46:13.347Z","rep":0,"total":470000,"rent":400000},{"ref":"LW-7WG7","type":"Self-contain","area":"Ibadan Road","address":"Close to Diganga","features":[],"extra":[],"seen":"2026-10-22T11:47:21.990Z","rep":0,"total":420000,"rent":350000},{"ref":"LW-001","type":"Single room","area":"Omole Estate","address":"First gate","features":["own toilet","running water","fenced and gated","24hr security"],"extra":[["Gender","Female only (female hostel)"],["Sharing","Pairing allowed"]],"seen":"2026-10-19T08:29:00+01:00","rep":0,"total":null,"rent":300000},{"ref":"LW-002","type":"Self-contain","area":"AP/Mayfair axis","address":null,"features":["POP","wardrobe","kitchen cabinets"],"extra":[],"seen":"2026-10-19T09:40:00+01:00","rep":0,"total":null,"rent":450000},{"ref":"LW-003","type":"2-bedroom flat","area":"Ede Road","address":null,"features":["POP","spacious","wardrobe","kitchen cabinet"],"extra":[],"seen":"2026-10-19T09:40:00+01:00","rep":0,"total":null,"rent":900000},{"ref":"LW-004","type":"Self-contain","area":"Awosun","address":null,"features":[],"extra":[["Arrangement","Male roommate needed (shared self-con)"]],"seen":"2026-10-19T09:57:00+01:00","rep":0,"total":270000,"rent":null},{"ref":"LW-005","type":"Self-contain","area":"AP","address":null,"features":["newly built","POP"],"extra":[],"seen":"2026-10-19T12:00:00+01:00","rep":0,"total":520000,"rent":400000},{"ref":"LW-006","type":"Self-contain","area":"Oduduwa Estate","address":null,"features":["24/7 light"],"extra":[["Move-in","First week of November"]],"seen":"2026-10-19T12:09:00+01:00","rep":0,"total":510000,"rent":null},{"ref":"LW-007","type":"Self-contain","area":"Mayfair","address":null,"features":["tiled","running water"],"extra":[["Walk to junction","7–10 mins"]],"seen":"2026-10-20T20:58:00+01:00","rep":2,"total":370000,"rent":300000},{"ref":"LW-008","type":"Bed space","area":"Maintenance, Ede Road","address":null,"features":[],"extra":[["Duration","14 months"],["Gender","Female only"],["Sharing","2 per room"]],"seen":"2026-10-19T17:51:00+01:00","rep":0,"total":420000,"rent":null},{"ref":"LW-009","type":"Type not stated","area":"Oduduwa Estate","address":"Trekkable to campus gate","features":[],"extra":[],"seen":"2026-10-19T18:26:00+01:00","rep":0,"total":null,"rent":300000},{"ref":"LW-011","type":"Single room","area":"Maintenance market area, Ede Road","address":null,"features":[],"extra":[["Gender","Female OAU students preferred"],["Sharing","Max 2 per room"]],"seen":"2026-10-20T09:26:00+01:00","rep":0,"total":420000,"rent":null},{"ref":"LW-012","type":"Bed space","area":"School's private hostel (on campus)","address":null,"features":["reading table","own kitchen","own toilet","running water","stable electricity","security","tiled","fenced"],"extra":[["Gender","Female only"],["Sharing","2 per room"]],"seen":"2026-10-20T12:16:00+01:00","rep":1,"total":520000,"rent":null},{"ref":"LW-013","type":"Self-contain","area":"Campus Gate axis","address":null,"features":["newly built","wardrobe","kitchen cabinets"],"extra":[],"seen":"2026-10-22T08:06:00+01:00","rep":2,"total":null,"rent":null},{"ref":"LW-014","type":"Self-contain","area":"Asherifa","address":null,"features":["full POP"],"extra":[],"seen":"2026-10-21T22:18:00+01:00","rep":1,"total":null,"rent":null},{"ref":"LW-015","type":"Self-contain","area":"Ooni Layout","address":null,"features":["POP","spacious","newly built","own prepaid meter","fully fenced"],"extra":[],"seen":"2026-10-20T13:14:00+01:00","rep":0,"total":610000,"rent":500000},{"ref":"LW-016","type":"Single room","area":"AP","address":null,"features":["spacious"],"extra":[],"seen":"2026-10-22T13:25:00+01:00","rep":1,"total":90000,"rent":50000},{"ref":"LW-017","type":"Single room","area":"Mayfair","address":"Close to junction","features":["mini","running water","wardrobe","tiled","neat"],"extra":[["Occupancy","1 person only"]],"seen":"2026-10-20T14:20:00+01:00","rep":0,"guide":210000},{"ref":"LW-018","type":"Self-contain","area":"Campus Gate","address":null,"features":[],"extra":[["Walk to campus gate","2 mins"]],"seen":"2026-10-20T17:58:00+01:00","rep":0,"total":400000,"rent":320000},{"ref":"LW-019","type":"Self-contain","area":"Ooni Layout","address":null,"features":[],"extra":[["Units","6 available"]],"seen":"2026-10-21T07:44:00+01:00","rep":1,"total":null,"rent":350000},{"ref":"LW-020","type":"Self-contain","area":"Campus Gate","address":"Around Apex Tutors, trekkable to school","features":["water OK","light OK"],"extra":[["Arrangement","Female roommate needed"],["Preference","Part 1 preferred"]],"seen":"2026-10-20T18:43:00+01:00","rep":0,"total":380000,"rent":260000},{"ref":"LW-021","type":"Single room","area":"Mayfair","address":null,"features":["spacious","tap water","well water"],"extra":[["Arrangement","Female roommate needed (fresher)"]],"seen":"2026-10-20T20:03:00+01:00","rep":3,"total":null,"rent":115000},{"ref":"LW-022","type":"Self-contain","area":"Ibadan Road","address":null,"features":["24/7 light"],"extra":[],"seen":"2026-10-21T08:42:00+01:00","rep":1,"guide":240000},{"ref":"LW-023","type":"Single room","area":"Oduduwa Estate","address":null,"features":[],"extra":[],"seen":"2026-10-21T09:48:00+01:00","rep":1,"total":null,"rent":230000},{"ref":"LW-024","type":"Single room","area":"Omole Estate","address":"Close to Cameroon Hotel","features":["own toilet"],"extra":[["Gender","Female only"]],"seen":"2026-10-21T09:51:00+01:00","rep":0,"total":null,"rent":250000},{"ref":"LW-025","type":"Self-contain","area":"Parakin/Mayfair axis","address":null,"features":[],"extra":[],"seen":"2026-10-21T11:58:00+01:00","rep":0,"total":null,"rent":250000},{"ref":"LW-026","type":"Self-contain","area":"Omole Estate","address":null,"features":["tiled","wardrobe","prepaid meter"],"extra":[["Walk to junction","7 mins"],["Water","No running water"]],"seen":"2026-10-21T13:20:00+01:00","rep":0,"total":290000,"rent":220000},{"ref":"LW-027","type":"Self-contain","area":"Damico","address":null,"features":[],"extra":[],"seen":"2026-10-21T17:02:00+01:00","rep":1,"total":null,"rent":350000},{"ref":"LW-028","type":"Single room","area":"Omole Estate","address":null,"features":["spacious","own toilet","fenced and gated","running water","wardrobe"],"extra":[],"seen":"2026-10-22T01:28:00+01:00","rep":2,"total":null,"rent":200000},{"ref":"LW-029","type":"Single room","area":"Omole Estate","address":"Not far from main road","features":["running water","fenced and gated","tiled"],"extra":[],"seen":"2026-10-27T21:34:00+01:00","rep":1,"total":180000,"rent":130000},{"ref":"LW-030","type":"Self-contain","area":"Campus Gate","address":null,"features":["spacious","running water","prepaid meter","fenced","tiled"],"extra":[["Units","3 left"],["Walk to junction","3 mins"]],"seen":"2026-10-21T15:52:00+01:00","rep":0,"total":570000,"rent":450000},{"ref":"LW-031","type":"Room & parlour","area":"Campus Gate","address":null,"features":["spacious","tiled","fenced","prepaid meter","running water"],"extra":[["Walk to junction","3 mins"]],"seen":"2026-10-21T16:03:00+01:00","rep":0,"total":870000,"rent":750000},{"ref":"LW-032","type":"Self-contain","area":"Campus Gate","address":null,"features":["running water","prepaid meter","tiled","fenced"],"extra":[["Walk to junction","4 mins"]],"seen":"2026-10-21T16:13:00+01:00","rep":0,"total":400000,"rent":300000},{"ref":"LW-033","type":"Single room","area":"AP","address":null,"features":["spacious","neat toilet"],"extra":[["Gender","Female only"],["Toilet","Shared, 2 rooms per toilet"],["Walk to junction","10–12 mins"]],"seen":"2026-10-22T11:31:00+01:00","rep":1,"total":170000,"rent":100000},{"ref":"LW-034","type":"Bed space","area":"On-campus private hostel","address":null,"features":["bed","reading table","air conditioner","wardrobe","bookshelf","water heater"],"extra":[],"seen":"2026-10-26T08:21:00+01:00","rep":3,"total":360000,"rent":305000},{"ref":"LW-035","type":"2-bedroom flat","area":"Nasfat","address":null,"features":["POP"],"extra":[],"seen":"2026-10-21T21:43:00+01:00","rep":0,"total":null,"rent":1500000},{"ref":"LW-036","type":"Self-contain","area":"Omole Estate","address":null,"features":["standard"],"extra":[],"seen":"2026-10-22T01:33:00+01:00","rep":1,"total":null,"rent":300000},{"ref":"LW-037","type":"Single room","area":"AP/Lagere","address":"Very close to main road","features":["spacious","running water","neat bathroom and toilet"],"extra":[],"seen":"2026-10-21T23:08:00+01:00","rep":0,"total":null,"rent":150000},{"ref":"LW-038","type":"Single room","area":"Mayfair","address":null,"features":["own toilet"],"extra":[["Gender","Female only"]],"seen":"2026-10-22T07:24:00+01:00","rep":0,"total":360000,"rent":300000},{"ref":"LW-039","type":"Single room","area":"AP","address":null,"features":["neat","spacious"],"extra":[["Gender","Female only"]],"seen":"2026-10-22T07:24:00+01:00","rep":0,"guide":150000},{"ref":"LW-040","type":"Single room","area":"Campus Gate","address":"Close to Oduduwa Estate","features":["spacious"],"extra":[["Sharing","Spacious enough for two people"]],"seen":"2026-10-26T16:26:00+01:00","rep":1,"total":310000,"rent":200000},{"ref":"LW-041","type":"Single room","area":"Mayfair","address":null,"features":["big","well water"],"extra":[],"seen":"2026-10-22T07:24:00+01:00","rep":0,"total":180000,"rent":null},{"ref":"LW-042","type":"Single room","area":"AP","address":null,"features":["well water"],"extra":[],"seen":"2026-10-22T07:24:00+01:00","rep":0,"total":150000,"rent":null},{"ref":"LW-043","type":"Single room","area":"Akarabata/Lagere axis","address":null,"features":["running water","fenced","neat","spacious"],"extra":[["Occupancy","1 person"]],"seen":"2026-10-22T07:24:00+01:00","rep":0,"total":null,"rent":150000},{"ref":"LW-044","type":"Self-contain","area":"Oduduwa Estate","address":null,"features":[],"extra":[],"seen":"2026-10-22T07:24:00+01:00","rep":0,"total":null,"rent":450000},{"ref":"LW-045","type":"Self-contain","area":"Moremi Estate","address":null,"features":[],"extra":[],"seen":"2026-10-22T07:24:00+01:00","rep":0,"total":470000,"rent":null},{"ref":"LW-046","type":"Self-contain","area":"Mayfair/Parakin axis","address":null,"features":[],"extra":[],"seen":"2026-10-22T07:24:00+01:00","rep":0,"total":null,"rent":320000},{"ref":"LW-047","type":"Self-contain","area":"Mayfair","address":"Very close to junction","features":[],"extra":[],"seen":"2026-10-22T07:24:00+01:00","rep":0,"total":null,"rent":300000},{"ref":"LW-048","type":"Self-contain","area":"AP","address":null,"features":[],"extra":[],"seen":"2026-10-22T07:24:00+01:00","rep":0,"total":null,"rent":300000},{"ref":"LW-049","type":"Self-contain","area":"Omole Estate","address":null,"features":[],"extra":[],"seen":"2026-10-22T07:24:00+01:00","rep":0,"total":null,"rent":350000},{"ref":"LW-050","type":"Self-contain","area":"Mayfair","address":"Very close to junction","features":["mini","spacious","shared kitchen"],"extra":[],"seen":"2026-10-22T07:24:00+01:00","rep":0,"total":310000,"rent":250000},{"ref":"LW-051","type":"Self-contain","area":"Mayfair","address":null,"features":["mini"],"extra":[],"seen":"2026-10-22T07:24:00+01:00","rep":0,"total":null,"rent":300000},{"ref":"LW-052","type":"Room & parlour","area":"Mayfair","address":null,"features":[],"extra":[],"seen":"2026-10-22T07:24:00+01:00","rep":0,"total":null,"rent":750000},{"ref":"LW-053","type":"Room & parlour","area":"Oduduwa Estate","address":null,"features":[],"extra":[],"seen":"2026-10-22T07:24:00+01:00","rep":0,"total":null,"rent":900000},{"ref":"LW-054","type":"Self-contain","area":"Omole Estate","address":null,"features":[],"extra":[],"seen":"2026-10-18T10:24:00+01:00","rep":0,"total":null,"rent":250000},{"ref":"LW-055","type":"2-bedroom flat","area":"Asherifa","address":null,"features":[],"extra":[],"seen":"2026-10-18T15:40:00+01:00","rep":0,"total":null,"rent":700000},{"ref":"LW-056","type":"Single room","area":"Campus Gate","address":null,"features":["spacious","running water","good light","fenced and gated"],"extra":[["Units","Only one left"],["Walk to campus gate","3 mins"]],"seen":"2026-10-18T16:54:00+01:00","rep":0,"total":null,"rent":260000},{"ref":"LW-057","type":"Self-contain","area":"Campus Gate","address":null,"features":["spacious"],"extra":[],"seen":"2026-10-18T16:58:00+01:00","rep":0,"total":540000,"rent":450000},{"ref":"LW-058","type":"Self-contain","area":"Campus Gate","address":"Around campus gate","features":[],"extra":[],"seen":"2026-10-18T18:18:00+01:00","rep":0,"total":null,"rent":370000},{"ref":"LW-059","type":"Single room","area":"Parakin","address":null,"features":["own toilet"],"extra":[],"seen":"2026-10-21T09:13:00+01:00","rep":1,"total":null,"rent":250000},{"ref":"LW-060","type":"Bed space","area":"Off-campus private hostel","address":"Directly opposite campus gate","features":["wardrobe","bed provided","private security","solar"],"extra":[["Gender","Male and female spaces"]],"seen":"2026-10-19T07:17:00+01:00","rep":0,"total":360000,"rent":300000},{"ref":"LW-061","type":"Self-contain","area":"Parakin Estate","address":null,"features":["POP","standard"],"extra":[],"seen":"2026-10-19T07:18:00+01:00","rep":0,"total":null,"rent":600000},{"ref":"LW-062","type":"Single room","area":"AP","address":null,"features":["POP","own toilet"],"extra":[],"seen":"2026-10-19T07:19:00+01:00","rep":0,"total":280000,"rent":null},{"ref":"LW-063","type":"2-bedroom flat","area":"Ooni Crownland","address":null,"features":[],"extra":[],"seen":"2026-10-19T07:19:00+01:00","rep":0,"total":null,"rent":1100000},{"ref":"LW-064","type":"Self-contain","area":"Oduduwa Estate","address":"Very close to main road","features":[],"extra":[["Move-in","3rd week of December (book ahead of convocation)"]],"seen":"2026-10-19T07:20:00+01:00","rep":0,"total":400000,"rent":null},{"ref":"LW-065","type":"Self-contain","area":"Oduduwa Estate","address":null,"features":["full POP","extremely spacious","24/7 light","wardrobe","kitchen cabinet","store room"],"extra":[["Sharing","Pairing allowed"]],"seen":"2026-10-19T07:21:00+01:00","rep":0,"total":null,"rent":600000},{"ref":"LW-066","type":"Self-contain","area":"Asherifa","address":null,"features":["standard"],"extra":[["Units","Few left"]],"seen":"2026-10-19T07:25:00+01:00","rep":0,"total":null,"rent":null},{"ref":"LW-067","type":"Single room","area":"Mayfair","address":null,"features":["spacious"],"extra":[["Occupancy","Up to 3 people"]],"seen":"2026-10-19T07:27:00+01:00","rep":0,"total":180000,"rent":null},{"ref":"LW-068","type":"Self-contain","area":"Campus Gate","address":"A stone's throw to campus gate","features":["full","very spacious"],"extra":[],"seen":"2026-10-19T11:46:00+01:00","rep":0,"total":600000,"rent":null},{"ref":"LW-069","type":"Self-contain","area":"Ibadan Road","address":"Less than 3 mins walk to main road","features":["massive","own prepaid meter"],"extra":[],"seen":"2026-10-20T09:34:00+01:00","rep":0,"total":null,"rent":350000},{"ref":"LW-070","type":"Bed space","area":"On-campus private hostel","address":null,"features":["own toilet","own wardrobe","running water","tiled","neat"],"extra":[["Gender","Male and female"],["Sharing","4 per room"]],"seen":"2026-10-20T10:54:00+01:00","rep":0,"total":360000,"rent":null},{"ref":"LW-071","type":"Self-contain","area":"AP","address":"AP junction","features":["spacious"],"extra":[["Walk to junction","2 mins"]],"seen":"2026-10-22T15:27:00+01:00","rep":0,"total":null,"rent":250000},{"ref":"LW-072","type":"Single room","area":"AP","address":null,"features":[],"extra":[["Walk to junction","8–10 mins"]],"seen":"2026-10-22T11:56:00+01:00","rep":0,"total":120000,"rent":null},{"ref":"LW-073","type":"Self-contain","area":"Campus Gate","address":"Close to campus gate","features":["wardrobe","kitchen cabinet","full POP"],"extra":[["Arrangement","Roommate needed (26 Oct: male or female; 27 Oct: female), or take the full room"]],"seen":"2026-10-27T20:49:00+01:00","rep":6,"total":650000,"rent":500000},{"ref":"LW-074","type":"Self-contain","area":"Ibadan Road","address":null,"features":["standard","POP","kitchen cabinet","wardrobe"],"extra":[],"seen":"2026-10-22T14:48:00+01:00","rep":0,"total":null,"rent":450000},{"ref":"LW-075","type":"Type not stated","area":"Mayfair","address":null,"features":[],"extra":[["Arrangement","Male roommate needed"]],"seen":"2026-10-22T14:48:00+01:00","rep":0,"total":null,"rent":155000},{"ref":"LW-076","type":"Single room","area":"Mayfair/Omole","address":null,"features":["running tap water","fenced"],"extra":[],"seen":"2026-10-22T14:48:00+01:00","rep":0,"total":null,"rent":null},{"ref":"LW-077","type":"Single room","area":"Campus Gate axis","address":null,"features":["standard","running water"],"extra":[],"seen":"2026-10-24T09:57:00+01:00","rep":1,"total":null,"rent":150000},{"ref":"LW-078","type":"Type not stated","area":"Modomo","address":null,"features":["24/7 light"],"extra":[],"seen":"2026-10-22T19:49:00+01:00","rep":0,"total":380000,"rent":300000},{"ref":"LW-079","type":"Self-contain","area":"Ibadan Road","address":null,"features":[],"extra":[],"seen":"2026-10-22T20:51:00+01:00","rep":0,"total":null,"rent":300000},{"ref":"LW-080","type":"Single room","area":"Mayfair","address":null,"features":["running water"],"extra":[],"seen":"2026-10-21T07:44:00+01:00","rep":0,"total":null,"rent":100000},{"ref":"LW-081","type":"Self-contain","area":"Asherifa","address":null,"features":["full POP"],"extra":[],"seen":"2026-10-21T07:44:00+01:00","rep":0,"total":null,"rent":350000},{"ref":"LW-082","type":"Room & parlour","area":"Ooni Layout","address":null,"features":[],"extra":[],"seen":"2026-10-21T07:51:00+01:00","rep":0,"total":null,"rent":400000},{"ref":"LW-083","type":"Self-contain","area":"OUI area","address":null,"features":[],"extra":[],"seen":"2026-10-21T08:09:00+01:00","rep":0,"total":null,"rent":null},{"ref":"LW-084","type":"Self-contain","area":"Oduduwa Estate","address":null,"features":["POP","kitchen cabinets","wardrobe"],"extra":[],"seen":"2026-10-21T08:16:00+01:00","rep":0,"total":null,"rent":null},{"ref":"LW-085","type":"Type not stated","area":"Oduduwa Estate","address":null,"features":[],"extra":[["Arrangement","Female roommate needed"]],"seen":"2026-10-21T09:28:00+01:00","rep":0,"total":null,"rent":220000},{"ref":"LW-086","type":"1-bedroom flat","area":"Ibadan Road","address":null,"features":["newly built","wardrobe","kitchen cabinet","Band A light","serene environment"],"extra":[],"seen":"2026-10-21T10:47:00+01:00","rep":0,"total":null,"rent":null},{"ref":"LW-087","type":"Self-contain","area":"Ajebamidele","address":null,"features":[],"extra":[],"seen":"2026-10-25T22:20:00+01:00","rep":1,"total":null,"rent":null},{"ref":"LW-088","type":"Self-contain","area":"Ibadan Road","address":null,"features":[],"extra":[],"seen":"2026-10-21T11:09:00+01:00","rep":0,"total":370000,"rent":null},{"ref":"LW-089","type":"Single room","area":"Asherifa","address":null,"features":["tiled","well water","electricity bill included"],"extra":[["Arrangement","Female roommate needed"]],"seen":"2026-10-21T11:50:00+01:00","rep":0,"total":null,"rent":95000},{"ref":"LW-090","type":"Self-contain","area":"Ooni Layout","address":null,"features":["24/7 light"],"extra":[],"seen":"2026-10-21T12:52:00+01:00","rep":0,"total":null,"rent":null},{"ref":"LW-091","type":"Self-contain","area":"Fashina","address":null,"features":[],"extra":[],"seen":"2026-10-22T01:08:00+01:00","rep":0,"guide":240000},{"ref":"LW-092","type":"Room & parlour","area":"Fashina","address":null,"features":[],"extra":[],"seen":"2026-10-25T22:21:00+01:00","rep":1,"total":null,"rent":450000},{"ref":"LW-093","type":"Self-contain","area":"Ibadan Road","address":null,"features":[],"extra":[],"seen":"2026-10-22T01:28:00+01:00","rep":0,"total":null,"rent":350000},{"ref":"LW-094","type":"Self-contain","area":"Asherifa","address":null,"features":["standard","wardrobe","kitchen cabinet"],"extra":[["Arrangement","Female roommate needed"]],"seen":"2026-10-22T01:28:00+01:00","rep":0,"total":null,"rent":225000},{"ref":"LW-095","type":"Self-contain","area":"Oduduwa Estate","address":null,"features":["wardrobe","reading table and chair"],"extra":[],"seen":"2026-10-22T01:35:00+01:00","rep":0,"total":null,"rent":400000},{"ref":"LW-096","type":"Single room","area":"AP","address":null,"features":["running tap water","fenced"],"extra":[["Arrangement","Takeover from current tenant"]],"seen":"2026-10-23T08:30:00+01:00","rep":1,"total":null,"rent":null},{"ref":"LW-097","type":"Self-contain","area":"Mayfair","address":null,"features":["full POP","spacious"],"extra":[["Location","At the junction"]],"seen":"2026-10-22T08:01:00+01:00","rep":0,"total":450000,"rent":null},{"ref":"LW-098","type":"Self-contain","area":"AP/Akarabata","address":null,"features":["spacious"],"extra":[["Location","At the junction"]],"seen":"2026-10-22T08:01:00+01:00","rep":0,"total":null,"rent":300000},{"ref":"LW-099","type":"Type not stated","area":"AP/Akarabata","address":null,"features":["running tap water"],"extra":[],"seen":"2026-10-22T08:01:00+01:00","rep":0,"total":null,"rent":null},{"ref":"LW-100","type":"Self-contain","area":"Oduduwa Estate","address":"Very close to OAU campus gate","features":["24/7 light"],"extra":[],"seen":"2026-10-22T08:35:00+01:00","rep":0,"total":null,"rent":null},{"ref":"LW-101","type":"Self-contain","area":"Fashina","address":null,"features":["nice"],"extra":[],"seen":"2026-10-22T08:53:00+01:00","rep":0,"total":null,"rent":320000},{"ref":"LW-102","type":"Room & parlour","area":"Moremi Estate","address":null,"features":["2 toilets","stable light"],"extra":[],"seen":"2026-10-22T08:53:00+01:00","rep":0,"total":null,"rent":null},{"ref":"LW-103","type":"Self-contain","area":"Campus Gate","address":null,"features":["standard","POP"],"extra":[],"seen":"2026-10-22T09:05:00+01:00","rep":0,"total":null,"rent":null},{"ref":"LW-104","type":"Self-contain","area":"Oduduwa Estate, Campus Gate","address":null,"features":["spacious","24/7 light","wardrobe"],"extra":[],"seen":"2026-10-23T13:59:00+01:00","rep":4,"total":570000,"rent":500000},{"ref":"LW-105","type":"Single room","area":"Mayfair","address":null,"features":["own toilet"],"extra":[["Arrangement","Female roommate needed"]],"seen":"2026-10-22T14:48:00+01:00","rep":0,"total":null,"rent":175000},{"ref":"LW-106","type":"Single room","area":"Campus Gate","address":null,"features":[],"extra":[["Arrangement","Female roommate needed"],["Walk to campus gate","5 mins"]],"seen":"2026-10-22T22:32:00+01:00","rep":0,"total":null,"rent":160000},{"ref":"LW-107","type":"Single room","area":"Mayfair","address":"Very close to main road","features":["own toilet","running water","bed and bedframe","own wardrobe space"],"extra":[["Gender","Female only"],["Sharing","2 per room"]],"seen":"2026-10-22T22:39:00+01:00","rep":0,"total":170000,"rent":null},{"ref":"LW-108","type":"Self-contain","area":"AP","address":null,"features":["spacious","big wardrobe"],"extra":[["Walk to junction","4 mins"]],"seen":"2026-10-23T09:16:00+01:00","rep":0,"total":350000,"rent":null},{"ref":"LW-109","type":"2-bedroom flat","area":"Eleyele","address":"Close to Celebration","features":["newly built","steady water supply","fully tiled","fenced and gated"],"extra":[],"seen":"2026-10-23T10:18:00+01:00","rep":0,"total":null,"rent":750000},{"ref":"LW-110","type":"3-bedroom flat","area":"Lagere","address":"Beside the main road","features":[],"extra":[],"seen":"2026-10-23T10:19:00+01:00","rep":0,"total":null,"rent":2000000},{"ref":"LW-111","type":"2-bedroom flat","area":"Asherifa","address":null,"features":["newly built","kitchen cabinets","POP","one room ensuite"],"extra":[],"seen":"2026-10-24T22:18:00+01:00","rep":3,"total":null,"rent":null},{"ref":"LW-112","type":"Room & parlour","area":"Parakin","address":"Close to The Poly","features":["newly built","POP","Band A light"],"extra":[],"seen":"2026-10-23T13:11:00+01:00","rep":0,"total":null,"rent":860000},{"ref":"LW-113","type":"Room & parlour","area":"AP/Akarabata","address":null,"features":["stable light"],"extra":[["Walk to junction","15 mins"]],"seen":"2026-10-23T15:13:00+01:00","rep":0,"total":500000,"rent":null},{"ref":"LW-114","type":"Self-contain","area":"Oduduwa Estate","address":null,"features":[],"extra":[],"seen":"2026-10-23T20:11:00+01:00","rep":0,"total":690000,"rent":null},{"ref":"LW-115","type":"Self-contain","area":"Oduduwa Estate","address":"Close to the main road","features":["24/7 light"],"extra":[["Arrangement","Female roommate needed"],["Move-in","Immediately"]],"seen":"2026-10-23T20:41:00+01:00","rep":0,"total":null,"rent":340000},{"ref":"LW-116","type":"Self-contain","area":"Asherifa","address":"Very close to campus gate","features":[],"extra":[["Units","Few left"]],"seen":"2026-10-23T20:51:00+01:00","rep":0,"total":420000,"rent":null},{"ref":"LW-117","type":"Self-contain","area":"Ede Road (Mayfair axis)","address":"Close to the main road","features":["mini","tiled","own kitchen","running water","wardrobe","own toilet"],"extra":[["Move-in","Booking only; move in by month end"]],"seen":"2026-10-24T07:48:00+01:00","rep":0,"total":360000,"rent":300000},{"ref":"LW-118","type":"Self-contain","area":"Mayfair","address":"Very close to the main road","features":[],"extra":[["Units","Only one left in the compound"]],"seen":"2026-10-24T08:54:00+01:00","rep":0,"total":null,"rent":320000},{"ref":"LW-119","type":"2-bedroom flat","area":"Asherifa","address":null,"features":["newly built","full POP"],"extra":[],"seen":"2026-10-23T10:52:00+01:00","rep":0,"total":null,"rent":1000000},{"ref":"LW-120","type":"Self-contain","area":"Oduduwa Estate","address":null,"features":["newly built"],"extra":[],"seen":"2026-10-23T10:52:00+01:00","rep":0,"total":370000,"rent":null},{"ref":"LW-121","type":"Type not stated","area":"Asherifa","address":null,"features":["very big","running water"],"extra":[["Sharing","Pairing allowed, up to 3"]],"seen":"2026-10-23T10:52:00+01:00","rep":0,"total":null,"rent":280000},{"ref":"LW-122","type":"Self-contain","area":"Asherifa","address":null,"features":["standard","solar (extra 4 hours light)"],"extra":[["Gender","Male"]],"seen":"2026-10-23T11:12:00+01:00","rep":0,"total":null,"rent":null},{"ref":"LW-123","type":"Self-contain","area":"Oduduwa Estate, Campus Gate","address":null,"features":["spacious","24/7 light","wardrobe"],"extra":[],"seen":"2026-10-23T13:59:00+01:00","rep":0,"total":670000,"rent":600000},{"ref":"LW-124","type":"Single room","area":"Moremi Estate","address":null,"features":["spacious","fenced and gated"],"extra":[["Gender","Female only"],["Sharing","Roommate not allowed"],["Toilet","Shared, 3 rooms per toilet"],["Walk to campus gate","Trekkable"]],"seen":"2026-10-23T19:01:00+01:00","rep":0,"total":null,"rent":185000},{"ref":"LW-125","type":"Self-contain","area":"Damico","address":null,"features":[],"extra":[],"seen":"2026-10-23T23:04:00+01:00","rep":0,"total":370000,"rent":300000},{"ref":"LW-126","type":"Self-contain","area":"Damico","address":null,"features":["standard"],"extra":[],"seen":"2026-10-23T23:04:00+01:00","rep":0,"total":390000,"rent":330000},{"ref":"LW-127","type":"Self-contain","area":"Damico","address":null,"features":[],"extra":[],"seen":"2026-10-23T23:04:00+01:00","rep":0,"total":470000,"rent":400000},{"ref":"LW-128","type":"Self-contain","area":"Damico","address":null,"features":[],"extra":[],"seen":"2026-10-23T23:04:00+01:00","rep":0,"total":460000,"rent":360000},{"ref":"LW-129","type":"Self-contain","area":"Damico","address":null,"features":[],"extra":[],"seen":"2026-10-23T23:04:00+01:00","rep":0,"total":620000,"rent":500000},{"ref":"LW-130","type":"Self-contain","area":"Damico","address":null,"features":[],"extra":[],"seen":"2026-10-23T23:04:00+01:00","rep":0,"total":670000,"rent":550000},{"ref":"LW-131","type":"Self-contain","area":"Damico","address":null,"features":["POP"],"extra":[],"seen":"2026-10-23T23:04:00+01:00","rep":0,"total":null,"rent":550000},{"ref":"LW-132","type":"Self-contain","area":"Babaoba (Damico ext)","address":null,"features":["newly built","POP"],"extra":[],"seen":"2026-10-23T23:04:00+01:00","rep":0,"total":null,"rent":650000},{"ref":"LW-133","type":"Self-contain","area":"Babaoba (Damico ext)","address":null,"features":["POP"],"extra":[["Units","Just 2 units in the compound"]],"seen":"2026-10-23T23:04:00+01:00","rep":0,"total":670000,"rent":null},{"ref":"LW-134","type":"Self-contain","area":"Babaoba (Damico ext)","address":null,"features":[],"extra":[],"seen":"2026-10-25T22:22:00+01:00","rep":1,"total":510000,"rent":310000},{"ref":"LW-135","type":"Self-contain","area":"Fashina","address":null,"features":["standard","bigger unit"],"extra":[],"seen":"2026-10-23T23:17:00+01:00","rep":0,"total":null,"rent":350000},{"ref":"LW-136","type":"Self-contain","area":"Asherifa","address":null,"features":["mini","running water"],"extra":[],"seen":"2026-10-23T23:27:00+01:00","rep":0,"total":null,"rent":200000},{"ref":"LW-137","type":"Type not stated","area":"Asherifa","address":null,"features":["wardrobe"],"extra":[["Arrangement","Female roommate needed"],["Move-in","Immediately"]],"seen":"2026-10-24T11:47:00+01:00","rep":0,"total":null,"rent":230000},{"ref":"LW-138","type":"Self-contain","area":"Campus Gate","address":null,"features":[],"extra":[["Walk to campus gate","3 mins"]],"seen":"2026-10-26T01:32:00+01:00","rep":1,"total":540000,"rent":null},{"ref":"LW-139","type":"Self-contain","area":"Moremi Estate","address":"Close to the junction at Energy filling station","features":[],"extra":[],"seen":"2026-10-24T17:16:00+01:00","rep":0,"total":null,"rent":400000},{"ref":"LW-140","type":"Self-contain","area":"Oduduwa Estate","address":null,"features":["super spacious","POP","wardrobe","kitchen cabinet","24/7 light"],"extra":[["Gender","Male only (for guys)"],["Walk to junction","About 5 mins"]],"seen":"2026-10-24T22:43:00+01:00","rep":2,"total":620000,"rent":500000},{"ref":"LW-142","type":"Self-contain","area":"Oduduwa Estate","address":"Oduduwa Estate Road","features":["standard","Band A light (24/7)","running water","wardrobe"],"extra":[["Sharing","Up to 2 people; can be shared with a roommate"]],"seen":"2026-10-24T20:18:00+01:00","rep":0,"total":670000,"rent":null},{"ref":"LW-143","type":"Self-contain","area":"Campus Gate","address":"Close to campus gate","features":["wardrobe","kitchen cabinet"],"extra":[["Arrangement","Female roommate needed, or take the whole room"]],"seen":"2026-10-24T21:35:00+01:00","rep":1,"guide":315000},{"ref":"LW-144","type":"Self-contain","area":"Parakin","address":null,"features":["newly refurbished","Band A light"],"extra":[],"seen":"2026-10-25T06:40:00+01:00","rep":0,"total":null,"rent":null},{"ref":"LW-145","type":"Self-contain","area":"Parakin","address":null,"features":["spacious","Band A light"],"extra":[["Arrangement","Female roommate needed"]],"seen":"2026-10-25T10:48:00+01:00","rep":0,"guide":225000},{"ref":"LW-146","type":"Self-contain","area":"Around campus","address":null,"features":["wardrobe","kitchen cabinet"],"extra":[],"seen":"2026-10-25T08:37:00+01:00","rep":0,"total":470000,"rent":null},{"ref":"LW-147","type":"Self-contain","area":"Around campus","address":null,"features":["wardrobe","kitchen cabinet"],"extra":[],"seen":"2026-10-25T11:43:00+01:00","rep":0,"total":420000,"rent":null},{"ref":"LW-148","type":"Self-contain","area":"Campus Gate","address":"Close to campus gate","features":["proper"],"extra":[],"seen":"2026-10-25T11:43:00+01:00","rep":0,"total":420000,"rent":null},{"ref":"LW-149","type":"Self-contain","area":"Campus Gate","address":null,"features":["spacious","wardrobe"],"extra":[["Walk to campus gate","3 mins"]],"seen":"2026-10-24T18:19:00+01:00","rep":0,"total":440000,"rent":null},{"ref":"LW-150","type":"Single room","area":"AP","address":"Not far from the junction","features":[],"extra":[],"seen":"2026-10-25T09:00:00+01:00","rep":0,"total":null,"rent":170000},{"ref":"LW-151","type":"Self-contain","area":"Ibadan Road","address":"Opposite Ojaja More","features":[],"extra":[],"seen":"2026-10-25T14:09:00+01:00","rep":0,"total":null,"rent":255000},{"ref":"LW-152","type":"Self-contain","area":"Oke Ola","address":null,"features":[],"extra":[],"seen":"2026-10-25T14:09:00+01:00","rep":0,"total":null,"rent":250000},{"ref":"LW-153","type":"Self-contain","area":"Akarabata","address":null,"features":[],"extra":[],"seen":"2026-10-25T14:09:00+01:00","rep":0,"total":null,"rent":330000},{"ref":"LW-154","type":"Single room","area":"Oke Ola","address":null,"features":["running water","tiled bathroom","WC toilet"],"extra":[],"seen":"2026-10-25T14:09:00+01:00","rep":0,"total":null,"rent":135000},{"ref":"LW-155","type":"Single room","area":"AP","address":"Facing the road","features":[],"extra":[],"seen":"2026-10-25T14:09:00+01:00","rep":0,"total":null,"rent":50000},{"ref":"LW-156","type":"Single room","area":"AP","address":"Not far from the road","features":[],"extra":[],"seen":"2026-10-25T14:09:00+01:00","rep":0,"total":null,"rent":80000},{"ref":"LW-157","type":"Single room","area":"Oke Ola","address":null,"features":["well water","modern latrine"],"extra":[],"seen":"2026-10-25T14:09:00+01:00","rep":0,"total":null,"rent":60000},{"ref":"LW-158","type":"Single room","area":"Asherifa","address":null,"features":["tiled"],"extra":[["Move-in","November"]],"seen":"2026-10-26T00:24:00+01:00","rep":0,"total":220000,"rent":null},{"ref":"LW-159","type":"Bed space","area":"Off-campus private hostel","address":"Directly opposite campus gate","features":["wardrobe","24/7 light","running water","bedframe","ceiling fan","security camera"],"extra":[["Gender","Female only"]],"seen":"2026-10-26T00:37:00+01:00","rep":0,"total":350000,"rent":300000},{"ref":"LW-160","type":"Self-contain","area":"Damico","address":null,"features":["POP"],"extra":[],"seen":"2026-10-26T00:56:00+01:00","rep":0,"total":null,"rent":null},{"ref":"LW-161","type":"Self-contain","area":"Campus Gate","address":"Around campus gate","features":[],"extra":[["Units","3 units"]],"seen":"2026-10-26T00:02:00+01:00","rep":0,"guide":420000},{"ref":"LW-162","type":"Self-contain","area":"Awoyeku Road","address":null,"features":[],"extra":[["Units","2 units left"]],"seen":"2026-10-26T08:16:00+01:00","rep":0,"total":null,"rent":300000},{"ref":"LW-163","type":"Single room","area":"AP/Akarabata","address":"Akarabata side of AP","features":[],"extra":[["Walk to junction","10–15 mins"]],"seen":"2026-10-26T08:20:00+01:00","rep":0,"total":null,"rent":50000},{"ref":"LW-164","type":"Bed space","area":"Maintenance, Ede Road","address":null,"features":[],"extra":[["Sharing","2 per room"]],"seen":"2026-10-26T08:25:00+01:00","rep":0,"total":null,"rent":280000},{"ref":"LW-165","type":"Room & parlour","area":"Fashina","address":null,"features":[],"extra":[],"seen":"2026-10-25T22:21:00+01:00","rep":0,"total":null,"rent":1000000},{"ref":"LW-166","type":"2-bedroom flat","area":"Nasfat","address":null,"features":[],"extra":[],"seen":"2026-10-25T22:21:00+01:00","rep":0,"total":null,"rent":600000},{"ref":"LW-167","type":"2-bedroom flat","area":"Fashina","address":null,"features":[],"extra":[],"seen":"2026-10-25T22:21:00+01:00","rep":0,"total":null,"rent":1000000},{"ref":"LW-168","type":"Self-contain","area":"Nasfat, Ibadan Road","address":null,"features":["24/7 light"],"extra":[],"seen":"2026-10-25T22:21:00+01:00","rep":0,"total":null,"rent":350000},{"ref":"LW-169","type":"Type not stated","area":"Ooni Layout","address":null,"features":[],"extra":[["Duration","9 months"]],"seen":"2026-10-26T00:16:00+01:00","rep":0,"total":null,"rent":280000},{"ref":"LW-170","type":"Self-contain","area":"Oduduwa Estate, Campus Gate","address":"Very close to campus","features":["proper selfcon"],"extra":[],"seen":"2026-10-26T12:02:00+01:00","rep":0,"guide":300000},{"ref":"LW-171","type":"Self-contain","area":"Oduduwa Estate, Campus Gate","address":"Very close to campus","features":["proper selfcon"],"extra":[],"seen":"2026-10-26T13:48:00+01:00","rep":1,"total":null,"rent":350000},{"ref":"LW-172","type":"Self-contain","area":"Oduduwa Estate, Campus Gate","address":"Very close to campus","features":["proper selfcon"],"extra":[],"seen":"2026-10-26T16:41:00+01:00","rep":0,"total":450000,"rent":null},{"ref":"LW-173","type":"Self-contain","area":"Oduduwa Estate, Campus Gate","address":null,"features":["big","fenced and gated"],"extra":[],"seen":"2026-10-27T16:56:00+01:00","rep":1,"total":null,"rent":350000},{"ref":"LW-174","type":"Single room","area":"AP","address":null,"features":["running water"],"extra":[["Walk to junction","10 mins"],["Water","Running water"]],"seen":"2026-10-26T16:55:00+01:00","rep":0,"total":180000,"rent":120000},{"ref":"LW-175","type":"Single room","area":"AP","address":null,"features":["fenced","running water","prepaid meter","neat","spacious"],"extra":[["Walk to junction","2–3 mins"],["Water","Running water"]],"seen":"2026-10-27T09:00:00+01:00","rep":0,"total":180000,"rent":null},{"ref":"LW-176","type":"Single room","area":"AP","address":null,"features":["well water"],"extra":[["Move-in","Pay now, move in next weekend"],["Walk to junction","2–3 mins"],["Water","Well water"]],"seen":"2026-10-27T17:57:00+01:00","rep":1,"total":110000,"rent":null},{"ref":"LW-177","type":"Type not stated","area":"Oduduwa Estate","address":null,"features":["24/7 light","fenced and gated"],"extra":[["Arrangement","Female roommate needed"],["Gender","Female only"]],"seen":"2026-10-27T18:09:00+01:00","rep":0,"total":370000,"rent":null},{"ref":"LW-178","type":"Self-contain","area":"Damico","address":null,"features":["proper selfcon","24/7 light"],"extra":[],"seen":"2026-10-27T18:56:00+01:00","rep":0,"total":null,"rent":580000},{"ref":"LW-179","type":"2-bedroom flat","area":"Asherifa","address":null,"features":["en-suite","super standard"],"extra":[["Arrangement","Female roommate needed (2 per room)"],["Gender","Female (roommate slot)"],["Sharing","2 per room; whole flat for 4 people (male or female) at ₦1.5m"]],"seen":"2026-10-27T19:07:00+01:00","rep":1,"guide":375000},{"ref":"LW-180","type":"Single room","area":"Damico","address":"Close to campus gate","features":["POP","own toilet"],"extra":[["Toilet","Own toilet"]],"seen":"2026-10-27T20:26:00+01:00","rep":0,"total":350000,"rent":null},{"ref":"LW-181","type":"Single room","area":"Campus Gate","address":"Less than 30 seconds walk to OAU campus gate","features":["very spacious","neat"],"extra":[["Walk to campus gate","Under 1 min"]],"seen":"2026-10-27T20:48:00+01:00","rep":0,"guide":190000}];
+const WA='2349136416448';
+const STD_TYPES=["Single room","Room & parlour","Self-contain","Mini flat","1-bedroom flat","2-bedroom flat","3-bedroom flat","Bed space"];
+const selAreas=new Set(); let openRef=null;
+const $=id=>document.getElementById(id);
+function parseMoney(s){ if(s==null) return null; s=String(s).toLowerCase().replace(/[₦,\s]/g,''); if(!s) return null; const m=s.match(/^([\d.]+)(k|m)?$/); if(!m) return null; let n=parseFloat(m[1]); if(m[2]==='k') n*=1e3; if(m[2]==='m') n*=1e6; return Math.round(n); }
+function naira(n){ return n==null?null:'₦'+Number(n).toLocaleString('en-NG'); }
+function short(n){ if(n==null) return null; if(n>=1e6) return '₦'+(n/1e6).toFixed(2).replace(/\.?0+$/,'')+'m'; if(n>=1e3) return '₦'+(Math.round(n/100)/10).toString().replace(/\.0$/,'')+'k'; return '₦'+n; }
+function norm(s){ return String(s||'').toLowerCase().trim(); }
+function esc(s){ return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function toast(m){ const t=$('toast'); t.textContent=m; t.hidden=false; clearTimeout(toast.t); toast.t=setTimeout(()=>t.hidden=true,2200); }
+async function copyText(t,msg){ try{ await navigator.clipboard.writeText(t); toast(msg); }catch{ const ta=document.createElement('textarea'); ta.value=t; document.body.append(ta); ta.select(); try{document.execCommand('copy');toast(msg)}catch{toast('Select and copy the text.')} ta.remove(); } }
+const AREA_ALIASES=[[/\bon[- ]campus\b|school'?s private hostel/,'On campus'],[/\boff[- ]campus\b|campus gate/,'Campus Gate'],[/\ba\.?p\b/,'AP'],[/mayfair/,'Mayfair'],[/parakin/,'Parakin'],[/oduduwa/,'Oduduwa Estate'],[/omole/,'Omole Estate'],[/asherifa/,'Asherifa'],[/damico/,'Damico'],[/ede road|maintenance/,'Ede Road'],[/ibadan road|\bib road/,'Ibadan Road'],[/ooni ?layout|oni layout/,'Ooni Layout'],[/ooni ?crownland/,'Ooni Crownland'],[/lagere/,'Lagere'],[/akarabata/,'Akarabata'],[/awosun/,'Awosun'],[/moremi/,'Moremi Estate'],[/nasfat/,'Nasfat'],[/fashina|fascinating/,'Fashina'],[/modomo/,'Modomo'],[/\boui\b/,'OUI area'],[/ajebamidele/,'Ajebamidele']];
+function areaTags(r){ const a=norm(r.area), t=[]; AREA_ALIASES.forEach(([re,n])=>{ if(re.test(a)&&!t.includes(n)) t.push(n); }); if(!t.length&&r.area) t.push(r.area.trim()); return t; }
+function exText(r){ return norm([r.extra.map(e=>e[1]).join(' '),(r.features||[]).join(' ')].join(' ')); }
+function genderOf(r){ const t=exText(r); if(/male and female|male & female|male\/female/.test(t)) return 'any'; if(/female/.test(t)) return 'female'; if(/\bmales?\b/.test(t)) return 'male'; return 'any'; }
+function isShare(r){ return r.type==='Bed space' || /roommate needed|bed ?space/.test(exText(r)); }
+function soloOnly(r){ return /1 person|one person|roommate not allowed/.test(exText(r)); }
+function splitN(){ return +$('f-split').value||1; }
+function perPerson(p,r){ const n=splitN(); return (p==null||n<2||isShare(r))?p:Math.round(p/n); }
+function splitRow(r,t,y){ const n=splitN(); if(n<2||isShare(r)||(t==null&&y==null)) return '';
+  return `<div class="each"><span>Shared by ${n} · each pays</span><b>${t!=null?naira(Math.round(t/n))+' 1st year':'Ask us'}</b>${y!=null?`<small>then ${naira(Math.round(y/n))} each per year</small>`:''}</div>`; }
+function ageDays(iso){ const t=new Date(iso||''); if(isNaN(t)) return null; const n=new Date(); return Math.max(0,Math.round((new Date(n.getFullYear(),n.getMonth(),n.getDate())-new Date(t.getFullYear(),t.getMonth(),t.getDate()))/864e5)); }
+function freshTag(iso,rep){ const d=ageDays(iso); if(d==null) return '';
+  const when=d===0?'today':d===1?'yesterday':d+' days ago';
+  const cls=d<=2?'new':d<=7?'recent':'old', lead=d<=2?'Just in · ':'';
+  return `<span class="fresh ${cls}">${lead}${rep?'Reposted':'Posted'} ${when}${d>7?' · may be taken':''}</span>`; }
+/* ---- client card readability helpers (shared) ---- */
+const KC_ICON=[[/no running water/,'⚠️'],[/light|band a|electric|solar|prepaid|power/,'💡'],[/water|borehole|well/,'💧'],[/toilet|bath/,'🚽'],[/fenced|gated|security/,'🔒'],[/newly built/,'🆕'],[/tiled|pop/,'✨'],[/wardrobe|kitchen|cabinet|bed|reading|bookshelf|table|air condition|heater/,'🛋️'],[/spacious|big|massive|bigger/,'📐']];
+function kcIcon(t){ t=String(t).toLowerCase(); for(const [re,i] of KC_ICON) if(re.test(t)) return i; return '✓'; }
+function kcAll(it){ return (it.extra.map(e=>e[1]).join(' ')+' '+(it.features||[]).join(' ')).toLowerCase(); }
+function kcFresh(iso,rep){ const d=ageDays(iso); if(d==null) return ''; const when=d===0?'today':d===1?'yesterday':d+' days ago';
+  if(d<=2) return `<span class="bdg hot">🔥 Just in · ${rep?'reposted ':''}${when}</span>`;
+  if(d<=7) return `<span class="bdg ok">🕒 ${rep?'Reposted':'Posted'} ${when}</span>`;
+  return `<span class="bdg old">⚠️ ${rep?'Reposted':'Posted'} ${when} · may be taken</span>`; }
+function kcBadges(it){ const a=kcAll(it), out=[];
+  if(/male and female|male & female/.test(a)) out.push('<span class="bdg">🚻 Male &amp; female</span>');
+  else if(/female/.test(a)) out.push('<span class="bdg warn">🚺 Female only</span>');
+  else if(/\bmales?\b/.test(a)) out.push('<span class="bdg warn">🚹 Male only</span>');
+  if(/roommate needed/.test(a)) out.push('<span class="bdg">👥 Roommate wanted</span>');
+  else if(/roommate not allowed|1 person/.test(a)) out.push('<span class="bdg">👤 1 person only</span>');
+  else if(/pairing allowed|can be shared|up to [23]|[24] per room/.test(a)) out.push('<span class="bdg">👥 Sharing allowed</span>');
+  return out.join(''); }
+function kcFacts(it){ const f=[];
+  it.extra.forEach(([k,v])=>{ const K=k.toLowerCase(); v=esc(v);
+    if(K.startsWith('walk')) f.push(['🚶',`<b>${v}</b> to ${K.includes('gate')?'campus gate':'junction'}`]);
+    else if(K==='units') f.push(['⏳',`<b>${v}</b>`]);
+    else if(K==='move-in') f.push(['📅',`Move in: <b>${v}</b>`]);
+    else if(K==='water') f.push(['⚠️',`<b>${v}</b>`]);
+    else if(K==='toilet') f.push(['🚽',v]);
+    else if(K==='duration') f.push(['📅',v]);
+    else if(K==='location') f.push(['📍',v]);
+    else if(K==='preference') f.push(['ℹ️',v]); });
+  (it.features||[]).forEach(x=>f.push([kcIcon(x),esc(x)]));
+  return f.length?`<ul class="facts">${f.map(([i,t])=>`<li><span aria-hidden="true">${i}</span><span>${t}</span></li>`).join('')}</ul>`:''; }
+function price(r){ return r.guide ?? r.total ?? r.rent ?? null; }
+function hay(r){ return norm([r.type,r.area,r.address,(r.features||[]).join(' '),r.extra.map(e=>e.join(' ')).join(' ')].join(' ')); }
+function priceBox(r){
+  if(r.guide!=null) return `<dl class="pbox" style="grid-template-columns:1fr"><div><dt>Guide price</dt><dd>${naira(r.guide)}</dd></div><div class="pnote">We'll confirm the full breakdown before you pay.</div>${splitRow(r,r.guide,null)}</dl>`;
+  const ask='<span class="ask">Ask us</span>';
+  return `<dl class="pbox"><div><dt>First year <small>all fees · one-time</small></dt><dd>${r.total!=null?naira(r.total):ask}</dd></div><div><dt>Every year after <small>rent only</small></dt><dd>${r.rent!=null?naira(r.rent):ask}</dd></div>${splitRow(r,r.total,r.rent)}</dl>`;
+}
+function reqText(r){ return `Hello Lodgewell, I'm interested in this apartment:\n\nRef ${r.ref} — ${r.type}, ${r.area}${splitN()>1&&!isShare(r)?`\nWe are ${splitN()} people sharing.`:''}\n\nIs it still available? I'd like to book an inspection.`; }
+function card(r){
+  const p=price(r);
+  return `<article class="card" data-ref="${esc(r.ref)}">
+    <div class="top"><div class="ttl"><div class="where big2">📍 ${esc(r.area)}</div><div class="kind"><b>${esc(r.type)}</b><span class="refchip static">Ref ${esc(r.ref)}</span></div>${r.address?`<div class="addr">${esc(r.address)}</div>`:''}</div>
+      <div class="price"><div class="big">${p!=null?short(perPerson(p,r)):'Ask us'}</div><div class="small">${(splitN()>1&&!isShare(r)&&p!=null)?'each · ':''}${p==null?'price on request':r.guide!=null?'guide price':r.total!=null?'total package':'yearly rent'}</div></div></div>
+    <div class="badges">${kcFresh(r.seen,r.rep)}${kcBadges(r)}</div>
+    ${priceBox(r)}
+    ${kcFacts(r)}
+    ${openRef===r.ref?`<div class="req"><b>Send this to us on WhatsApp:</b><pre>${esc(reqText(r))}</pre>
+      <div class="wa"><button class="primary" data-act="copymsg">Copy message</button><a class="btnlink" href="https://wa.me/${WA}?text=${encodeURIComponent(reqText(r))}" target="_blank" rel="noopener">Open WhatsApp</a></div>
+      <div class="wa"><span>Our number:</span><span class="num">+234 913 641 6448</span><button data-copy="+2349136416448">Copy number</button></div>
+      <span class="note">If WhatsApp doesn't open, copy the message and send it to the number above.</span></div>`
+      :`<div class="actions"><button class="primary" data-act="req">Request this apartment</button></div>`}
+  </article>`;
+}
+function render(){
+  const ac={}; ITEMS.forEach(r=>areaTags(r).forEach(t=>ac[t]=(ac[t]||0)+1));
+  const areas=Object.keys(ac).sort((a,b)=>a.localeCompare(b));
+  $('n-areas').textContent=areas.length+' areas';
+  const ts=$('f-type'), cur=ts.value, types=[...new Set([...STD_TYPES,...ITEMS.map(r=>r.type)])].filter(t=>ITEMS.some(r=>r.type===t));
+  ts.innerHTML='<option value="">Any type</option>'+types.map(t=>`<option${t===cur?' selected':''}>${esc(t)}</option>`).join('');
+  $('f-areas').innerHTML=areas.map(t=>`<label class="achip"><input type="checkbox" value="${esc(t)}"${selAreas.has(t)?' checked':''}><span>${esc(t)}</span><span class="n">${ac[t]}</span></label>`).join('');
+  $('f-areas-all').hidden=!selAreas.size;
+  const type=ts.value, budget=parseMoney($('f-budget').value), maxb=parseMoney($('f-max').value), g=$('f-gender').value, must=norm($('f-must').value).split(',').map(s=>s.trim()).filter(Boolean),
+        rq=norm($('f-ref').value).replace(/^lw-?/,'').replace(/^0+/,'');
+  const list=ITEMS.filter(r=>{
+    if(rq) return r.ref.toLowerCase().replace(/^lw-0*/,'')===rq || r.ref.toLowerCase().includes(rq);
+    if(type&&r.type!==type) return false;
+    if(selAreas.size&&!areaTags(r).some(t=>selAreas.has(t))) return false;
+    if(g && genderOf(r)!=='any' && genderOf(r)!==g) return false;
+    if(splitN()>1 && soloOnly(r)) return false;
+    { const p=perPerson(price(r),r); if(budget&&p!=null&&p<budget) return false; if(maxb&&p!=null&&p>maxb) return false; }
+    if(must.length){ const h=hay(r); if(!must.every(m=>h.includes(m))) return false; }
+    return true;
+  }).sort((a,b)=>{ if($('f-sort').value!=='price'){ const ta=Date.parse(a.seen||0)||0, tb=Date.parse(b.seen||0)||0; if(tb!==ta) return tb-ta; } return (perPerson(price(a),a)??Infinity)-(perPerson(price(b),b)??Infinity); });
+  $('count').textContent=`${list.length} found`;
+  $('list').innerHTML=list.length?list.map(card).join(''):'<div class="empty">Nothing fits that yet. Try a lower budget, another area, or fewer must-haves. Or message us your needs below.</div>';
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  if(b.dataset.copy){ copyText(b.dataset.copy,'Number copied'); return; }
+  const c=b.closest('.card'); if(!c) return; const r=ITEMS.find(x=>x.ref===c.dataset.ref);
+  if(b.dataset.act==='req'){ openRef=r.ref; render(); }
+  if(b.dataset.act==='copymsg') copyText(reqText(r),'Message copied. Paste it in WhatsApp.');
+});
+$('f-areas').addEventListener('change',e=>{ const c=e.target; if(c.type!=='checkbox') return; c.checked?selAreas.add(c.value):selAreas.delete(c.value); render(); });
+$('f-areas-all').addEventListener('click',()=>{ selAreas.clear(); render(); });
+['f-type','f-budget','f-max','f-gender','f-split','f-sort','f-must','f-ref'].forEach(id=>$(id).addEventListener('input',render));
+$('f-clear').addEventListener('click',()=>{ ['f-budget','f-max','f-must','f-ref','f-type','f-gender','f-split'].forEach(id=>$(id).value=''); selAreas.clear(); openRef=null; $('f-sort').value='new'; render(); });
+render();
+</script>
+
+</body>
+</html>

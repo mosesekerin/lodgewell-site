@@ -4,7 +4,7 @@ SP='/tmp/claude-0/-home-claude/099aa447-b20f-5ba7-88af-b8d897598eea/scratchpad/s
 F='/tmp/claude-0/-home-claude/099aa447-b20f-5ba7-88af-b8d897598eea/scratchpad/fontpkg'
 FACES=''.join(f"@font-face{{font-family:'{fam}';font-weight:{w};font-style:{st};src:url(file://{F}/fontsource-{pk}-5.1.0/files/{pk}-latin-{w}-{st}.woff2)}}"
   for fam,pk,ws in [('Newsreader','newsreader',[500,600,700]),('Manrope','manrope',[400,500,600,700,800])] for w in ws for st in (['normal','italic'] if pk=='newsreader' else ['normal']))
-URL='file://'+os.path.abspath('new/index.html')
+URL='file://'+os.path.abspath('index.html')
 async def shot(b,name,w,h,hash_,actions=None,full=False):
     pg=await b.new_page(viewport={'width':w,'height':h}); errs=[]; pg.on('pageerror',lambda e:errs.append(str(e)))
     await pg.route('https://fonts.googleapis.com/**',lambda r:r.fulfill(status=200,content_type='text/css',body=FACES))
