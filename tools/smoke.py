@@ -4,7 +4,7 @@ async def main():
     async with async_playwright() as p:
         b=await p.chromium.launch(); pg=await b.new_page(viewport={'width':400,'height':860})
         errs=[]; pg.on('pageerror',lambda e:errs.append(str(e)))
-        await pg.goto('file://'+os.path.abspath('index.html')); await pg.wait_for_timeout(400)
+        await pg.goto('file://'+os.path.abspath('old/index.html')); await pg.wait_for_timeout(400)
         print('all:', await pg.inner_text('#count'))
         await pg.select_option('#f-gender','male'); await pg.select_option('#f-split','2'); await pg.fill('#f-max','260k')
         for a in ['Campus Gate','Oduduwa Estate']: await pg.click(f'#f-areas label:has-text("{a}")')
