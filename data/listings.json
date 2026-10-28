@@ -2922,10 +2922,10 @@
      "Running water"
     ]
    ],
-   "seen": "2026-10-27T09:00:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-28T21:12:00+01:00",
+   "rep": 1,
    "total": 180000,
-   "rent": null
+   "rent": 120000
   },
   {
    "ref": "LW-176",
@@ -3171,7 +3171,36 @@
    "seen": "2026-10-28T12:03:00+01:00",
    "rep": 0,
    "guide": 170000
+  },
+  {
+   "ref": "LW-187",
+   "type": "Type not stated",
+   "area": "Location not stated",
+   "address": null,
+   "features": [],
+   "extra": [
+    [
+     "Arrangement",
+     "Male roommate needed"
+    ],
+    [
+     "Gender",
+     "Male only"
+    ],
+    [
+     "Move-in",
+     "Pay and move in immediately"
+    ],
+    [
+     "Preference",
+     "Muslim, fresher"
+    ]
+   ],
+   "seen": "2026-10-28T20:57:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": null
   }
  ],
- "updated": "2026-10-28T18:15:40.112451+00:00"
+ "updated": "2026-10-28T20:26:02.720719+00:00"
 }
