@@ -1277,11 +1277,11 @@
    "extra": [
     [
      "Arrangement",
-     "Roommate needed (26 Oct: male or female; 27 Oct: female), or take the full room"
+     "Female roommate needed (pay your share and move in immediately), or take the full room"
     ]
    ],
-   "seen": "2026-10-27T20:49:00+01:00",
-   "rep": 6,
+   "seen": "2026-10-28T20:21:00+01:00",
+   "rep": 7,
    "total": 650000,
    "rent": 500000
   },
@@ -2956,25 +2956,29 @@
   },
   {
    "ref": "LW-177",
-   "type": "Type not stated",
+   "type": "Bed space",
    "area": "Oduduwa Estate",
    "address": null,
    "features": [
-    "24/7 light",
+    "24/7 light (directly from campus)",
     "fenced and gated"
    ],
    "extra": [
     [
      "Arrangement",
-     "Female roommate needed"
+     "Female bed space"
     ],
     [
      "Gender",
      "Female only"
+    ],
+    [
+     "Sharing",
+     "4 in a room"
     ]
    ],
-   "seen": "2026-10-27T18:09:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-28T21:30:00+01:00",
+   "rep": 1,
    "total": 370000,
    "rent": null
   },
@@ -3202,5 +3206,5 @@
    "rent": null
   }
  ],
- "updated": "2026-10-28T20:26:02.720719+00:00"
+ "updated": "2026-10-28T20:33:18.941265+00:00"
 }
