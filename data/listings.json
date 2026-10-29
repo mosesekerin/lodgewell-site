@@ -491,10 +491,13 @@
    "type": "Self-contain",
    "area": "Damico",
    "address": null,
-   "features": [],
+   "features": [
+    "proper tiles",
+    "very neat"
+   ],
    "extra": [],
-   "seen": "2026-10-21T17:02:00+01:00",
-   "rep": 1,
+   "seen": "2026-10-29T08:20:00+01:00",
+   "rep": 2,
    "total": null,
    "rent": 350000
   },
@@ -1045,8 +1048,8 @@
      "Male and female spaces"
     ]
    ],
-   "seen": "2026-10-19T07:17:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-29T08:23:00+01:00",
+   "rep": 1,
    "total": 360000,
    "rent": 300000
   },
@@ -1280,8 +1283,8 @@
      "Female roommate needed (pay your share and move in immediately), or take the full room"
     ]
    ],
-   "seen": "2026-10-28T20:21:00+01:00",
-   "rep": 7,
+   "seen": "2026-10-29T08:25:00+01:00",
+   "rep": 10,
    "total": 650000,
    "rent": 500000
   },
@@ -2840,11 +2843,18 @@
    "area": "Oduduwa Estate, Campus Gate",
    "address": "Very close to campus",
    "features": [
-    "proper selfcon"
+    "proper selfcon",
+    "very neat compound",
+    "tarred road"
    ],
-   "extra": [],
-   "seen": "2026-10-26T13:48:00+01:00",
-   "rep": 1,
+   "extra": [
+    [
+     "Move-in",
+     "Pay and move in immediately"
+    ]
+   ],
+   "seen": "2026-10-29T08:26:00+01:00",
+   "rep": 4,
    "total": null,
    "rent": 350000
   },
@@ -2992,8 +3002,8 @@
     "24/7 light"
    ],
    "extra": [],
-   "seen": "2026-10-27T18:56:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-29T08:22:00+01:00",
+   "rep": 1,
    "total": null,
    "rent": 580000
   },
@@ -3009,7 +3019,7 @@
    "extra": [
     [
      "Arrangement",
-     "Female roommate needed (2 per room)"
+     "Female roommate needed (2 per room), or pay for a whole room"
     ],
     [
      "Gender",
@@ -3020,8 +3030,8 @@
      "2 per room; whole flat for 4 people (male or female) at ₦1.5m"
     ]
    ],
-   "seen": "2026-10-27T19:07:00+01:00",
-   "rep": 1,
+   "seen": "2026-10-29T08:18:00+01:00",
+   "rep": 2,
    "guide": 375000
   },
   {
@@ -3063,8 +3073,8 @@
      "Under 1 min"
     ]
    ],
-   "seen": "2026-10-28T17:46:00+01:00",
-   "rep": 2,
+   "seen": "2026-10-29T08:14:00+01:00",
+   "rep": 3,
    "total": 280000,
    "rent": null
   },
@@ -3212,8 +3222,8 @@
    "address": "Close to campus gate",
    "features": [],
    "extra": [],
-   "seen": "2026-10-28T20:25:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-29T08:12:00+01:00",
+   "rep": 2,
    "guide": 200000
   },
   {
@@ -3284,7 +3294,53 @@
    "seen": "2026-10-29T00:36:00+01:00",
    "rep": 0,
    "guide": 350000
+  },
+  {
+   "ref": "LW-192",
+   "type": "2-bedroom flat",
+   "area": "Ooni Layout",
+   "address": null,
+   "features": [
+    "all rooms en-suite",
+    "full POP",
+    "24/7 light"
+   ],
+   "extra": [],
+   "seen": "2026-10-29T08:16:00+01:00",
+   "rep": 2,
+   "total": 1320000,
+   "rent": 1000000
+  },
+  {
+   "ref": "LW-193",
+   "type": "Self-contain",
+   "area": "Damico",
+   "address": null,
+   "features": [],
+   "extra": [
+    [
+     "Move-in",
+     "November"
+    ]
+   ],
+   "seen": "2026-10-29T08:11:00+01:00",
+   "rep": 1,
+   "guide": 420000
+  },
+  {
+   "ref": "LW-194",
+   "type": "Self-contain",
+   "area": "Damico",
+   "address": null,
+   "features": [
+    "24/7 light"
+   ],
+   "extra": [],
+   "seen": "2026-10-29T08:19:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 450000
   }
  ],
- "updated": "2026-10-29T04:18:35.775046+00:00"
+ "updated": "2026-10-29T12:35:41.136528+00:00"
 }
