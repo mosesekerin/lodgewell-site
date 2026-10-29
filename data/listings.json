@@ -1048,8 +1048,8 @@
      "Male and female spaces"
     ]
    ],
-   "seen": "2026-10-29T08:23:00+01:00",
-   "rep": 1,
+   "seen": "2026-10-29T08:25:00+01:00",
+   "rep": 2,
    "total": 360000,
    "rent": 300000
   },
@@ -2905,8 +2905,8 @@
      "Running water"
     ]
    ],
-   "seen": "2026-10-26T16:55:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-29T08:27:00+01:00",
+   "rep": 1,
    "total": 180000,
    "rent": 120000
   },
@@ -2968,15 +2968,19 @@
    "ref": "LW-177",
    "type": "Bed space",
    "area": "Oduduwa Estate",
-   "address": null,
+   "address": "Close to campus gate",
    "features": [
     "24/7 light (directly from campus)",
-    "fenced and gated"
+    "fenced and gated",
+    "CCTV",
+    "security",
+    "spacious",
+    "wardrobe and bed frame per person"
    ],
    "extra": [
     [
      "Arrangement",
-     "Female bed space"
+     "Female private hostel bed space"
     ],
     [
      "Gender",
@@ -2987,8 +2991,8 @@
      "4 in a room"
     ]
    ],
-   "seen": "2026-10-28T21:30:00+01:00",
-   "rep": 1,
+   "seen": "2026-10-29T08:28:00+01:00",
+   "rep": 2,
    "total": 370000,
    "rent": null
   },
@@ -3002,8 +3006,8 @@
     "24/7 light"
    ],
    "extra": [],
-   "seen": "2026-10-29T08:22:00+01:00",
-   "rep": 1,
+   "seen": "2026-10-29T08:25:00+01:00",
+   "rep": 2,
    "total": null,
    "rent": 580000
   },
@@ -3030,8 +3034,8 @@
      "2 per room; whole flat for 4 people (male or female) at ₦1.5m"
     ]
    ],
-   "seen": "2026-10-29T08:18:00+01:00",
-   "rep": 2,
+   "seen": "2026-10-29T08:25:00+01:00",
+   "rep": 3,
    "guide": 375000
   },
   {
@@ -3340,7 +3344,21 @@
    "rep": 0,
    "total": null,
    "rent": 450000
+  },
+  {
+   "ref": "LW-195",
+   "type": "Self-contain",
+   "area": "Damico",
+   "address": "After Oduduwa Estate",
+   "features": [
+    "24/7 light"
+   ],
+   "extra": [],
+   "seen": "2026-10-29T07:59:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 400000
   }
  ],
- "updated": "2026-10-29T12:35:41.136528+00:00"
+ "updated": "2026-10-29T12:38:38.864777+00:00"
 }
