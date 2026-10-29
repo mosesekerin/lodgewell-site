@@ -41,3 +41,12 @@ python3 tools/add_video.py LW-181 <video file>   # strips audio, shrinks, writes
 Then set the catalog row's `video` field to `media/LW-181.mp4`; the sync step copies it to the site.
 GitHub Pages sites are capped at about 1 GB, so the sync prints media usage and lists videos whose
 listing is gone. Above ~500 MB, plan the move to Cloudflare R2; above ~750 MB, move.
+
+### Videos uploaded from the catalog (Agent view → "Upload video")
+
+The catalog stores the original upload as an artifact asset and sets `videoAsset` on the listing.
+On every catalog update Claude:
+1. finds listings where `videoAsset` is set and differs from `videoDone`;
+2. downloads the asset, runs `tools/add_video.py <ref> <file>` (mutes, shrinks, checks frames);
+3. sets `video: media/<ref>.mp4` and `videoDone: <asset id>` on the listing, then syncs and pushes.
+If `videoAsset` is cleared ("Remove video"), the media file is deleted and `video` is cleared.
