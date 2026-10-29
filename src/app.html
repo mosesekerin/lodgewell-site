@@ -28,6 +28,7 @@ button{font:inherit;cursor:pointer}
 h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;margin:0;text-wrap:balance}
 p{margin:0}
 .view[hidden]{display:none!important}
+[hidden]{display:none!important}
 
 /* ---------- top bar ---------- */
 .bar{position:sticky;top:0;z-index:30;background:var(--green);color:var(--on-green)}
@@ -56,6 +57,7 @@ p{margin:0}
 .hero h1 em{font-style:italic;font-weight:500;color:var(--brass)}
 .hero .lede{font-size:19px;color:var(--on-green-2);max-width:34ch;margin-top:22px}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero .intake-note{margin-top:12px;font-size:14px;color:var(--on-green-2)}
 .hero .proof{display:flex;flex-wrap:wrap;gap:8px 22px;margin:30px 0 56px;color:var(--on-green-2);font-size:14px}
 .hero .proof b{color:var(--on-green);font-weight:700}
 /* the doorway */
@@ -296,6 +298,8 @@ footer b{color:#fff}
 .bdg.vid{background:var(--ink);color:#F3E4C2}
 .rtools .chk{background:var(--green-2);border-radius:999px;padding:8px 14px;box-shadow:inset 0 0 0 1.5px var(--green-3);cursor:pointer}
 .rtools .chk input{accent-color:var(--brass);width:18px;height:18px;margin:0}
+.insp{font-size:14px;font-weight:600;color:var(--brass-ink);background:var(--brass-soft);border-radius:10px;padding:9px 12px}
+.slnote{margin-top:12px;color:var(--on-green-2);max-width:52ch}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-weight:700;font-size:14px;z-index:60}
 </style>
 
@@ -310,7 +314,8 @@ footer b{color:#fff}
     <div>
       <h1>Find your place in Ife. <em>Minus the wahala.</em></h1>
       <p class="lede">Real prices. Newest first. Inspect before you pay.</p>
-      <div class="ctas"><a class="btn brass" href="#/find/1?new">Find my place in 60 seconds</a><a class="btn ghost-l" href="#/rooms?p=all">Browse all rooms</a></div>
+      <div class="ctas"><a class="btn brass" data-intake href="https://wa.me/2349136416448" target="_blank" rel="noopener">💬 Tell us what you need</a><a class="btn ghost-l" href="#/find/1?new">Find it myself in 60 seconds</a></div>
+      <p class="intake-note">We'll send you the best matches on WhatsApp within minutes.</p>
       <div class="proof"><span><b id="h-areas"></b> areas in Ife</span><span><b>Inspect</b> before you pay</span><span>Updated <b id="h-upd"></b></span></div>
     </div>
     <div class="door" aria-label="Rooms listed now">
@@ -382,7 +387,7 @@ footer b{color:#fff}
 
   <section class="final gut"><div class="max">
     <h2>Your next place is out there. Let's find it.</h2>
-    <div class="ctas"><a class="btn green" href="#/find/1?new">Find my place</a><a class="btn line" href="#/rooms?p=all">Browse all rooms</a></div>
+    <div class="ctas"><a class="btn green" data-intake href="https://wa.me/2349136416448" target="_blank" rel="noopener">💬 Tell us what you need</a><a class="btn line" href="#/rooms?p=all">Browse all rooms</a></div>
   </div></section>
   <footer class="gut"><div class="in max">
     <div><b>Lodgewell</b><br>Homes and lodges in Ile-Ife</div>
@@ -407,8 +412,9 @@ footer b{color:#fff}
   </div></header>
   <section class="rtop gut"><div class="max">
     <h1 id="r-title"></h1>
+    <p class="slnote" id="r-slnote" hidden></p>
     <div class="said" id="r-said"></div>
-    <div class="rtools">
+    <div class="rtools" id="r-tools">
       <label for="r-sort">Show <select id="r-sort"><option value="new">Newest first</option><option value="price">Lowest price first</option></select></label>
       <label for="r-ref">Ref <input id="r-ref" inputmode="numeric" placeholder="e.g. 47" size="7"></label>
       <label class="chk" for="r-vid"><input type="checkbox" id="r-vid"> 🎥 With video only</label>
@@ -583,6 +589,7 @@ function card(r){ const p=price(r), pp=perPerson(p,r), each=A.share>1&&!isShare(
    ${r.video?`<button class="vthumb" type="button" data-act="video" aria-label="Watch the video of this place" style="background-image:url('${esc(r.poster||'')}')"><span class="pl"></span><span class="vl">Watch video</span></button>`:''}
    <div class="badges">${r.video?'<span class="bdg vid">🎥 Video</span>':''}${fresh(r)}${badges(r)}</div>
    ${pbox(r)}${facts(r)}
+   ${SHORT&&!r.video?'<p class="insp">👀 No video: viewing strictly on physical inspection</p>':''}
    ${openRef===r.ref?`<div class="req"><b>Send this to us on WhatsApp</b><pre>${esc(reqText(r))}</pre><div class="row"><a class="btn sm green" href="https://wa.me/${WA}?text=${encodeURIComponent(reqText(r))}" target="_blank" rel="noopener">Open WhatsApp</a><button class="btn sm line" type="button" data-act="copy">Copy message</button></div><div class="row" style="font-size:14px">Our number: <span class="num">+234 913 641 6448</span></div></div>`:`<button class="btn sm green go" type="button" data-act="req">Request this room</button>`}
   </article>`; }
 function saidChips(){ const c=[];
@@ -595,7 +602,13 @@ function saidChips(){ const c=[];
   const pre=A.preset&&PRESETS[A.preset]?`<button type="button" data-unpreset="1">${esc(PRESETS[A.preset].label)} <span aria-hidden="true">✕</span></button>`:'';
   const mu=A.musts.length?`<button type="button" data-unmusts="1">${esc(A.musts.map(k=>MUSTS.find(m=>m[0]===k)[2]).join(', '))} <span aria-hidden="true">✕</span></button>`:'';
   return pre+mu+c.map(([s,l])=>`<button type="button" data-step="${s}">${esc(l)} <span aria-hidden="true">✎</span></button>`).join('')+`<button type="button" data-clear="1">Clear answers</button>`; }
+let SHORT=null;
 function renderRooms(){
+  const sl=!!SHORT; $('r-said').hidden=sl; $('r-tools').hidden=sl; $('r-slnote').hidden=!sl;
+  if(sl){ const found=SHORT.map(ref=>ITEMS.find(x=>x.ref===ref)).filter(Boolean), gone=SHORT.length-found.length;
+    $('r-title').textContent=`Picked for you: ${found.length} ${found.length===1?'place':'places'}`;
+    $('r-slnote').textContent=`We chose these to match what you told us. Tap ▶ to watch a video where there is one, then tap "Request this room" to book an inspection.${gone?` ${gone===1?'One place':gone+' places'} from your list ${gone===1?'has':'have'} just been taken.`:''}`;
+    $('r-list').innerHTML=found.length?found.map(card).join(''):`<div class="empty"><h3>These places have been taken.</h3><p>Message us and we'll send you fresh options: <span class="num">+234 913 641 6448</span></p></div>`; return; }
   const rq=norm($('r-ref').value).replace(/^lw-?/,'').replace(/^0+/,'');
   let list= rq? ITEMS.filter(r=>r.ref.toLowerCase().replace(/^lw-0*/,'')===rq||r.ref.toLowerCase().includes(rq)) : ITEMS.filter(r=>matches(r));
   if($('r-vid').checked) list=list.filter(r=>r.video);
@@ -691,11 +704,14 @@ function route(){
   if(/[?&](new|p=all)\b/.test(h)){ resetAnswers(); history.replaceState(null,'',h.replace(/\?(new|p=all)$/,'')); }
   else if(/^#\/find/.test(h) && (A.fromPreset||A.preset||A.musts.length)) resetAnswers();
   const pm=h.match(/^#\/rooms\?p=(\w+)/); if(pm&&PRESETS[pm[1]]){ applyPreset(pm[1]); _presetTitle=pm[1]; }
+  const sm=h.match(/^#\/s\/([\w-]+)/); SHORT= sm? sm[1].split('-').filter(Boolean).map(x=>'LW-'+x.replace(/^lw/i,'').padStart(3,'0')) : null;
   const inPage=h.startsWith('#budget')||h.startsWith('#how');
-  $('v-home').hidden = !(h==='#/'||h==='#'||h===''||inPage);
-  $('v-find').hidden = !m; $('v-rooms').hidden = !h.startsWith('#/rooms');
-  if(m) renderFind(+m[1]); else if(h.startsWith('#/rooms')) renderRooms(); else renderHome();
+  $('v-home').hidden = !(h==='#/'||h==='#'||h===''||inPage) || !!sm;
+  $('v-find').hidden = !m; $('v-rooms').hidden = !(h.startsWith('#/rooms')||sm);
+  if(m) renderFind(+m[1]); else if(h.startsWith('#/rooms')||sm) renderRooms(); else renderHome();
   if(inPage){ const el=document.getElementById(h.slice(1)); if(el) el.scrollIntoView(); } else window.scrollTo(0,0);
 }
+const INTAKE="Hi Lodgewell 👋🏽 I'm looking for a place.\n\n1️⃣ Type (single room / self-con / room & parlour / flat / hostel bed space): \n2️⃣ Preferred area(s): \n3️⃣ Budget (yearly rent or total package): ₦";
+document.querySelectorAll('[data-intake]').forEach(a=>a.href=`https://wa.me/${WA}?text=${encodeURIComponent(INTAKE)}`);
 window.addEventListener('hashchange',route); route();
 </script>
