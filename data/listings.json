@@ -3204,7 +3204,87 @@
    "rep": 0,
    "total": null,
    "rent": null
+  },
+  {
+   "ref": "LW-188",
+   "type": "Single room",
+   "area": "Oduduwa Estate",
+   "address": "Close to campus gate",
+   "features": [],
+   "extra": [],
+   "seen": "2026-10-28T20:25:00+01:00",
+   "rep": 0,
+   "guide": 200000
+  },
+  {
+   "ref": "LW-189",
+   "type": "Self-contain",
+   "area": "AP",
+   "address": "AP junction",
+   "features": [
+    "standard"
+   ],
+   "extra": [
+    [
+     "Move-in",
+     "Immediately (new tenant)"
+    ]
+   ],
+   "seen": "2026-10-28T21:51:00+01:00",
+   "rep": 0,
+   "guide": 400000
+  },
+  {
+   "ref": "LW-190",
+   "type": "Self-contain",
+   "area": "Fashina",
+   "address": null,
+   "features": [],
+   "extra": [],
+   "seen": "2026-10-28T23:42:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 300000
+  },
+  {
+   "ref": "LW-191",
+   "type": "Self-contain",
+   "area": "Oduduwa Estate",
+   "address": "3 minutes to campus gate",
+   "features": [
+    "spacious",
+    "24/7 light",
+    "running water",
+    "CCTV security",
+    "fenced and gated",
+    "personal wardrobe"
+   ],
+   "extra": [
+    [
+     "Arrangement",
+     "Female roommate needed"
+    ],
+    [
+     "Gender",
+     "Female only"
+    ],
+    [
+     "Move-in",
+     "Pay now, move in at resumption"
+    ],
+    [
+     "Sharing",
+     "3 people in the room"
+    ],
+    [
+     "Walk to campus gate",
+     "3 mins"
+    ]
+   ],
+   "seen": "2026-10-29T00:36:00+01:00",
+   "rep": 0,
+   "guide": 350000
   }
  ],
- "updated": "2026-10-28T20:33:18.941265+00:00"
+ "updated": "2026-10-29T04:18:35.775046+00:00"
 }
