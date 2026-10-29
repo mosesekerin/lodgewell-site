@@ -29,3 +29,15 @@ python3 build.py
 To roll back to the old catalog as the main page: `cp old/index.html index.html` and fix its `../assets` paths to `assets`.
 
 then commits and pushes. GitHub Pages republishes within a minute or two.
+
+## Videos
+
+Agents' videos are shown on listing cards, always muted.
+
+```
+python3 tools/add_video.py LW-181 <video file>   # strips audio, shrinks, writes media/LW-181.mp4 + .jpg
+```
+
+Then set the catalog row's `video` field to `media/LW-181.mp4`; the sync step copies it to the site.
+GitHub Pages sites are capped at about 1 GB, so the sync prints media usage and lists videos whose
+listing is gone. Above ~500 MB, plan the move to Cloudflare R2; above ~750 MB, move.
