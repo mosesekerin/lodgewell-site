@@ -18,6 +18,9 @@ for f in sorted(glob.glob(os.path.join(src, 'listings', '*.json'))):
     it = dict(ref=ref(i), type=r.get('type') or 'Apartment', area=r.get('area') or '', address=r.get('address'),
               features=r.get('features') or [], extra=[[k, v] for k, v in (r.get('extra') or {}).items() if KEEP.match(k)],
               seen=r.get('lastSeen') or r.get('added'), rep=r.get('reposts') or 0)
+    v = r.get('video')
+    if v and os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', v)):
+        it['video'] = v; it['poster'] = v[:-4] + '.jpg'
     if UNCLEAR.search(r.get('priceNote') or ''):
         base = tp if tp is not None else rent
         it['guide'] = (base + charge) if (tp is not None and base is not None) else base
@@ -27,4 +30,11 @@ for f in sorted(glob.glob(os.path.join(src, 'listings', '*.json'))):
     items.append(it)
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'listings.json')
 json.dump({'items': items, 'updated': datetime.datetime.now(datetime.timezone.utc).isoformat()}, open(out, 'w'), ensure_ascii=False, indent=1)
-print(f'{len(items)} apartments written to data/listings.json')
+print(f'{len(items)} apartments written to data/listings.json ({sum(1 for i in items if i.get("video"))} with video)')
+# media housekeeping: videos whose listing is taken or gone can be deleted to stay under the Pages size budget
+mdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'media')
+if os.path.isdir(mdir):
+    live = {i['ref'] for i in items if i.get('video')}
+    orphans = [f for f in os.listdir(mdir) if f.endswith('.mp4') and f[:-4] not in live]
+    total = sum(os.path.getsize(os.path.join(mdir, f)) for f in os.listdir(mdir))
+    print(f'media: {total/1e6:.1f} MB used of ~500 MB comfort budget; orphaned videos: {orphans or "none"}')

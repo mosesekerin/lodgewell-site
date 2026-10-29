@@ -282,6 +282,20 @@ footer b{color:#fff}
 .req pre{margin:0;white-space:pre-wrap;font:inherit;font-size:14px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px;overflow-wrap:anywhere}
 .req .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .num{font-weight:800;font-variant-numeric:tabular-nums;user-select:all}
+.vthumb{position:relative;display:block;width:100%;aspect-ratio:16/10;border:0;padding:0;border-radius:var(--r-md);overflow:hidden;background:var(--green) center/cover no-repeat;cursor:pointer}
+.vthumb::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,33,28,.65),rgba(20,33,28,.05) 55%)}
+.vthumb .pl{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:var(--brass);display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+.vthumb .pl::after{content:"";margin-left:5px;border-left:20px solid var(--ink);border-top:12px solid transparent;border-bottom:12px solid transparent}
+.vthumb .vl{position:absolute;left:12px;bottom:10px;color:#fff;font-weight:800;font-size:14px}
+.vbox{position:fixed;inset:0;z-index:70;background:rgba(10,16,14,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;gap:12px}
+.vbox[hidden]{display:none}
+.vbox video{max-width:100%;max-height:78dvh;border-radius:14px;background:#000}
+.vbox .vt{color:#F7F3EC;font-weight:700;text-align:center}
+.vbox .vt small{display:block;font-weight:500;color:#C9D6D0;margin-top:4px}
+.vbox .vrow{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.bdg.vid{background:var(--ink);color:#F3E4C2}
+.rtools .chk{background:var(--green-2);border-radius:999px;padding:8px 14px;box-shadow:inset 0 0 0 1.5px var(--green-3);cursor:pointer}
+.rtools .chk input{accent-color:var(--brass);width:18px;height:18px;margin:0}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-weight:700;font-size:14px;z-index:60}
 </style>
 
@@ -397,6 +411,7 @@ footer b{color:#fff}
     <div class="rtools">
       <label for="r-sort">Show <select id="r-sort"><option value="new">Newest first</option><option value="price">Lowest price first</option></select></label>
       <label for="r-ref">Ref <input id="r-ref" inputmode="numeric" placeholder="e.g. 47" size="7"></label>
+      <label class="chk" for="r-vid"><input type="checkbox" id="r-vid"> 🎥 With video only</label>
     </div>
   </div></section>
   <section class="gut"><div class="max">
@@ -410,6 +425,11 @@ footer b{color:#fff}
 </div>
 <div class="toast" id="toast" hidden></div>
 
+<div class="vbox" id="v-box" hidden role="dialog" aria-modal="true" aria-label="Video of the place">
+  <div class="vt" id="v-title"></div>
+  <video id="v-player" controls muted playsinline preload="metadata"></video>
+  <div class="vrow"><button class="btn brass" type="button" id="v-req">Request this room</button><button class="btn ghost-l" type="button" id="v-close">Close</button></div>
+</div>
 <script>
 const ITEMS=%%DATA%%;
 const UPDATED=%%UPDATED_ISO%%;
@@ -560,7 +580,8 @@ function card(r){ const p=price(r), pp=perPerson(p,r), each=A.share>1&&!isShare(
   return `<article class="card" data-ref="${esc(r.ref)}">
    <div class="ctop"><div class="ttl"><div class="place">${esc(r.area)}</div><div class="kind"><b>${esc(r.type==='Type not stated'?'Room':r.type)}</b><span class="ref">${esc(r.ref)}</span></div>${r.address?`<div class="addr">📍 ${esc(r.address)}</div>`:''}</div>
    <div class="big"><b>${pp!=null?short(pp):'Ask us'}</b><span>${p==null?'price on request':(each?'each, ':'')+(r.guide!=null?'guide price':r.total!=null?'first year':'per year')}</span></div></div>
-   <div class="badges">${fresh(r)}${badges(r)}</div>
+   ${r.video?`<button class="vthumb" type="button" data-act="video" aria-label="Watch the video of this place" style="background-image:url('${esc(r.poster||'')}')"><span class="pl"></span><span class="vl">Watch video</span></button>`:''}
+   <div class="badges">${r.video?'<span class="bdg vid">🎥 Video</span>':''}${fresh(r)}${badges(r)}</div>
    ${pbox(r)}${facts(r)}
    ${openRef===r.ref?`<div class="req"><b>Send this to us on WhatsApp</b><pre>${esc(reqText(r))}</pre><div class="row"><a class="btn sm green" href="https://wa.me/${WA}?text=${encodeURIComponent(reqText(r))}" target="_blank" rel="noopener">Open WhatsApp</a><button class="btn sm line" type="button" data-act="copy">Copy message</button></div><div class="row" style="font-size:14px">Our number: <span class="num">+234 913 641 6448</span></div></div>`:`<button class="btn sm green go" type="button" data-act="req">Request this room</button>`}
   </article>`; }
@@ -577,20 +598,30 @@ function saidChips(){ const c=[];
 function renderRooms(){
   const rq=norm($('r-ref').value).replace(/^lw-?/,'').replace(/^0+/,'');
   let list= rq? ITEMS.filter(r=>r.ref.toLowerCase().replace(/^lw-0*/,'')===rq||r.ref.toLowerCase().includes(rq)) : ITEMS.filter(r=>matches(r));
+  if($('r-vid').checked) list=list.filter(r=>r.video);
   const byNew=$('r-sort').value!=='price';
   list.sort((a,b)=>{ if(byNew){ const d=(Date.parse(b.seen||0)||0)-(Date.parse(a.seen||0)||0); if(d) return d; } return (perPerson(price(a),a)??1e12)-(perPerson(price(b),b)??1e12); });
   const any=A.gender||A.share>1||A.types.length||A.areas.length||A.min||A.max||A.musts.length;
   const P=PRESETS[_presetTitle]||(A.preset&&PRESETS[A.preset]); _presetTitle='';
   $('r-title').textContent= rq? `Ref search: ${list.length} ${list.length===1?'room':'rooms'}` : P? P.title(list.length) : any||A.preset? `${list.length} ${list.length===1?'room fits':'rooms fit'} what you told us` : `All ${list.length} rooms in Ife`;
+  if($('r-vid').checked&&!rq) $('r-title').textContent=`${list.length} ${list.length===1?'place':'places'} with a video`;
   $('r-said').innerHTML=saidChips();
   if(!list.length){ $('r-list').innerHTML=`<div class="empty"><h3>Nothing fits all of that right now.</h3><p>Try a wider budget or more areas. Or message us what you need, because we don't post every vacancy online: <span class="num">+234 913 641 6448</span></p><div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn green" href="#/find/5">Change my budget</a><a class="btn line" href="#/find/4">Add more areas</a></div></div>`; return; }
   $('r-list').innerHTML=list.map(card).join('');
 }
 $('r-said').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; if(b.dataset.unpreset){ A.preset=''; save(); renderRooms(); return; } if(b.dataset.unmusts){ A.musts=[]; save(); renderRooms(); return; } if(b.dataset.clear){ Object.assign(A,{gender:'',share:1,types:[],areas:[],min:null,max:null,musts:[],preset:''}); save(); renderRooms(); return; } location.hash='#/find/'+b.dataset.step; });
-['r-sort','r-ref'].forEach(id=>$(id).addEventListener('input',renderRooms));
+['r-sort','r-ref','r-vid'].forEach(id=>$(id).addEventListener('input',renderRooms));
 $('r-list').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; const c=b.closest('.card'); const r=ITEMS.find(x=>x.ref===c.dataset.ref);
   if(b.dataset.act==='req'){ openRef=r.ref; renderRooms(); const el=document.querySelector(`.card[data-ref="${CSS.escape(r.ref)}"]`); if(el) el.scrollIntoView({block:'nearest'}); }
-  if(b.dataset.act==='copy') copyText(reqText(r),'Message copied. Paste it in WhatsApp.'); });
+  if(b.dataset.act==='copy') copyText(reqText(r),'Message copied. Paste it in WhatsApp.');
+  if(b.dataset.act==='video') openVideo(r); });
+function openVideo(r){ const v=$('v-player'); $('v-title').innerHTML=`${esc(r.type==='Type not stated'?'Room':r.type)} · ${esc(r.area)} <small>${esc(r.ref)} · Video from the listing. Availability is confirmed before inspection.</small>`;
+  v.src=r.video; if(r.poster) v.poster=r.poster; $('v-box').hidden=false; v.play().catch(()=>{});
+  $('v-req').onclick=()=>{ closeVideo(); openRef=r.ref; renderRooms(); const el=document.querySelector(`.card[data-ref="${CSS.escape(r.ref)}"]`); if(el) el.scrollIntoView({block:'nearest'}); }; }
+function closeVideo(){ const v=$('v-player'); v.pause(); v.removeAttribute('src'); v.load(); $('v-box').hidden=true; }
+$('v-close').addEventListener('click',closeVideo);
+$('v-box').addEventListener('click',e=>{ if(e.target.id==='v-box') closeVideo(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!$('v-box').hidden) closeVideo(); });
 
 /* ---------- landing ---------- */
 function renderHome(){
