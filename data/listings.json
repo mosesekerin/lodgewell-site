@@ -2991,8 +2991,8 @@
      "4 in a room"
     ]
    ],
-   "seen": "2026-10-29T08:28:00+01:00",
-   "rep": 2,
+   "seen": "2026-10-30T19:51:00+01:00",
+   "rep": 3,
    "total": 370000,
    "rent": null
   },
@@ -3495,7 +3495,76 @@
    "rep": 0,
    "total": null,
    "rent": 420000
+  },
+  {
+   "ref": "LW-203",
+   "type": "Self-contain",
+   "area": "Parakin",
+   "address": null,
+   "features": [
+    "very massive",
+    "24/7 light"
+   ],
+   "extra": [],
+   "seen": "2026-10-30T10:15:00+01:00",
+   "rep": 0,
+   "guide": 450000
+  },
+  {
+   "ref": "LW-204",
+   "type": "Room & parlour",
+   "area": "Parakin",
+   "address": null,
+   "features": [],
+   "extra": [],
+   "seen": "2026-10-30T10:15:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 800000
+  },
+  {
+   "ref": "LW-205",
+   "type": "Self-contain",
+   "area": "Lagere",
+   "address": null,
+   "features": [
+    "newly built",
+    "POP",
+    "serene environment",
+    "security",
+    "well painted"
+   ],
+   "extra": [
+    [
+     "Units",
+     "Two price levels: ₦350k and ₦450k total package"
+    ]
+   ],
+   "seen": "2026-10-30T22:02:00+01:00",
+   "rep": 0,
+   "total": 370000,
+   "rent": null
+  },
+  {
+   "ref": "LW-206",
+   "type": "Self-contain",
+   "area": "Damico",
+   "address": null,
+   "features": [],
+   "extra": [
+    [
+     "Arrangement",
+     "Male roommate needed (serious)"
+    ],
+    [
+     "Gender",
+     "Male only"
+    ]
+   ],
+   "seen": "2026-10-30T22:02:00+01:00",
+   "rep": 0,
+   "guide": 270000
   }
  ],
- "updated": "2026-10-31T04:40:34.299913+00:00"
+ "updated": "2026-10-31T04:45:00.400031+00:00"
 }
