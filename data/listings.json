@@ -3436,7 +3436,7 @@
    ],
    "extra": [],
    "seen": "2026-10-30T20:58:00+01:00",
-   "rep": 0,
+   "rep": 1,
    "total": null,
    "rent": 350000
   },
@@ -3457,7 +3457,7 @@
     ]
    ],
    "seen": "2026-10-30T20:59:00+01:00",
-   "rep": 0,
+   "rep": 1,
    "total": null,
    "rent": 300000
   },
@@ -3470,8 +3470,8 @@
     "wardrobe"
    ],
    "extra": [],
-   "seen": "2026-10-30T21:00:00+01:00",
-   "rep": 0,
+   "seen": "2026-10-30T21:32:00+01:00",
+   "rep": 1,
    "total": 620000,
    "rent": null
   },
@@ -3564,7 +3564,48 @@
    "seen": "2026-10-30T22:02:00+01:00",
    "rep": 0,
    "guide": 270000
+  },
+  {
+   "ref": "LW-207",
+   "type": "Single room",
+   "area": "Parakin",
+   "address": null,
+   "features": [
+    "well water",
+    "fenced",
+    "spacious",
+    "neatly tiled bathroom and toilet"
+   ],
+   "extra": [
+    [
+     "Walk to junction",
+     "7 mins"
+    ],
+    [
+     "Water",
+     "Well water"
+    ]
+   ],
+   "seen": "2026-10-30T19:04:00+01:00",
+   "rep": 0,
+   "total": 175000,
+   "rent": null
+  },
+  {
+   "ref": "LW-208",
+   "type": "Self-contain",
+   "area": "Lagere",
+   "address": null,
+   "features": [
+    "standard",
+    "POP"
+   ],
+   "extra": [],
+   "seen": "2026-10-30T21:07:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 350000
   }
  ],
- "updated": "2026-10-31T04:45:00.400031+00:00"
+ "updated": "2026-10-31T04:47:43.319288+00:00"
 }
