@@ -3402,7 +3402,100 @@
    "rep": 0,
    "total": null,
    "rent": 700000
+  },
+  {
+   "ref": "LW-198",
+   "type": "Single room",
+   "area": "AP",
+   "address": null,
+   "features": [
+    "running water"
+   ],
+   "extra": [
+    [
+     "Walk to junction",
+     "5 mins"
+    ],
+    [
+     "Water",
+     "Running water"
+    ]
+   ],
+   "seen": "2026-10-30T20:58:00+01:00",
+   "rep": 0,
+   "total": 200000,
+   "rent": null
+  },
+  {
+   "ref": "LW-199",
+   "type": "Self-contain",
+   "area": "Location not clear",
+   "address": "'Very close to Rd' (road name not given)",
+   "features": [
+    "POP"
+   ],
+   "extra": [],
+   "seen": "2026-10-30T20:58:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 350000
+  },
+  {
+   "ref": "LW-200",
+   "type": "Room in a flat",
+   "area": "Campus Gate",
+   "address": "3 min walk to campus gate",
+   "features": [],
+   "extra": [
+    [
+     "Gender",
+     "Female only"
+    ],
+    [
+     "Walk to campus gate",
+     "3 mins"
+    ]
+   ],
+   "seen": "2026-10-30T20:59:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 300000
+  },
+  {
+   "ref": "LW-201",
+   "type": "Self-contain",
+   "area": "Damico",
+   "address": null,
+   "features": [
+    "wardrobe"
+   ],
+   "extra": [],
+   "seen": "2026-10-30T21:00:00+01:00",
+   "rep": 0,
+   "total": 620000,
+   "rent": null
+  },
+  {
+   "ref": "LW-202",
+   "type": "Self-contain",
+   "area": "Asherifa",
+   "address": null,
+   "features": [
+    "newly built",
+    "POP",
+    "24/7 light (inverter)"
+   ],
+   "extra": [
+    [
+     "Preference",
+     "Decent tenant"
+    ]
+   ],
+   "seen": "2026-10-30T21:20:00+01:00",
+   "rep": 0,
+   "total": null,
+   "rent": 420000
   }
  ],
- "updated": "2026-10-30T10:02:41.860679+00:00"
+ "updated": "2026-10-31T04:40:34.299913+00:00"
 }
