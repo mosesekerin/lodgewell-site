@@ -3605,7 +3605,47 @@
    "rep": 0,
    "total": null,
    "rent": 350000
+  },
+  {
+   "ref": "LW-209",
+   "type": "Single room",
+   "area": "Oduduwa Estate",
+   "address": null,
+   "features": [
+    "spacious"
+   ],
+   "extra": [
+    [
+     "Sharing",
+     "Can take 2 people"
+    ]
+   ],
+   "seen": "2026-10-31T21:22:00+01:00",
+   "rep": 0,
+   "total": 300000,
+   "rent": null
+  },
+  {
+   "ref": "LW-210",
+   "type": "Type not stated",
+   "area": "Oduduwa Estate",
+   "address": null,
+   "features": [],
+   "extra": [
+    [
+     "Arrangement",
+     "Male roommate needed (urgent)"
+    ],
+    [
+     "Gender",
+     "Male only"
+    ]
+   ],
+   "seen": "2026-10-31T21:22:00+01:00",
+   "rep": 0,
+   "total": 245000,
+   "rent": 200000
   }
  ],
- "updated": "2026-10-31T04:47:43.319288+00:00"
+ "updated": "2026-10-31T20:29:14.403999+00:00"
 }
